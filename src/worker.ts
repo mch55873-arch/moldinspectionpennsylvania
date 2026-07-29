@@ -165,11 +165,18 @@ export default {
       }
 
       if (path.startsWith("/services/")) {
-        const slug = path.split("/")[2];
+        const slug = path.split("/")[2]?.replace(/\/$/, "");
         const service = services.find((s) => s.slug === slug);
         if (service) {
           return cached(request, ctx, () => htmlResponse(nationalServicePage(service as any), method));
         }
+      }
+
+      // Support root service slugs e.g. /emergency-mold-remediation/
+      const cleanSlug = path.replace(/^\/|\/$/g, "");
+      const directService = services.find((s) => s.slug === cleanSlug);
+      if (directService) {
+        return cached(request, ctx, () => htmlResponse(nationalServicePage(directService as any), method));
       }
 
       if (path === "/areas-we-serve" || path === "/areas-we-serve/" || path === "/locations" || path === "/locations/") {
@@ -205,6 +212,14 @@ export default {
         if (path === "/" || path === "") {
           return cached(request, ctx, () => htmlResponse(statePage(state), method));
         }
+        if (path === "/services" || path === "/services/") {
+          return cached(request, ctx, () => htmlResponse(servicesHubPage(), method));
+        }
+        const stateServiceSlug = path.replace(/^\/services\/|^\/|\/$/g, "");
+        const service = services.find((s) => s.slug === stateServiceSlug);
+        if (service) {
+          return cached(request, ctx, () => htmlResponse(nationalServicePage(service as any), method));
+        }
         return redirect(`https://${DOMAIN}${path}`);
       }
 
@@ -212,7 +227,11 @@ export default {
         return cached(request, ctx, () => htmlResponse(cityPage(state, city, hostname), method));
       }
 
-      const serviceSlug = path.replace(/^\/|\/$/g, "");
+      if (path === "/services" || path === "/services/") {
+        return cached(request, ctx, () => htmlResponse(servicesHubPage(), method));
+      }
+
+      const serviceSlug = path.replace(/^\/services\/|^\/|\/$/g, "");
       const service = services.find((s) => s.slug === serviceSlug);
       if (service) {
         return cached(request, ctx, () => htmlResponse(localServicePage(state, city, service as any, hostname), method));
