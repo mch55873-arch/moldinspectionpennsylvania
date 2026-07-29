@@ -76,13 +76,10 @@ a{color:inherit;text-decoration:none}
 .featured-area-card:hover{transform:translateY(-4px);border-color:#0ea5e9;box-shadow:0 16px 40px rgba(14,165,233,.25)}
 .featured-area-card h4{font-family:'Plus Jakarta Sans',sans-serif;font-size:20px;font-weight:800;margin:10px 0 6px;color:#fff}
 .featured-area-card span{color:#38bdf8;font-weight:800;font-size:14px}
-.step-card{background:#0d1b2a;border:1px solid rgba(255,255,255,.1);border-radius:20px;padding:28px}
-.step-card span{display:inline-block;width:40px;height:40px;border-radius:12px;background:rgba(14,165,233,.18);color:#38bdf8;font-weight:900;text-align:center;line-height:40px;font-size:16px}
-.step-card h3{font-family:'Plus Jakarta Sans',sans-serif;font-size:20px;font-weight:800;color:#fff;margin:14px 0 8px}
-.step-card p{color:#94a3b8;font-size:14px;line-height:1.65;margin:0}
-.faq-item{background:#14263b;border:1px solid rgba(255,255,255,.1);border-radius:16px;padding:24px;margin-bottom:16px}
-.faq-item h3{font-family:'Plus Jakarta Sans',sans-serif;font-size:18px;font-weight:800;color:#fff;margin:0 0 8px}
-.faq-item p{color:#94a3b8;font-size:15px;line-height:1.7;margin:0}
+.contact-info-card{background:#14263b;border:1px solid rgba(255,255,255,.12);border-radius:20px;padding:28px}
+.contact-info-card div{width:46px;height:46px;border-radius:14px;background:rgba(14,165,233,.15);color:#38bdf8;display:grid;place-items:center;font-size:20px}
+.contact-info-card h3{font-family:'Plus Jakarta Sans',sans-serif;font-size:20px;font-weight:800;color:#fff;margin:16px 0 8px}
+.contact-info-card p{color:#94a3b8;font-size:14px;line-height:1.65;margin:0}
 .checklist-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:14px;margin-top:24px}
 .check-row{display:flex;align-items:center;gap:12px;font-size:15px;font-weight:700;color:#e2e8f0}
 .check-row span{color:#38bdf8;font-size:18px}
@@ -128,20 +125,6 @@ function serviceCards(host: string): string {
     .join("");
 }
 
-export function aboutUsPage() {
-  const canonical = `https://${DOMAIN}/about-us/`;
-  const schema = {
-    "@context": "https://schema.org",
-    "@type": "AboutPage",
-    name: `About Us | ${BRAND}`,
-    url: canonical,
-    description: "Learn about Mold Inspection Pennsylvania & USA Network — 22-year established authority providing 24/7 water, fire & mold restoration across all 50 US states."
-  };
-
-  const body = `<main><section class="hero"><div class="wrap hero-grid"><div><div class="crumb-trail"><a href="https://${DOMAIN}/">Home</a> / About Us</div><span class="eyebrow-badge">22-Year Established Trust (Est. 2004)</span><h1>About Mold Inspection Pennsylvania &amp; <span>USA Network</span></h1><p class="hero-desc">Founded with a commitment to indoor environmental safety and rapid structural drying, Mold Inspection Pennsylvania has grown into America's premier 24/7 emergency restoration network operating across all 50 US states &amp; 30,900+ cities.</p><div class="rating-pill"><span class="stars">★★★★★</span><span>Trusted by 18,000+ Property Owners Nationwide</span></div>${trustChecklistHtml()}<div style="margin-top:32px;"><a class="btn-cta" href="${PHONE_HREF}">Call ${PHONE_DISPLAY}</a></div></div><div>${leadFormHtml("About Us")}</div></div></section><section class="stats-bar"><div class="wrap stats-grid"><div class="stat-box"><div class="stat-num">22+</div><div class="stat-lbl">Years Experience</div></div><div class="stat-box"><div class="stat-num">50</div><div class="stat-lbl">US States Served</div></div><div class="stat-box"><div class="stat-num">70</div><div class="stat-lbl">Restoration Topics</div></div><div class="stat-box"><div class="stat-num">24/7</div><div class="stat-lbl">Live Dispatch</div></div></div></section><section class="section section-dark"><div class="wrap"><div class="sec-head"><span class="sec-tag">Why Property Owners Trust Us</span><h2>Our Core Quality Standards</h2></div><div class="grid-3"><div class="card-item"><div class="card-num">01</div><h3>IICRC Certified Technicians</h3><p>Every restoration specialist holds master certifications in water damage extraction (WRT), mold remediation (AMRT), and fire loss cleanup.</p></div><div class="card-item"><div class="card-num">02</div><h3>FLIR Thermal Moisture Imaging</h3><p>We deploy high-resolution infrared thermal cameras to map hidden moisture pockets inside drywall and subfloors before mold spreads.</p></div><div class="card-item"><div class="card-num">03</div><h3>24/7 Nationwide Rapid Response</h3><p>Emergency crews available 24 hours a day, 7 days a week, 365 days a year with upfront transparent pricing.</p></div></div></div></section></main>`;
-  return shell(`About Us | ${BRAND}`, "Learn about Mold Inspection Pennsylvania & USA Network — 22-year established authority providing 24/7 water, fire & mold restoration.", canonical, body, schema);
-}
-
 export function contactUsPage() {
   const canonical = `https://${DOMAIN}/contact-us/`;
   const schema = {
@@ -160,8 +143,22 @@ export function contactUsPage() {
     }
   };
 
-  const body = `<main><section class="hero"><div class="wrap hero-grid"><div><div class="crumb-trail"><a href="https://${DOMAIN}/">Home</a> / Contact Us</div><span class="eyebrow-badge">24/7 Emergency Dispatch</span><h1>Contact Our <span>Restoration Experts</span></h1><p class="hero-desc">Have a water leak, toxic black mold outbreak, or fire damage emergency? Contact our 24/7 national dispatch center for immediate inspection and rapid response.</p><div class="rating-pill"><span class="stars">★★★★★</span><span>24/7 Live Operators Standing By</span></div><div style="background:#14263b;border:1px solid rgba(255,255,255,.14);border-radius:20px;padding:26px;margin-top:20px;"><p style="margin:0 0 10px;font-weight:800;color:#fff;">📞 Direct Emergency Hotline:</p><a class="btn-cta" href="${PHONE_HREF}" style="font-size:18px;">Call ${PHONE_DISPLAY}</a><p style="margin:16px 0 0;font-size:13px;color:#94a3b8;">📍 Address: 236 Long Park Dr, Rochester, NY 14612</p><p style="margin:6px 0 0;font-size:13px;color:#94a3b8;">🕒 Hours: Open 24 Hours / 7 Days a Week</p></div></div><div>${leadFormHtml("Contact Center")}</div></div></section></main>`;
+  const body = `<main><section class="hero"><div class="wrap hero-grid"><div><div class="crumb-trail"><a href="https://${DOMAIN}/">Home</a> / Contact Us</div><span class="eyebrow-badge">24/7 Emergency Response</span><h1>Contact Our <span>Restoration Experts</span></h1><p class="hero-desc">Have a water leak, toxic black mold outbreak, or fire damage emergency? Contact our 24/7 national dispatch center for immediate inspection and rapid response.</p><div class="rating-pill"><span class="stars">★★★★★</span><span>24/7 Live Dispatch Operators Standing By</span></div>${trustChecklistHtml()}<div style="margin-top:32px;"><a class="btn-cta" href="${PHONE_HREF}">Call ${PHONE_DISPLAY}</a></div></div><div>${leadFormHtml("Contact Center")}</div></div></section><section class="section section-dark"><div class="wrap"><div class="sec-head"><span class="sec-tag">Direct Lines</span><h2>Get In Touch With Our Dispatch Center</h2></div><div class="grid-3"><div class="contact-info-card"><div>📞</div><h3>24/7 Emergency Hotline</h3><p>Call our live dispatch operators anytime for immediate water extraction or mold inspection dispatch.</p><a class="btn-cta" href="${PHONE_HREF}" style="margin-top:18px;width:100%;">Call ${PHONE_DISPLAY}</a></div><div class="contact-info-card"><div>📍</div><h3>National Service Headquarters</h3><p>236 Long Park Dr<br>Rochester, NY 14612<br>United States</p></div><div class="contact-info-card"><div>🕒</div><h3>Operating Dispatch Hours</h3><p>Monday – Sunday: 24 Hours Open<br>365 Days Emergency Dispatch<br>Rapid Arrival Guarantee</p></div></div></div></section></main>`;
   return shell(`Contact Us | 24/7 Emergency Dispatch | ${BRAND}`, "Contact Mold Inspection Pennsylvania & USA Network for 24/7 water, fire & mold restoration dispatch.", canonical, body, schema);
+}
+
+export function aboutUsPage() {
+  const canonical = `https://${DOMAIN}/about-us/`;
+  const schema = {
+    "@context": "https://schema.org",
+    "@type": "AboutPage",
+    name: `About Us | ${BRAND}`,
+    url: canonical,
+    description: "Learn about Mold Inspection Pennsylvania & USA Network — 22-year established authority providing 24/7 water, fire & mold restoration across all 50 US states."
+  };
+
+  const body = `<main><section class="hero"><div class="wrap hero-grid"><div><div class="crumb-trail"><a href="https://${DOMAIN}/">Home</a> / About Us</div><span class="eyebrow-badge">22-Year Established Trust (Est. 2004)</span><h1>About Mold Inspection Pennsylvania &amp; <span>USA Network</span></h1><p class="hero-desc">Founded with a commitment to indoor environmental safety and rapid structural drying, Mold Inspection Pennsylvania has grown into America's premier 24/7 emergency restoration network operating across all 50 US states &amp; 30,900+ cities.</p><div class="rating-pill"><span class="stars">★★★★★</span><span>Trusted by 18,000+ Property Owners Nationwide</span></div>${trustChecklistHtml()}<div style="margin-top:32px;"><a class="btn-cta" href="${PHONE_HREF}">Call ${PHONE_DISPLAY}</a></div></div><div>${leadFormHtml("About Us")}</div></div></section><section class="stats-bar"><div class="wrap stats-grid"><div class="stat-box"><div class="stat-num">22+</div><div class="stat-lbl">Years Experience</div></div><div class="stat-box"><div class="stat-num">50</div><div class="stat-lbl">US States Served</div></div><div class="stat-box"><div class="stat-num">70</div><div class="stat-lbl">Restoration Topics</div></div><div class="stat-box"><div class="stat-num">24/7</div><div class="stat-lbl">Live Dispatch</div></div></div></section><section class="section section-dark"><div class="wrap"><div class="sec-head"><span class="sec-tag">Why Property Owners Trust Us</span><h2>Our Core Quality Standards</h2></div><div class="grid-3"><div class="card-item"><div class="card-num">01</div><h3>IICRC Certified Technicians</h3><p>Every restoration specialist holds master certifications in water damage extraction (WRT), mold remediation (AMRT), and fire loss cleanup.</p></div><div class="card-item"><div class="card-num">02</div><h3>FLIR Thermal Moisture Imaging</h3><p>We deploy high-resolution infrared thermal cameras to map hidden moisture pockets inside drywall and subfloors before mold spreads.</p></div><div class="card-item"><div class="card-num">03</div><h3>24/7 Nationwide Rapid Response</h3><p>Emergency crews available 24 hours a day, 7 days a week, 365 days a year with upfront transparent pricing.</p></div></div></div></section></main>`;
+  return shell(`About Us | ${BRAND}`, "Learn about Mold Inspection Pennsylvania & USA Network — 22-year established authority providing 24/7 water, fire & mold restoration.", canonical, body, schema);
 }
 
 export function nationalServicePage(service: (typeof services)[number]) {
