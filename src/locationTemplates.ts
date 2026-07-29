@@ -27,7 +27,7 @@ a{color:inherit;text-decoration:none}
 .brand{display:flex;align-items:center;gap:12px;font-family:'Plus Jakarta Sans',sans-serif;font-size:22px;font-weight:900;color:#fff;letter-spacing:-.03em}
 .logo-icon{width:46px;height:46px;border-radius:14px;display:grid;place-items:center;background:linear-gradient(135deg,#0ea5e9,#0284c7);color:#fff;font-size:20px;box-shadow:0 10px 25px rgba(14,165,233,.4)}
 .brand-sub{display:block;font-size:10px;letter-spacing:.15em;text-transform:uppercase;color:#38bdf8;font-family:'Inter',sans-serif;font-weight:700}
-.nav-links{display:flex;gap:26px;font-size:15px;font-weight:700;color:#cbd5e1}
+.nav-links{display:flex;gap:22px;font-size:15px;font-weight:700;color:#cbd5e1}
 .nav-links a:hover{color:#38bdf8}
 .btn-cta{display:inline-flex;align-items:center;justify-content:center;min-height:50px;padding:14px 26px;border-radius:12px;background:linear-gradient(135deg,#f97316,#ea580c);color:#fff;font-family:'Plus Jakarta Sans',sans-serif;font-weight:900;font-size:15px;box-shadow:0 10px 30px rgba(249,115,22,.4);transition:.25s;border:none;cursor:pointer}
 .btn-cta:hover{transform:translateY(-2px);box-shadow:0 16px 36px rgba(249,115,22,.55);background:linear-gradient(135deg,#fb923c,#f97316)}
@@ -72,26 +72,37 @@ a{color:inherit;text-decoration:none}
 .dir-card{display:flex;align-items:center;justify-space:space-between;padding:20px 22px;background:#0d1b2a;border:1px solid rgba(255,255,255,.1);border-radius:16px;color:#f1f5f9;font-weight:850;font-size:15px;transition:.2s}
 .dir-card:hover{transform:translateY(-3px);border-color:#0ea5e9;color:#38bdf8;box-shadow:0 12px 30px rgba(14,165,233,.2)}
 .dir-card:after{content:"→";color:#0ea5e9}
+.featured-area-card{background:#14263b;border:1px solid rgba(255,255,255,.12);border-radius:20px;padding:26px;transition:.2s}
+.featured-area-card:hover{transform:translateY(-4px);border-color:#0ea5e9;box-shadow:0 16px 40px rgba(14,165,233,.25)}
+.featured-area-card h4{font-family:'Plus Jakarta Sans',sans-serif;font-size:20px;font-weight:800;margin:10px 0 6px;color:#fff}
+.featured-area-card span{color:#38bdf8;font-weight:800;font-size:14px}
+.step-card{background:#0d1b2a;border:1px solid rgba(255,255,255,.1);border-radius:20px;padding:28px}
+.step-card span{display:inline-block;width:40px;height:40px;border-radius:12px;background:rgba(14,165,233,.18);color:#38bdf8;font-weight:900;text-align:center;line-height:40px;font-size:16px}
+.step-card h3{font-family:'Plus Jakarta Sans',sans-serif;font-size:20px;font-weight:800;color:#fff;margin:14px 0 8px}
+.step-card p{color:#94a3b8;font-size:14px;line-height:1.65;margin:0}
+.faq-item{background:#14263b;border:1px solid rgba(255,255,255,.1);border-radius:16px;padding:24px;margin-bottom:16px}
+.faq-item h3{font-family:'Plus Jakarta Sans',sans-serif;font-size:18px;font-weight:800;color:#fff;margin:0 0 8px}
+.faq-item p{color:#94a3b8;font-size:15px;line-height:1.7;margin:0}
 .checklist-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:14px;margin-top:24px}
 .check-row{display:flex;align-items:center;gap:12px;font-size:15px;font-weight:700;color:#e2e8f0}
 .check-row span{color:#38bdf8;font-size:18px}
 .footer-main{background:#0b1320;color:#94a3b8;padding:68px 0 28px;border-top:1px solid rgba(255,255,255,.08)}
-.footer-grid{display:grid;grid-template-columns:1.3fr 1fr 1fr;gap:44px}
+.footer-grid{display:grid;grid-template-columns:1.3fr 1fr 1fr 1fr;gap:36px}
 .footer-main h3{font-family:'Plus Jakarta Sans',sans-serif;color:#fff;margin-top:0}
 .footer-main a{display:block;color:#94a3b8;margin:12px 0;transition:.2s}
 .footer-main a:hover{color:#38bdf8}
 .footer-bottom{border-top:1px solid rgba(255,255,255,.08);margin-top:44px;padding-top:24px;font-size:13px;color:#64748b}
 .sticky-bar{position:fixed;bottom:20px;right:20px;z-index:90}
 @media(max-width:960px){.nav-links{display:none}.hero-grid{grid-template-columns:1fr}.grid-3,.dir-grid{grid-template-columns:repeat(2,1fr)}.footer-grid{grid-template-columns:1fr 1fr}}
-@media(max-width:640px){.hero{padding:60px 0}.hero h1{font-size:36px}.grid-3,.dir-grid,.checklist-grid,.footer-grid{grid-template-columns:1fr}.stats-grid{grid-template-columns:repeat(2,1fr)}.sticky-bar{left:16px;right:16px;bottom:16px}.btn-cta{width:100%}}
+@media(max-width:640px){.hero{padding:60px 0}.hero h1{font-size:38px}.grid-3,.dir-grid,.checklist-grid,.footer-grid{grid-template-columns:1fr}.stats-grid{grid-template-columns:repeat(2,1fr)}.sticky-bar{left:16px;right:16px;bottom:16px}.btn-cta{width:100%}}
 `;
 
 function header(): string {
-  return `<div class="top-bar"><div class="wrap"><span>💧 <b>Covina Water Heater &amp; Mold Restoration Quality Design System</b></span><span>⚡ <b>24/7 Emergency Dispatch:</b> ${PHONE_DISPLAY}</span></div></div><header class="navbar"><div class="wrap"><a class="brand" href="https://${DOMAIN}/"><span class="logo-icon">MI</span><span>${BRAND}<small class="brand-sub">Mold · Water · Fire · 24/7 Restoration</small></span></a><nav class="nav-links"><a href="https://${DOMAIN}/services/">Services</a><a href="https://${DOMAIN}/areas-we-serve/">Areas We Serve</a><a href="https://${DOMAIN}/link-sheet/">LinkSheet</a></nav><a class="btn-cta" href="${PHONE_HREF}">Call ${PHONE_DISPLAY}</a></div></header>`;
+  return `<div class="top-bar"><div class="wrap"><span>💧 <b>Covina Water Heater &amp; Mold Restoration Quality Design System</b></span><span>⚡ <b>24/7 Emergency Dispatch:</b> ${PHONE_DISPLAY}</span></div></div><header class="navbar"><div class="wrap"><a class="brand" href="https://${DOMAIN}/"><span class="logo-icon">MI</span><span>${BRAND}<small class="brand-sub">Mold · Water · Fire · 24/7 Restoration</small></span></a><nav class="nav-links"><a href="https://${DOMAIN}/about-us/">About Us</a><a href="https://${DOMAIN}/services/">Services</a><a href="https://${DOMAIN}/areas-we-serve/">Areas We Serve</a><a href="https://${DOMAIN}/contact-us/">Contact Us</a><a href="https://${DOMAIN}/link-sheet/">LinkSheet</a></nav><a class="btn-cta" href="${PHONE_HREF}">Call ${PHONE_DISPLAY}</a></div></header>`;
 }
 
 function footer(): string {
-  return `<footer class="footer-main"><div class="wrap"><div class="footer-grid"><div><h3>${BRAND}</h3><p>Nationwide 24/7 emergency water damage restoration, black mold remediation, air quality testing, and fire damage cleanup across all 50 US states.</p></div><div><h3>Core Services</h3><a href="https://${DOMAIN}/services/emergency-mold-remediation/">Emergency Mold Remediation</a><a href="https://${DOMAIN}/services/black-mold-removal/">Black Mold Removal</a><a href="https://${DOMAIN}/services/emergency-water-damage-restoration/">Water Damage Restoration</a><a href="https://${DOMAIN}/services/fire-damage-restoration-cleanup/">Fire Damage Restoration</a></div><div><h3>Emergency Contact</h3><p>24/7 Emergency Dispatch Line:</p><a class="btn-cta" href="${PHONE_HREF}">Call ${PHONE_DISPLAY}</a></div></div><div class="footer-bottom"><p>© ${new Date().getFullYear()} ${BRAND}. All rights reserved. Covina Water Heater Design System Architecture.</p></div></div></footer><div class="sticky-bar"><a class="btn-cta" href="${PHONE_HREF}">⚡ Call ${PHONE_DISPLAY}</a></div>`;
+  return `<footer class="footer-main"><div class="wrap"><div class="footer-grid"><div><h3>${BRAND}</h3><p>Nationwide 24/7 emergency water damage restoration, black mold remediation, air quality testing, and fire damage cleanup across all 50 US states.</p></div><div><h3>Quick Links</h3><a href="https://${DOMAIN}/about-us/">About Our Network</a><a href="https://${DOMAIN}/services/">All 70 Services</a><a href="https://${DOMAIN}/areas-we-serve/">50 States Directory</a><a href="https://${DOMAIN}/contact-us/">24/7 Contact Dispatch</a><a href="https://${DOMAIN}/link-sheet/">Xagio LinkSheet</a></div><div><h3>Core Services</h3><a href="https://${DOMAIN}/services/emergency-mold-remediation/">Emergency Mold Remediation</a><a href="https://${DOMAIN}/services/black-mold-removal/">Black Mold Removal</a><a href="https://${DOMAIN}/services/emergency-water-damage-restoration/">Water Damage Restoration</a><a href="https://${DOMAIN}/services/fire-damage-restoration-cleanup/">Fire Damage Restoration</a></div><div><h3>Emergency Contact</h3><p>24/7 Emergency Dispatch Line:</p><a class="btn-cta" href="${PHONE_HREF}">Call ${PHONE_DISPLAY}</a><p style="font-size:12px;margin-top:14px;color:#64748b;">📍 236 Long Park Dr, Rochester, NY 14612</p></div></div><div class="footer-bottom"><p>© ${new Date().getFullYear()} ${BRAND}. All rights reserved. Service Area Business Network Architecture.</p></div></div></footer><div class="sticky-bar"><a class="btn-cta" href="${PHONE_HREF}">⚡ Call ${PHONE_DISPLAY}</a></div>`;
 }
 
 function shell(title: string, description: string, canonical: string, body: string, schema?: object): string {
@@ -115,6 +126,120 @@ function serviceCards(host: string): string {
       return `<a class="card-item" href="${url}"><div class="card-num">${num}</div><h3>${esc(s.name)}</h3><p>${esc(s.description)}</p><span class="card-link">Review service details →</span></a>`;
     })
     .join("");
+}
+
+export function aboutUsPage() {
+  const canonical = `https://${DOMAIN}/about-us/`;
+  const schema = {
+    "@context": "https://schema.org",
+    "@type": "AboutPage",
+    name: `About Us | ${BRAND}`,
+    url: canonical,
+    description: "Learn about Mold Inspection Pennsylvania & USA Network — 22-year established authority providing 24/7 water, fire & mold restoration across all 50 US states."
+  };
+
+  const body = `<main><section class="hero"><div class="wrap hero-grid"><div><div class="crumb-trail"><a href="https://${DOMAIN}/">Home</a> / About Us</div><span class="eyebrow-badge">22-Year Established Trust (Est. 2004)</span><h1>About Mold Inspection Pennsylvania &amp; <span>USA Network</span></h1><p class="hero-desc">Founded with a commitment to indoor environmental safety and rapid structural drying, Mold Inspection Pennsylvania has grown into America's premier 24/7 emergency restoration network operating across all 50 US states &amp; 30,900+ cities.</p><div class="rating-pill"><span class="stars">★★★★★</span><span>Trusted by 18,000+ Property Owners Nationwide</span></div>${trustChecklistHtml()}<div style="margin-top:32px;"><a class="btn-cta" href="${PHONE_HREF}">Call ${PHONE_DISPLAY}</a></div></div><div>${leadFormHtml("About Us")}</div></div></section><section class="stats-bar"><div class="wrap stats-grid"><div class="stat-box"><div class="stat-num">22+</div><div class="stat-lbl">Years Experience</div></div><div class="stat-box"><div class="stat-num">50</div><div class="stat-lbl">US States Served</div></div><div class="stat-box"><div class="stat-num">70</div><div class="stat-lbl">Restoration Topics</div></div><div class="stat-box"><div class="stat-num">24/7</div><div class="stat-lbl">Live Dispatch</div></div></div></section><section class="section section-dark"><div class="wrap"><div class="sec-head"><span class="sec-tag">Why Property Owners Trust Us</span><h2>Our Core Quality Standards</h2></div><div class="grid-3"><div class="card-item"><div class="card-num">01</div><h3>IICRC Certified Technicians</h3><p>Every restoration specialist holds master certifications in water damage extraction (WRT), mold remediation (AMRT), and fire loss cleanup.</p></div><div class="card-item"><div class="card-num">02</div><h3>FLIR Thermal Moisture Imaging</h3><p>We deploy high-resolution infrared thermal cameras to map hidden moisture pockets inside drywall and subfloors before mold spreads.</p></div><div class="card-item"><div class="card-num">03</div><h3>24/7 Nationwide Rapid Response</h3><p>Emergency crews available 24 hours a day, 7 days a week, 365 days a year with upfront transparent pricing.</p></div></div></div></section></main>`;
+  return shell(`About Us | ${BRAND}`, "Learn about Mold Inspection Pennsylvania & USA Network — 22-year established authority providing 24/7 water, fire & mold restoration.", canonical, body, schema);
+}
+
+export function contactUsPage() {
+  const canonical = `https://${DOMAIN}/contact-us/`;
+  const schema = {
+    "@context": "https://schema.org",
+    "@type": "ContactPage",
+    name: `Contact Us | ${BRAND}`,
+    url: canonical,
+    telephone: SITE.phone,
+    address: {
+      "@type": "PostalAddress",
+      streetAddress: "236 Long Park Dr",
+      addressLocality: "Rochester",
+      addressRegion: "NY",
+      postalCode: "14612",
+      addressCountry: "US"
+    }
+  };
+
+  const body = `<main><section class="hero"><div class="wrap hero-grid"><div><div class="crumb-trail"><a href="https://${DOMAIN}/">Home</a> / Contact Us</div><span class="eyebrow-badge">24/7 Emergency Dispatch</span><h1>Contact Our <span>Restoration Experts</span></h1><p class="hero-desc">Have a water leak, toxic black mold outbreak, or fire damage emergency? Contact our 24/7 national dispatch center for immediate inspection and rapid response.</p><div class="rating-pill"><span class="stars">★★★★★</span><span>24/7 Live Operators Standing By</span></div><div style="background:#14263b;border:1px solid rgba(255,255,255,.14);border-radius:20px;padding:26px;margin-top:20px;"><p style="margin:0 0 10px;font-weight:800;color:#fff;">📞 Direct Emergency Hotline:</p><a class="btn-cta" href="${PHONE_HREF}" style="font-size:18px;">Call ${PHONE_DISPLAY}</a><p style="margin:16px 0 0;font-size:13px;color:#94a3b8;">📍 Address: 236 Long Park Dr, Rochester, NY 14612</p><p style="margin:6px 0 0;font-size:13px;color:#94a3b8;">🕒 Hours: Open 24 Hours / 7 Days a Week</p></div></div><div>${leadFormHtml("Contact Center")}</div></div></section></main>`;
+  return shell(`Contact Us | 24/7 Emergency Dispatch | ${BRAND}`, "Contact Mold Inspection Pennsylvania & USA Network for 24/7 water, fire & mold restoration dispatch.", canonical, body, schema);
+}
+
+export function nationalServicePage(service: (typeof services)[number]) {
+  const canonical = `https://${DOMAIN}/services/${service.slug}/`;
+  const schema = {
+    "@context": "https://schema.org",
+    "@type": "Service",
+    name: service.name,
+    description: service.description,
+    provider: {
+      "@type": "LocalBusiness",
+      name: BRAND,
+      telephone: SITE.phone,
+      url: `https://${DOMAIN}/`
+    }
+  };
+
+  const body = `<main><section class="hero"><div class="wrap hero-grid"><div><div class="crumb-trail"><a href="https://${DOMAIN}/">Home</a> / <a href="https://${DOMAIN}/services/">Services</a> / ${esc(service.name)}</div><span class="eyebrow-badge">${esc(service.category)} Restoration</span><h1>24/7 <span>${esc(service.name)}</span></h1><p class="hero-desc">${esc(service.description)} Certified inspectors, thermal moisture detection, and HEPA air scrubbing deployed 24/7 across all 50 US states.</p><div class="rating-pill"><span class="stars">★★★★★</span><span>4.9/5 ⭐ Rating · Master Certified Restoration Crew</span></div>${trustChecklistHtml()}<div style="margin-top:32px;"><a class="btn-cta" href="${PHONE_HREF}">Call ${PHONE_DISPLAY}</a></div></div><div>${leadFormHtml(service.name)}</div></div></section><section class="section section-dark"><div class="wrap"><div class="sec-head"><span class="sec-tag">How It Works</span><h2>Our 4-Step ${esc(service.name)} Process</h2></div><div class="grid-3" style="grid-template-columns:repeat(4,1fr);"><div class="step-card"><span>01</span><h3>Thermal Inspection</h3><p>Infrared camera leak scanning mapping hidden moisture migration in walls.</p></div><div class="step-card"><span>02</span><h3>Containment &amp; Scrubbing</h3><p>Negative air pressure containment chambers and HEPA air filtration.</p></div><div class="step-card"><span>03</span><h3>Decontamination</h3><p>Antimicrobial sanitization and structural dehumidification drying.</p></div><div class="step-card"><span>04</span><h3>Clearance &amp; Warranty</h3><p>Final lab air testing verification guaranteeing zero remaining mold spores.</p></div></div></div></section><section class="section"><div class="wrap"><div class="sec-head"><span class="sec-tag">Frequently Asked Questions</span><h2>Common Questions About ${esc(service.name)}</h2></div><div style="max-width:860px;"><div class="faq-item"><h3>How fast can your team be dispatched for ${esc(service.name)}?</h3><p>Our emergency restoration technicians are available 24/7/365 with rapid response dispatch options in all 50 US states.</p></div><div class="faq-item"><h3>Is thermal moisture inspection included?</h3><p>Yes, all emergency inspections utilize FLIR thermal imaging cameras to discover hidden moisture pockets inside drywall and subfloors.</p></div><div class="faq-item"><h3>Will insurance cover ${esc(service.name)}?</h3><p>We work directly with all major insurance carriers and provide line-item Xactimate estimate scoping to simplify your claim process.</p></div></div></div></section></main>`;
+  return shell(`${service.name} | 24/7 Emergency Service | ${BRAND}`, `${service.description} Fast 24/7 dispatch nationwide across all 50 US states.`, canonical, body, schema);
+}
+
+export function localServicePage(state: StateItem, city: [string, string], service: (typeof services)[number], host: string) {
+  const [, cityName] = city;
+  const canonical = `https://${host}/${service.slug}/`;
+  const schema = {
+    "@context": "https://schema.org",
+    "@type": "Service",
+    name: `${service.name} in ${cityName}, ${state.name}`,
+    description: service.description,
+    provider: {
+      "@type": "LocalBusiness",
+      name: `${BRAND} - ${cityName}`,
+      telephone: SITE.phone,
+      url: canonical
+    }
+  };
+
+  const body = `<main><section class="hero"><div class="wrap hero-grid"><div><div class="crumb-trail"><a href="https://${state.slug}.${DOMAIN}/">${esc(state.name)}</a> / <a href="https://${host}/">${esc(cityName)}</a> / ${esc(service.name)}</div><span class="eyebrow-badge">${esc(service.category)} Restoration</span><h1>${esc(service.name)} in <span>${esc(cityName)}, ${esc(state.name)}</span></h1><p class="hero-desc">${esc(service.description)} Local 24/7 emergency dispatch crews stationed directly in ${esc(cityName)}.</p><div class="rating-pill"><span class="stars">★★★★★</span><span>4.9/5 ⭐ Rating for ${esc(service.name)} in ${esc(cityName)}</span></div>${trustChecklistHtml()}<div style="margin-top:32px;"><a class="btn-cta" href="${PHONE_HREF}">Call ${PHONE_DISPLAY}</a></div></div><div>${leadFormHtml(`${service.name} ${cityName}`)}</div></div></section><section class="section section-dark"><div class="wrap"><div class="sec-head"><span class="sec-tag">Restoration Protocol</span><h2>4-Step Process for ${esc(service.name)} in ${esc(cityName)}</h2></div><div class="grid-3" style="grid-template-columns:repeat(4,1fr);"><div class="step-card"><span>01</span><h3>Local Inspection</h3><p>Fast arrival in ${esc(cityName)} with thermal moisture scanners.</p></div><div class="step-card"><span>02</span><h3>Isolation</h3><p>HEPA air containment preventing spore migration throughout the property.</p></div><div class="step-card"><span>03</span><h3>Sanitization</h3><p>Hospital-grade botanical disinfectant application and dehumidification.</p></div><div class="step-card"><span>04</span><h3>Clearance</h3><p>Post-remediation air clearance verifying total spore removal.</p></div></div></div></section></main>`;
+  return shell(`${service.name} in ${cityName}, ${state.name} | ${BRAND}`, `${service.description} Review local restoration info for ${cityName}, ${state.name}.`, canonical, body, schema);
+}
+
+export function servicesHubPage() {
+  const canonical = `https://${DOMAIN}/services/`;
+  const schema = {
+    "@context": "https://schema.org",
+    "@type": "BreadcrumbList",
+    itemListElement: [
+      { "@type": "ListItem", position: 1, name: "Home", item: `https://${DOMAIN}/` },
+      { "@type": "ListItem", position: 2, name: "Services", item: canonical }
+    ]
+  };
+
+  const body = `<main><section class="hero"><div class="wrap hero-grid"><div><div class="crumb-trail"><a href="https://${DOMAIN}/">Home</a> / All Services</div><span class="eyebrow-badge">70 Specialized Topics</span><h1>24/7 Water, Fire &amp; Mold <span>Restoration Services</span></h1><p class="hero-desc">Explore our complete catalog of 70 specialized emergency restoration, toxic black mold containment, thermal leak detection, and structural fire loss solutions.</p><div class="rating-pill"><span class="stars">★★★★★</span><span>4.9/5 Rating Across All 70 Services</span></div>${trustChecklistHtml()}<div style="margin-top:32px;"><a class="btn-cta" href="${PHONE_HREF}">Call ${PHONE_DISPLAY}</a></div></div><div>${leadFormHtml("Services Directory")}</div></div></section><section class="section section-dark" id="all-services"><div class="wrap"><div class="sec-head"><span class="sec-tag">Complete Service Catalog</span><h2>All 70 Water, Fire &amp; Mold Restoration Topics</h2><p class="sec-desc">Click any service to view full technical protocols, equipment specifications, and local dispatch options.</p></div><div class="grid-3">${serviceCards(DOMAIN)}</div></div></section></main>`;
+  return shell(`Restoration Services Directory | All 70 Topics | ${BRAND}`, "Browse all 70 water damage extraction, toxic black mold remediation, and fire restoration services offered nationwide.", canonical, body, schema);
+}
+
+export function areasWeServePage(states: StateItem[]) {
+  const canonical = `https://${DOMAIN}/areas-we-serve/`;
+  const schema = {
+    "@context": "https://schema.org",
+    "@type": "BreadcrumbList",
+    itemListElement: [
+      { "@type": "ListItem", position: 1, name: "Home", item: `https://${DOMAIN}/` },
+      { "@type": "ListItem", position: 2, name: "Service Areas", item: canonical }
+    ]
+  };
+
+  const featuredStates = states.slice(0, 6);
+  const featuredCardsHtml = featuredStates
+    .map((s) => `<a class="featured-area-card" href="https://${s.slug}.${DOMAIN}/"><div style="color:#38bdf8;font-size:24px;">📍</div><h4>${esc(s.name)}</h4><p style="font-size:13px;color:#94a3b8;margin:4px 0 12px;">${(s.cities || []).length} Major Cities Covered</p><span>Explore state directory →</span></a>`)
+    .join("");
+
+  const allDirectoryHtml = states
+    .map((s) => `<a class="dir-card" href="https://${s.slug}.${DOMAIN}/"><span>${esc(s.name)}</span></a>`)
+    .join("");
+
+  const body = `<main><section class="hero"><div class="wrap hero-grid"><div><div class="crumb-trail"><a href="https://${DOMAIN}/">Home</a> / Service Areas</div><span class="eyebrow-badge">50 States &amp; 30,900+ Cities</span><h1>Water, Fire &amp; Mold Restoration Across <span>USA &amp; Pennsylvania</span></h1><p class="hero-desc">From major metropolitan centers to local suburban communities, our certified 24/7 emergency restoration crews cover every state and city in America.</p><div class="rating-pill"><span class="stars">★★★★★</span><span>4.9/5 Rating across 50 States</span></div>${trustChecklistHtml()}<div style="margin-top:32px;"><a class="btn-cta" href="${PHONE_HREF}">Call ${PHONE_DISPLAY}</a></div></div><div>${leadFormHtml("Service Areas")}</div></div></section><section class="section section-dark"><div class="wrap"><div class="sec-head"><span class="sec-tag">Top Covered Markets</span><h2>Featured Service Areas</h2><p class="sec-desc">Explore state-level subdomains with localized city directories and emergency response crews.</p></div><div class="grid-3">${featuredCardsHtml}</div></div></section><section class="section"><div class="wrap"><div class="sec-head"><span class="sec-tag">All 50 States</span><h2>Full USA State Directory</h2></div><div class="dir-grid">${allDirectoryHtml}</div></div></section></main>`;
+  return shell(`Service Areas | 50-State Restoration Directory | ${BRAND}`, "Explore 24/7 water damage, black mold remediation, and fire restoration service areas across all 50 US states.", canonical, body, schema);
 }
 
 export function homePage(states: StateItem[]) {
@@ -181,36 +306,10 @@ export function cityPage(state: StateItem, city: [string, string], host: string)
   return shell(`Water &amp; Mold Restoration in ${cityName}, ${state.name} | ${BRAND}`, `Browse 70 mold removal, water damage extraction, and fire restoration topics for ${cityName}, ${state.name}.`, canonical, body, schema);
 }
 
-export function localServicePage(state: StateItem, city: [string, string], service: (typeof services)[number], host: string) {
-  const [, cityName] = city;
-  const canonical = `https://${host}/${service.slug}/`;
-  const body = `<main><section class="hero"><div class="wrap hero-grid"><div><div class="crumb-trail"><a href="https://${state.slug}.${DOMAIN}/">${esc(state.name)}</a> / <a href="https://${host}/">${esc(cityName)}</a> / ${esc(service.name)}</div><span class="eyebrow-badge">${esc(service.category)} Restoration</span><h1>${esc(service.name)} in <span>${esc(cityName)}, ${esc(state.name)}</span></h1><p class="hero-desc">${esc(service.description)}</p><div class="rating-pill"><span class="stars">★★★★★</span><span>4.9/5 ⭐ Rating for ${esc(service.name)} in ${esc(cityName)}</span></div>${trustChecklistHtml()}<div style="margin-top:32px;"><a class="btn-cta" href="${PHONE_HREF}">Call ${PHONE_DISPLAY}</a></div></div><div>${leadFormHtml(`${service.name} ${cityName}`)}</div></div></section></main>`;
-  return shell(`${service.name} in ${cityName}, ${state.name}`, `${service.description} Review local restoration info for ${cityName}, ${state.name}.`, canonical, body);
-}
-
 export function linkSheetPage() {
   const canonical = `https://${DOMAIN}/link-sheet/`;
   const body = `<main><section class="hero" style="padding:60px 0;"><div class="wrap" style="text-align:center;max-width:800px;"><span class="eyebrow-badge">Xagio Network Hub</span><h1 style="font-size:36px;margin:16px 0;">pSEO Network Authority &amp; LinkSheet</h1><p style="color:#94a3b8;font-size:16px;">Central interlinking directory for nationwide home services, mold remediation, tree care, garage door repairs, and plumbing.</p></div></section><section class="section section-dark"><div class="wrap"><div class="grid-3"><div class="card-item"><span style="font-size:28px;">🍄</span><h3>Mold Inspection Pennsylvania</h3><p>24/7 Water, Fire &amp; Mold Restoration Network</p><a class="card-link" href="https://moldinspectionpennsylvania.com/services/emergency-mold-remediation/">Emergency Mold Remediation →</a></div><div class="card-item"><span style="font-size:28px;">🌲</span><h3>Can Tree Service</h3><p>24/7 Emergency Tree Removal</p><a class="card-link" href="https://cantreeservice.com/services/tree-removal/">Tree Removal Services →</a></div></div></div></section></main>`;
   return shell("Xagio pSEO LinkSheet Authority Hub", "Official interlinking LinkSheet directory.", canonical, body);
-}
-
-export function servicesHubPage() {
-  const canonical = `https://${DOMAIN}/services/`;
-  const body = `<main><section class="hero"><div class="wrap"><span class="eyebrow-badge">Services Directory</span><h1>All 70 Water, Fire &amp; Mold Services</h1><p class="hero-desc">Browse our complete service catalog across all 50 states.</p></div></section><section class="section section-dark"><div class="wrap"><div class="grid-3">${serviceCards(DOMAIN)}</div></div></section></main>`;
-  return shell(`Restoration Services Directory | ${BRAND}`, "Browse 70 water, fire & mold restoration services.", canonical, body);
-}
-
-export function nationalServicePage(service: (typeof services)[number]) {
-  const canonical = `https://${DOMAIN}/services/${service.slug}/`;
-  const body = `<main><section class="hero"><div class="wrap hero-grid"><div><span class="eyebrow-badge">Nationwide Service</span><h1>${esc(service.name)}</h1><p class="hero-desc">${esc(service.description)}</p><a class="btn-cta" href="${PHONE_HREF}">Call ${PHONE_DISPLAY}</a></div><div>${leadFormHtml(service.name)}</div></div></section></main>`;
-  return shell(`${service.name} | ${BRAND}`, service.description, canonical, body);
-}
-
-export function areasWeServePage(states: StateItem[]) {
-  const canonical = `https://${DOMAIN}/areas-we-serve/`;
-  const directoryHtml = states.map((s) => `<a class="dir-card" href="https://${s.slug}.${DOMAIN}/"><span>${esc(s.name)}</span></a>`).join("");
-  const body = `<main><section class="hero"><div class="wrap"><span class="eyebrow-badge">Coverage Map</span><h1>Areas We Serve Across America</h1></div></section><section class="section section-dark"><div class="wrap"><div class="dir-grid">${directoryHtml}</div></div></section></main>`;
-  return shell(`Areas We Serve | ${BRAND}`, "Explore our 50-state coverage map.", canonical, body);
 }
 
 export function articlesHubPage() {

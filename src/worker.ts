@@ -2,10 +2,12 @@ import database from "../data/usa_database.json";
 import services from "../data/services.json";
 import articles from "../data/articles.json";
 import {
+  aboutUsPage,
   areasWeServePage,
   articlePage,
   articlesHubPage,
   cityPage,
+  contactUsPage,
   homePage,
   linkSheetPage,
   localServicePage,
@@ -142,8 +144,20 @@ export default {
         return cached(request, ctx, () => sitemap);
       }
 
+      if (path === "/about-us" || path === "/about-us/") {
+        return cached(request, ctx, () => htmlResponse(aboutUsPage(), method));
+      }
+
+      if (path === "/contact-us" || path === "/contact-us/") {
+        return cached(request, ctx, () => htmlResponse(contactUsPage(), method));
+      }
+
       if (path === "/services" || path === "/services/") {
         return cached(request, ctx, () => htmlResponse(servicesHubPage(), method));
+      }
+
+      if (path === "/areas" || path === "/areas/" || path === "/areas-we-serve" || path === "/areas-we-serve/") {
+        return cached(request, ctx, () => htmlResponse(areasWeServePage(STATES), method));
       }
 
       if (path === "/link-sheet" || path === "/link-sheet/") {
