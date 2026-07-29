@@ -17,22 +17,43 @@ const CSS = `
 *{box-sizing:border-box}html{scroll-behavior:smooth}
 body{margin:0;background:#0d1b2a;color:#f8fafc;font-family:'Inter',system-ui,sans-serif;-webkit-font-smoothing:antialiased}
 a{color:inherit;text-decoration:none}
-.wrap{width:min(1240px,calc(100% - 36px));margin:auto}
-.top-bar{background:#0b1320;color:#94a3b8;font-size:13px;border-bottom:1px solid rgba(255,255,255,.08)}
-.top-bar .wrap{display:flex;align-items:center;justify-content:space-between;padding:10px 0}
-.top-bar span{display:inline-flex;align-items:center;gap:8px}
-.top-bar b{color:#38bdf8}
-.navbar{position:sticky;top:0;z-index:50;background:rgba(13,27,42,.95);backdrop-filter:blur(16px);border-bottom:1px solid rgba(255,255,255,.1);box-shadow:0 12px 40px rgba(0,0,0,.5)}
-.navbar .wrap{display:flex;align-items:center;justify-content:space-between;padding:16px 0}
-.brand{display:flex;align-items:center;gap:12px;font-family:'Plus Jakarta Sans',sans-serif;font-size:22px;font-weight:900;color:#fff;letter-spacing:-.03em}
-.logo-icon{width:46px;height:46px;border-radius:14px;display:grid;place-items:center;background:linear-gradient(135deg,#0ea5e9,#0284c7);color:#fff;font-size:20px;box-shadow:0 10px 25px rgba(14,165,233,.4)}
-.brand-sub{display:block;font-size:10px;letter-spacing:.15em;text-transform:uppercase;color:#38bdf8;font-family:'Inter',sans-serif;font-weight:700}
-.nav-links{display:flex;gap:22px;font-size:15px;font-weight:700;color:#cbd5e1}
-.nav-links a:hover{color:#38bdf8}
-.btn-cta{display:inline-flex;align-items:center;justify-content:center;min-height:50px;padding:14px 26px;border-radius:12px;background:linear-gradient(135deg,#f97316,#ea580c);color:#fff;font-family:'Plus Jakarta Sans',sans-serif;font-weight:900;font-size:15px;box-shadow:0 10px 30px rgba(249,115,22,.4);transition:.25s;border:none;cursor:pointer}
-.btn-cta:hover{transform:translateY(-2px);box-shadow:0 16px 36px rgba(249,115,22,.55);background:linear-gradient(135deg,#fb923c,#f97316)}
+.wrap{width:min(1280px,calc(100% - 36px));margin:auto}
+
+/* COVINA WATER HEATER HEADER STYLES */
+.top-bar{background:#0d1b2a;color:#cbd5e1;font-size:13px;border-bottom:1px solid rgba(255,255,255,.08)}
+.top-bar .wrap{display:flex;align-items:center;justify-content:space-between;padding:8px 0}
+.top-left,.top-right{display:flex;align-items:center;gap:14px}
+.pulse-dot{width:8px;height:8px;border-radius:50%;background:#f97316;display:inline-block;box-shadow:0 0 10px #f97316}
+.sep{color:#475569}
+.stars{color:#fbbf24;letter-spacing:2px;font-size:14px}
+
+.navbar{position:sticky;top:0;z-index:50;background:rgba(255,255,255,.98);backdrop-filter:blur(16px);border-bottom:1px solid #e2e8f0;box-shadow:0 8px 30px rgba(0,0,0,.08);color:#0f172a}
+.navbar .wrap{display:flex;align-items:center;justify-content:space-between;padding:14px 0}
+.brand{display:flex;align-items:center;gap:12px;font-family:'Plus Jakarta Sans',sans-serif;font-size:20px;font-weight:900;color:#0d1b2a;letter-spacing:-.03em}
+.logo-icon{width:44px;height:44px;border-radius:14px;display:grid;place-items:center;background:linear-gradient(135deg,#0ea5e9,#06b6d4);color:#fff;font-size:22px;box-shadow:0 8px 20px rgba(14,165,233,.3)}
+.brand-sub{display:block;font-size:11px;letter-spacing:.02em;color:#64748b;font-family:'Inter',sans-serif;font-weight:500;margin-top:-2px}
+
+.nav-links{display:flex;align-items:center;gap:20px;font-size:15px;font-weight:600;color:#334155}
+.nav-links a{padding:8px 12px;border-radius:10px;transition:.2s}
+.nav-links a:hover{color:#0ea5e9;background:#f8fafc}
+.nav-pill{background:#e0f2fe;color:#0284c7!important;font-weight:700}
+.nav-pill:hover{background:#bae6fd!important}
+
+.dropdown{position:relative;display:inline-block}
+.dropdown:hover .dropdown-menu{display:block}
+.dropdown-menu{display:none;position:absolute;top:100%;left:0;width:280px;background:#fff;border-radius:16px;box-shadow:0 20px 48px rgba(0,0,0,.15);border:1px solid #e2e8f0;padding:10px;z-index:100}
+.dropdown-menu a{display:block;padding:10px 14px;font-size:14px;color:#334155;border-radius:10px;font-weight:600}
+.dropdown-menu a:hover{background:#f1f5f9;color:#0ea5e9}
+.dropdown-menu a.highlight{color:#0ea5e9;font-weight:800;border-top:1px solid #f1f5f9;margin-top:6px;padding-top:12px}
+
+.btn-cta{display:inline-flex;align-items:center;justify-content:center;min-height:48px;padding:12px 24px;border-radius:14px;background:linear-gradient(135deg,#f97316,#ea580c);color:#fff;font-family:'Plus Jakarta Sans',sans-serif;font-weight:800;font-size:16px;box-shadow:0 8px 24px rgba(249,115,22,.35);transition:.25s;border:none;cursor:pointer}
+.btn-cta:hover{transform:translateY(-2px);box-shadow:0 14px 32px rgba(249,115,22,.5);background:linear-gradient(135deg,#fb923c,#f97316)}
+.btn-dark-navy{background:#0d1b2a;color:#fff;font-family:'Plus Jakarta Sans',sans-serif;font-weight:800;padding:14px 28px;border-radius:14px;display:inline-flex;align-items:center;gap:8px;font-size:16px;transition:.2s;box-shadow:0 8px 20px rgba(0,0,0,.2)}
+.btn-dark-navy:hover{transform:translateY(-2px);background:#14263b}
+
 .btn-secondary{background:rgba(255,255,255,.1);border:1px solid rgba(255,255,255,.2);color:#fff;box-shadow:none}
 .btn-secondary:hover{background:rgba(255,255,255,.18)}
+
 .hero{position:relative;padding:84px 0 90px;background:radial-gradient(circle at 50% 0%,rgba(14,165,233,.15) 0%,transparent 60%),linear-gradient(180deg,#0d1b2a 0%,#14263b 100%);overflow:hidden}
 .hero-grid{display:grid;grid-template-columns:1.08fr .92fr;gap:54px;align-items:center}
 .crumb-trail{font-size:14px;color:#38bdf8;font-weight:700;margin-bottom:14px}
@@ -42,25 +63,28 @@ a{color:inherit;text-decoration:none}
 .hero h1 span{background:linear-gradient(135deg,#38bdf8,#0ea5e9);-webkit-background-clip:text;-webkit-text-fill-color:transparent}
 .hero-desc{font-size:18px;line-height:1.75;color:#94a3b8;max-width:680px;margin-bottom:28px}
 .rating-pill{display:inline-flex;align-items:center;gap:12px;padding:10px 18px;border-radius:999px;background:rgba(255,255,255,.06);border:1px solid rgba(255,255,255,.12);font-size:14px;font-weight:700;color:#f1f5f9;margin-bottom:24px}
-.stars{color:#fbbf24;letter-spacing:3px}
+
 .card-form{background:#14263b;border:1px solid rgba(255,255,255,.14);border-radius:24px;padding:32px;box-shadow:0 24px 64px rgba(0,0,0,.6)}
 .card-form h2{font-family:'Plus Jakarta Sans',sans-serif;font-size:24px;font-weight:900;margin:0 0 6px;color:#fff}
 .card-form p{font-size:14px;color:#94a3b8;margin:0 0 22px}
 .field-group{margin-bottom:16px}
 .field-group input,.field-group select,.field-group textarea{width:100%;padding:14px 18px;border-radius:12px;border:1px solid rgba(255,255,255,.14);background:#0d1b2a;color:#fff;font-size:15px;outline:none;transition:.2s}
 .field-group input:focus,.field-group select:focus,.field-group textarea:focus{border-color:#0ea5e9;box-shadow:0 0 0 3px rgba(14,165,233,.25)}
+
 .stats-bar{background:#0b1320;border-top:1px solid rgba(255,255,255,.08);border-bottom:1px solid rgba(255,255,255,.08)}
 .stats-grid{display:grid;grid-template-columns:repeat(4,1fr)}
 .stat-box{text-align:center;padding:32px 20px;border-left:1px solid rgba(255,255,255,.08)}
 .stat-box:first-child{border-left:0}
 .stat-num{font-family:'Plus Jakarta Sans',sans-serif;font-size:36px;font-weight:900;color:#fff}
 .stat-lbl{font-size:12px;font-weight:800;text-transform:uppercase;letter-spacing:.12em;color:#38bdf8;margin-top:6px}
+
 .section{padding:86px 0}
 .section-dark{background:#14263b}
 .sec-head{margin-bottom:44px}
 .sec-tag{color:#38bdf8;font-size:12px;font-weight:800;letter-spacing:.14em;text-transform:uppercase}
 .sec-head h2{font-family:'Plus Jakarta Sans',sans-serif;font-size:clamp(34px,4.5vw,52px);font-weight:900;line-height:1.1;margin:10px 0 0;color:#fff;letter-spacing:-.035em}
 .sec-desc{color:#94a3b8;font-size:16px;line-height:1.7;max-width:720px;margin-top:12px}
+
 .grid-3{display:grid;grid-template-columns:repeat(3,1fr);gap:24px}
 .card-item{background:#14263b;border:1px solid rgba(255,255,255,.1);border-radius:20px;padding:30px;transition:.25s;box-shadow:0 12px 36px rgba(0,0,0,.3)}
 .card-item:hover{transform:translateY(-5px);border-color:#0ea5e9;box-shadow:0 20px 48px rgba(14,165,233,.2)}
@@ -68,38 +92,147 @@ a{color:inherit;text-decoration:none}
 .card-item h3{font-family:'Plus Jakarta Sans',sans-serif;font-size:22px;font-weight:800;margin:18px 0 10px;color:#fff}
 .card-item p{color:#94a3b8;font-size:15px;line-height:1.68;margin:0}
 .card-link{display:inline-flex;align-items:center;gap:6px;margin-top:20px;color:#38bdf8;font-weight:800;font-size:15px}
+
 .dir-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:16px}
 .dir-card{display:flex;align-items:center;justify-space:space-between;padding:20px 22px;background:#0d1b2a;border:1px solid rgba(255,255,255,.1);border-radius:16px;color:#f1f5f9;font-weight:850;font-size:15px;transition:.2s}
 .dir-card:hover{transform:translateY(-3px);border-color:#0ea5e9;color:#38bdf8;box-shadow:0 12px 30px rgba(14,165,233,.2)}
 .dir-card:after{content:"→";color:#0ea5e9}
-.featured-area-card{background:#14263b;border:1px solid rgba(255,255,255,.12);border-radius:20px;padding:26px;transition:.2s}
-.featured-area-card:hover{transform:translateY(-4px);border-color:#0ea5e9;box-shadow:0 16px 40px rgba(14,165,233,.25)}
-.featured-area-card h4{font-family:'Plus Jakarta Sans',sans-serif;font-size:20px;font-weight:800;margin:10px 0 6px;color:#fff}
-.featured-area-card span{color:#38bdf8;font-weight:800;font-size:14px}
-.contact-info-card{background:#14263b;border:1px solid rgba(255,255,255,.12);border-radius:20px;padding:28px}
-.contact-info-card div{width:46px;height:46px;border-radius:14px;background:rgba(14,165,233,.15);color:#38bdf8;display:grid;place-items:center;font-size:20px}
-.contact-info-card h3{font-family:'Plus Jakarta Sans',sans-serif;font-size:20px;font-weight:800;color:#fff;margin:16px 0 8px}
-.contact-info-card p{color:#94a3b8;font-size:14px;line-height:1.65;margin:0}
-.checklist-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:14px;margin-top:24px}
-.check-row{display:flex;align-items:center;gap:12px;font-size:15px;font-weight:700;color:#e2e8f0}
-.check-row span{color:#38bdf8;font-size:18px}
-.footer-main{background:#0b1320;color:#94a3b8;padding:68px 0 28px;border-top:1px solid rgba(255,255,255,.08)}
-.footer-grid{display:grid;grid-template-columns:1.3fr 1fr 1fr 1fr;gap:36px}
-.footer-main h3{font-family:'Plus Jakarta Sans',sans-serif;color:#fff;margin-top:0}
-.footer-main a{display:block;color:#94a3b8;margin:12px 0;transition:.2s}
+
+/* COVINA WATER HEATER FOOTER STYLES */
+.footer-cta-banner{background:linear-gradient(135deg,#0ea5e9,#0284c7);color:#fff;padding:48px 0}
+.footer-cta-flex{display:flex;align-items:center;justify-content:space-between;gap:24px}
+.footer-cta-flex h2{font-family:'Plus Jakarta Sans',sans-serif;font-size:32px;font-weight:900;margin:0 0 6px;color:#fff}
+.footer-cta-flex p{font-size:16px;margin:0;opacity:.95}
+
+.footer-main{background:#0d1b2a;color:#94a3b8;padding:72px 0 32px;border-top:1px solid rgba(255,255,255,.08)}
+.footer-grid{display:grid;grid-template-columns:1.3fr 1fr 1fr 1.2fr;gap:40px}
+.footer-main h3{font-family:'Plus Jakarta Sans',sans-serif;color:#fff;margin-top:0;font-size:18px;font-weight:800}
+.footer-main a{display:block;color:#94a3b8;margin:12px 0;transition:.2s;font-size:14px;font-weight:500}
 .footer-main a:hover{color:#38bdf8}
-.footer-bottom{border-top:1px solid rgba(255,255,255,.08);margin-top:44px;padding-top:24px;font-size:13px;color:#64748b}
+
+.footer-bottom{background:#08101a;border-top:1px solid rgba(255,255,255,.08);padding:24px 0;font-size:13px;color:#64748b}
+.footer-bottom .wrap{display:flex;align-items:center;justify-space:space-between}
+.footer-bottom-links{display:flex;gap:20px}
+.footer-bottom-links a{color:#94a3b8;transition:.2s}.footer-bottom-links a:hover{color:#fff}
+
 .sticky-bar{position:fixed;bottom:20px;right:20px;z-index:90}
-@media(max-width:960px){.nav-links{display:none}.hero-grid{grid-template-columns:1fr}.grid-3,.dir-grid{grid-template-columns:repeat(2,1fr)}.footer-grid{grid-template-columns:1fr 1fr}}
+@media(max-width:960px){.nav-links{display:none}.hero-grid{grid-template-columns:1fr}.grid-3,.dir-grid{grid-template-columns:repeat(2,1fr)}.footer-grid,.footer-cta-flex{grid-template-columns:1fr;flex-direction:column;align-items:start}}
 @media(max-width:640px){.hero{padding:60px 0}.hero h1{font-size:38px}.grid-3,.dir-grid,.checklist-grid,.footer-grid{grid-template-columns:1fr}.stats-grid{grid-template-columns:repeat(2,1fr)}.sticky-bar{left:16px;right:16px;bottom:16px}.btn-cta{width:100%}}
 `;
 
 function header(): string {
-  return `<div class="top-bar"><div class="wrap"><span>💧 <b>Covina Water Heater &amp; Mold Restoration Quality Design System</b></span><span>⚡ <b>24/7 Emergency Dispatch:</b> ${PHONE_DISPLAY}</span></div></div><header class="navbar"><div class="wrap"><a class="brand" href="https://${DOMAIN}/"><span class="logo-icon">MI</span><span>${BRAND}<small class="brand-sub">Mold · Water · Fire · 24/7 Restoration</small></span></a><nav class="nav-links"><a href="https://${DOMAIN}/about-us/">About Us</a><a href="https://${DOMAIN}/services/">Services</a><a href="https://${DOMAIN}/areas-we-serve/">Areas We Serve</a><a href="https://${DOMAIN}/contact-us/">Contact Us</a><a href="https://${DOMAIN}/link-sheet/">LinkSheet</a></nav><a class="btn-cta" href="${PHONE_HREF}">Call ${PHONE_DISPLAY}</a></div></header>`;
+  return `<div class="top-bar">
+    <div class="wrap">
+      <div class="top-left">
+        <span class="pulse-dot"></span> <b>24/7 Emergency Service</b>
+        <span class="sep">|</span>
+        <span>Mon–Sun 24 Hours Open</span>
+      </div>
+      <div class="top-right">
+        <span class="stars">★★★★★</span> <b>4.9 (18,000+ reviews)</b>
+        <span class="sep">|</span>
+        <span>Licensed &amp; Insured · Master Certified</span>
+      </div>
+    </div>
+  </div>
+  <header class="navbar">
+    <div class="wrap">
+      <a class="brand" href="https://${DOMAIN}/">
+        <span class="logo-icon">💧</span>
+        <span>${BRAND}<small class="brand-sub">Mold · Water · Fire · 24/7 Restoration</small></span>
+      </a>
+      <nav class="nav-links">
+        <a href="https://${DOMAIN}/">Home</a>
+        <div class="dropdown">
+          <a href="https://${DOMAIN}/services/">Services ▾</a>
+          <div class="dropdown-menu">
+            <a href="https://${DOMAIN}/services/emergency-mold-remediation/">Emergency Mold Remediation</a>
+            <a href="https://${DOMAIN}/services/black-mold-removal/">Black Mold Removal</a>
+            <a href="https://${DOMAIN}/services/emergency-water-damage-restoration/">Water Damage Restoration</a>
+            <a href="https://${DOMAIN}/services/fire-damage-restoration-cleanup/">Fire Damage Restoration</a>
+            <a href="https://${DOMAIN}/services/" class="highlight">View All 70 Services →</a>
+          </div>
+        </div>
+        <div class="dropdown">
+          <a href="https://${DOMAIN}/areas-we-serve/">Service Areas ▾</a>
+          <div class="dropdown-menu">
+            <a href="https://pennsylvania.${DOMAIN}/">Pennsylvania</a>
+            <a href="https://texas.${DOMAIN}/">Texas</a>
+            <a href="https://florida.${DOMAIN}/">Florida</a>
+            <a href="https://california.${DOMAIN}/">California</a>
+            <a href="https://${DOMAIN}/areas-we-serve/" class="highlight">All 50 States Directory →</a>
+          </div>
+        </div>
+        <a href="https://${DOMAIN}/about-us/">About</a>
+        <a href="https://${DOMAIN}/contact-us/" class="nav-pill">Contact</a>
+      </nav>
+      <a class="btn-cta" href="${PHONE_HREF}">📞 ${PHONE_DISPLAY}</a>
+    </div>
+  </header>`;
 }
 
 function footer(): string {
-  return `<footer class="footer-main"><div class="wrap"><div class="footer-grid"><div><h3>${BRAND}</h3><p>Nationwide 24/7 emergency water damage restoration, black mold remediation, air quality testing, and fire damage cleanup across all 50 US states.</p></div><div><h3>Quick Links</h3><a href="https://${DOMAIN}/about-us/">About Our Network</a><a href="https://${DOMAIN}/services/">All 70 Services</a><a href="https://${DOMAIN}/areas-we-serve/">50 States Directory</a><a href="https://${DOMAIN}/contact-us/">24/7 Contact Dispatch</a><a href="https://${DOMAIN}/link-sheet/">Xagio LinkSheet</a></div><div><h3>Core Services</h3><a href="https://${DOMAIN}/services/emergency-mold-remediation/">Emergency Mold Remediation</a><a href="https://${DOMAIN}/services/black-mold-removal/">Black Mold Removal</a><a href="https://${DOMAIN}/services/emergency-water-damage-restoration/">Water Damage Restoration</a><a href="https://${DOMAIN}/services/fire-damage-restoration-cleanup/">Fire Damage Restoration</a></div><div><h3>Emergency Contact</h3><p>24/7 Emergency Dispatch Line:</p><a class="btn-cta" href="${PHONE_HREF}">Call ${PHONE_DISPLAY}</a><p style="font-size:12px;margin-top:14px;color:#64748b;">📍 236 Long Park Dr, Rochester, NY 14612</p></div></div><div class="footer-bottom"><p>© ${new Date().getFullYear()} ${BRAND}. All rights reserved. Service Area Business Network Architecture.</p></div></div></footer><div class="sticky-bar"><a class="btn-cta" href="${PHONE_HREF}">⚡ Call ${PHONE_DISPLAY}</a></div>`;
+  return `<section class="footer-cta-banner">
+    <div class="wrap footer-cta-flex">
+      <div>
+        <h2>Emergency? Don't Wait — Call Now.</h2>
+        <p>We answer 24/7 for black mold outbreaks, flooded basements, and fire loss emergencies.</p>
+      </div>
+      <a class="btn-dark-navy" href="${PHONE_HREF}">📞 Call ${PHONE_DISPLAY}</a>
+    </div>
+  </section>
+  <footer class="footer-main">
+    <div class="wrap">
+      <div class="footer-grid">
+        <div>
+          <a class="brand" href="https://${DOMAIN}/" style="color:#fff;">
+            <span class="logo-icon">💧</span>
+            <span>${BRAND}</span>
+          </a>
+          <p style="font-size:14px;line-height:1.65;margin:16px 0;color:#94a3b8;">
+            Pennsylvania's water &amp; mold restoration specialists. Licensed, insured and family-owned since 2004.
+          </p>
+          <p style="font-size:13px;color:#fbbf24;margin:0 0 6px;">★★★★★ 4.9/5 · 18,000+ reviews</p>
+          <p style="font-size:12px;color:#64748b;margin:0;">Master Certified · Fully Insured Network</p>
+        </div>
+        <div>
+          <h3>Services</h3>
+          <a href="https://${DOMAIN}/services/emergency-mold-remediation/">Emergency Mold Remediation</a>
+          <a href="https://${DOMAIN}/services/black-mold-removal/">Black Mold Removal</a>
+          <a href="https://${DOMAIN}/services/emergency-water-damage-restoration/">Water Damage Restoration</a>
+          <a href="https://${DOMAIN}/services/fire-damage-restoration-cleanup/">Fire Damage Restoration</a>
+          <a href="https://${DOMAIN}/services/" style="color:#38bdf8;font-weight:700;">All Services →</a>
+        </div>
+        <div>
+          <h3>Service Areas</h3>
+          <a href="https://pennsylvania.${DOMAIN}/">Pennsylvania</a>
+          <a href="https://texas.${DOMAIN}/">Texas</a>
+          <a href="https://florida.${DOMAIN}/">Florida</a>
+          <a href="https://california.${DOMAIN}/">California</a>
+          <a href="https://${DOMAIN}/areas-we-serve/" style="color:#38bdf8;font-weight:700;">All Areas →</a>
+        </div>
+        <div>
+          <h3>Get In Touch</h3>
+          <a href="${PHONE_HREF}" style="color:#fff;font-weight:800;font-size:16px;">📞 ${PHONE_DISPLAY}</a>
+          <p style="font-size:14px;color:#94a3b8;margin:10px 0 6px;">✉️ dispatch@${DOMAIN}</p>
+          <p style="font-size:14px;color:#94a3b8;margin:0 0 6px;">📍 236 Long Park Dr, Rochester, NY 14612</p>
+          <p style="font-size:14px;color:#38bdf8;margin:0;font-weight:700;">🕒 Mon–Sun 24 Hours · 24/7 Emergency</p>
+        </div>
+      </div>
+    </div>
+  </footer>
+  <div class="footer-bottom">
+    <div class="wrap">
+      <p>© ${new Date().getFullYear()} ${BRAND}. All rights reserved.</p>
+      <div class="footer-bottom-links">
+        <a href="https://${DOMAIN}/about-us/">About</a>
+        <a href="https://${DOMAIN}/services/">Services</a>
+        <a href="https://${DOMAIN}/areas-we-serve/">Areas</a>
+        <a href="https://${DOMAIN}/contact-us/">Contact</a>
+      </div>
+    </div>
+  </div>
+  <div class="sticky-bar"><a class="btn-cta" href="${PHONE_HREF}">⚡ Call ${PHONE_DISPLAY}</a></div>`;
 }
 
 function shell(title: string, description: string, canonical: string, body: string, schema?: object): string {

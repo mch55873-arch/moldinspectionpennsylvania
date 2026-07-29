@@ -144,19 +144,19 @@ export default {
         return cached(request, ctx, () => sitemap);
       }
 
-      if (path === "/about-us" || path === "/about-us/") {
+      if (path === "/about-us" || path === "/about-us/" || path === "/about" || path === "/about/" || path === "/about.html") {
         return cached(request, ctx, () => htmlResponse(aboutUsPage(), method));
       }
 
-      if (path === "/contact-us" || path === "/contact-us/") {
+      if (path === "/contact-us" || path === "/contact-us/" || path === "/contact" || path === "/contact/" || path === "/contact.html") {
         return cached(request, ctx, () => htmlResponse(contactUsPage(), method));
       }
 
-      if (path === "/services" || path === "/services/") {
+      if (path === "/services" || path === "/services/" || path === "/services.html") {
         return cached(request, ctx, () => htmlResponse(servicesHubPage(), method));
       }
 
-      if (path === "/areas" || path === "/areas/" || path === "/areas-we-serve" || path === "/areas-we-serve/") {
+      if (path === "/areas" || path === "/areas/" || path === "/areas.html" || path === "/areas-we-serve" || path === "/areas-we-serve/") {
         return cached(request, ctx, () => htmlResponse(areasWeServePage(STATES), method));
       }
 
