@@ -204,10 +204,6 @@ export default {
       return cached(request, ctx, () => htmlResponse(notFoundPage("City Service Not Found"), method, 404));
     }
 
-    try {
-      return await env.ASSETS.fetch(request);
-    } catch {
-      return cached(request, ctx, () => htmlResponse(notFoundPage("Asset Not Found"), method, 404));
-    }
+    return cached(request, ctx, () => htmlResponse(notFoundPage("Page Not Found"), method, 404));
   },
 };
