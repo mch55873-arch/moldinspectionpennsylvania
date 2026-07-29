@@ -1,0 +1,41 @@
+{
+  "business_name": "Mold Inspection Pennsylvania & USA Network",
+  "domain": "moldinspectionpennsylvania.com",
+  "phone": "(321) 655-0460",
+  "phone_raw": "+13216550460",
+  "sab_address": "236 Long Park Dr, Rochester, NY 14612",
+  "category": "Water, Fire & Mold Restoration",
+  "description": "Pennsylvania & USA nationwide 24/7 emergency water damage restoration, black mold remediation, air quality testing, and fire damage cleanup across all 50 US states.",
+  "citations_targets": [
+    {
+      "name": "Manta USA",
+      "url": "https://www.manta.com/",
+      "dr": 88
+    },
+    {
+      "name": "MerchantCircle",
+      "url": "https://www.merchantcircle.com/",
+      "dr": 86
+    },
+    {
+      "name": "Chamber of Commerce USA",
+      "url": "https://www.chamberofcommerce.com/",
+      "dr": 85
+    },
+    {
+      "name": "EZLocal USA",
+      "url": "https://ezlocal.com/",
+      "dr": 84
+    },
+    {
+      "name": "Cylex USA",
+      "url": "https://www.cylex.us.com/",
+      "dr": 82
+    },
+    {
+      "name": "Hotfrog USA",
+      "url": "https://www.hotfrog.com/",
+      "dr": 81
+    }
+  ]
+}
