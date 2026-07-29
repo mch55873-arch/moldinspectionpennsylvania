@@ -6,5 +6,5 @@ export const SITE = {
   phoneDisplay: "(321) 655-0460",
   niche: "Water, Fire & Mold Restoration",
   ctaText: "24/7 Emergency Mold & Restoration Dispatch",
-  address: "236 Long Park Dr, Rochester, NY 14612"
+  address: "1500 Market St, Philadelphia, PA 19102"
 };
