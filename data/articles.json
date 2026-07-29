@@ -1,7 +1,17 @@
 [
   {
     "slug": "black-mold-spore-safety-guide",
-    "title": "Black Mold Spore Safety & Microbial Decontamination Guide",
-    "excerpt": "Essential safety guidelines for toxic black mold containment and HEPA air filtration."
+    "title": "Black Mold Spore Safety & Indoor Air Quality Standards",
+    "excerpt": "Comprehensive safety guide for toxic Stachybotrys chartarum black mold containment, HEPA air scrubbing, and post-remediation clearance testing."
+  },
+  {
+    "slug": "flooded-basement-water-extraction-guide",
+    "title": "Flooded Basement Emergency Water Extraction Guide",
+    "excerpt": "Step-by-step emergency instructions for burst pipes, sump pump failures, and structural dehumidification."
+  },
+  {
+    "slug": "fire-smoke-soot-decontamination-handbook",
+    "title": "Fire, Smoke & Soot Decontamination Handbook",
+    "excerpt": "Technical protocol for chemical sponge soot scrubbing, thermal fogging, and structural char restoration."
   }
 ]

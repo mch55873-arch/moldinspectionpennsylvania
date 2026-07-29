@@ -7,7 +7,3 @@ routes = [
   { pattern = "moldinspectionpennsylvania.com/*", zone_name = "moldinspectionpennsylvania.com" },
   { pattern = "*.moldinspectionpennsylvania.com/*", zone_name = "moldinspectionpennsylvania.com" }
 ]
-
-[assets]
-directory = "./out"
-binding = "ASSETS"

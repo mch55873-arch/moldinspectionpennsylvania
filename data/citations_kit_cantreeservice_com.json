@@ -1,0 +1,56 @@
+{
+  "business_info": {
+    "business_name": "Can Tree Service",
+    "website": "https://cantreeservice.com/",
+    "phone": "(380) 209-1328",
+    "primary_category": "Tree Service & Arborist Care",
+    "secondary_categories": [
+      "Emergency Tree Removal",
+      "Tree Trimming & Pruning",
+      "Stump Grinding Service",
+      "Arborist Inspection"
+    ],
+    "short_desc": "Nationwide 24/7 emergency tree removal, structural pruning, stump grinding, and arborist health inspections.",
+    "long_desc": "Can Tree Service is a leading nationwide tree care provider operating across 50 US states. Our certified arborist network specializes in 24/7 emergency storm damage clearance, hazardous tree removal, structural trimming, stump grinding, and crane rigging.",
+    "business_type": "Service Area Business (SAB)",
+    "address_requirement": "Hide Street Address (SAB Mode Enabled)"
+  },
+  "directory_submission_urls": [
+    {
+      "name": "Manta.com",
+      "url": "https://www.manta.com/add-a-company",
+      "sab_friendly": true,
+      "dr": 88
+    },
+    {
+      "name": "MerchantCircle.com",
+      "url": "https://www.merchantcircle.com/signup",
+      "sab_friendly": true,
+      "dr": 86
+    },
+    {
+      "name": "EZLocal.com",
+      "url": "https://ezlocal.com/add",
+      "sab_friendly": true,
+      "dr": 84
+    },
+    {
+      "name": "Cylex USA",
+      "url": "https://www.cylex-usa.com/add-company",
+      "sab_friendly": true,
+      "dr": 82
+    },
+    {
+      "name": "Hotfrog USA",
+      "url": "https://www.hotfrog.com/add-your-business",
+      "sab_friendly": true,
+      "dr": 81
+    },
+    {
+      "name": "ChamberofCommerce.com",
+      "url": "https://www.chamberofcommerce.com/add-business",
+      "sab_friendly": true,
+      "dr": 85
+    }
+  ]
+}

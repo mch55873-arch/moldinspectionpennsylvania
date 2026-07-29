@@ -1,0 +1,56 @@
+{
+  "business_info": {
+    "business_name": "Village Plumbers NZ",
+    "website": "https://villageplumbers.co.nz/",
+    "phone": "0800 002 411",
+    "primary_category": "Emergency Plumbing Service",
+    "secondary_categories": [
+      "Blocked Drain Unblocking",
+      "Hot Water Cylinder Repair",
+      "Gas Leak Detection",
+      "Burst Pipe Repairs"
+    ],
+    "short_desc": "24/7 emergency plumbing, drain unblocking, and hot water cylinder repair across New Zealand.",
+    "long_desc": "Village Plumbers NZ is New Zealand's trusted emergency plumbing network operating across Auckland, Wellington, Christchurch, and all 16 NZ regions. Registered Kiwi plumbers specializing in hydro-jet drain unblocking, hot water repairs, and gas fitting.",
+    "business_type": "Service Area Business (SAB)",
+    "address_requirement": "Hide Street Address (SAB Mode Enabled)"
+  },
+  "directory_submission_urls": [
+    {
+      "name": "Manta.com",
+      "url": "https://www.manta.com/add-a-company",
+      "sab_friendly": true,
+      "dr": 88
+    },
+    {
+      "name": "MerchantCircle.com",
+      "url": "https://www.merchantcircle.com/signup",
+      "sab_friendly": true,
+      "dr": 86
+    },
+    {
+      "name": "EZLocal.com",
+      "url": "https://ezlocal.com/add",
+      "sab_friendly": true,
+      "dr": 84
+    },
+    {
+      "name": "Cylex USA",
+      "url": "https://www.cylex-usa.com/add-company",
+      "sab_friendly": true,
+      "dr": 82
+    },
+    {
+      "name": "Hotfrog USA",
+      "url": "https://www.hotfrog.com/add-your-business",
+      "sab_friendly": true,
+      "dr": 81
+    },
+    {
+      "name": "ChamberofCommerce.com",
+      "url": "https://www.chamberofcommerce.com/add-business",
+      "sab_friendly": true,
+      "dr": 85
+    }
+  ]
+}

@@ -1,0 +1,56 @@
+{
+  "business_info": {
+    "business_name": "Garage Door Gazette",
+    "website": "https://garagedoorgazette.com/",
+    "phone": "+1 (773) 249-5939",
+    "primary_category": "Garage Door Repair & Service",
+    "secondary_categories": [
+      "Emergency Garage Door Repair",
+      "Garage Door Spring Replacement",
+      "Garage Door Opener Installation",
+      "Commercial Overhead Doors"
+    ],
+    "short_desc": "Nationwide 24/7 emergency garage door repair, torsion spring replacement, and smart opener installation.",
+    "long_desc": "Garage Door Gazette connects homeowners and commercial properties across all 50 states with licensed 24/7 garage door technicians. Specializing in broken torsion springs, off-track doors, cable replacements, and opener installations.",
+    "business_type": "Service Area Business (SAB)",
+    "address_requirement": "Hide Street Address (SAB Mode Enabled)"
+  },
+  "directory_submission_urls": [
+    {
+      "name": "Manta.com",
+      "url": "https://www.manta.com/add-a-company",
+      "sab_friendly": true,
+      "dr": 88
+    },
+    {
+      "name": "MerchantCircle.com",
+      "url": "https://www.merchantcircle.com/signup",
+      "sab_friendly": true,
+      "dr": 86
+    },
+    {
+      "name": "EZLocal.com",
+      "url": "https://ezlocal.com/add",
+      "sab_friendly": true,
+      "dr": 84
+    },
+    {
+      "name": "Cylex USA",
+      "url": "https://www.cylex-usa.com/add-company",
+      "sab_friendly": true,
+      "dr": 82
+    },
+    {
+      "name": "Hotfrog USA",
+      "url": "https://www.hotfrog.com/add-your-business",
+      "sab_friendly": true,
+      "dr": 81
+    },
+    {
+      "name": "ChamberofCommerce.com",
+      "url": "https://www.chamberofcommerce.com/add-business",
+      "sab_friendly": true,
+      "dr": 85
+    }
+  ]
+}
