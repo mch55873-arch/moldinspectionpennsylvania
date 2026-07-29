@@ -35,8 +35,10 @@ a{color:inherit;text-decoration:none}
 .btn-secondary:hover{background:rgba(255,255,255,.18)}
 .hero{position:relative;padding:84px 0 90px;background:radial-gradient(circle at 50% 0%,rgba(14,165,233,.15) 0%,transparent 60%),linear-gradient(180deg,#0d1b2a 0%,#14263b 100%);overflow:hidden}
 .hero-grid{display:grid;grid-template-columns:1.08fr .92fr;gap:54px;align-items:center}
+.crumb-trail{font-size:14px;color:#38bdf8;font-weight:700;margin-bottom:14px}
+.crumb-trail a{color:#94a3b8;transition:.2s}.crumb-trail a:hover{color:#fff}
 .eyebrow-badge{display:inline-flex;align-items:center;gap:8px;padding:8px 16px;border-radius:999px;background:rgba(14,165,233,.12);border:1px solid rgba(14,165,233,.3);color:#38bdf8;font-size:12px;font-weight:800;letter-spacing:.12em;text-transform:uppercase}
-.hero h1{font-family:'Plus Jakarta Sans',sans-serif;font-size:clamp(42px,5.8vw,66px);font-weight:900;line-height:1.06;letter-spacing:-.04em;margin:20px 0 16px;color:#fff}
+.hero h1{font-family:'Plus Jakarta Sans',sans-serif;font-size:clamp(40px,5.5vw,64px);font-weight:900;line-height:1.06;letter-spacing:-.04em;margin:16px 0 14px;color:#fff}
 .hero h1 span{background:linear-gradient(135deg,#38bdf8,#0ea5e9);-webkit-background-clip:text;-webkit-text-fill-color:transparent}
 .hero-desc{font-size:18px;line-height:1.75;color:#94a3b8;max-width:680px;margin-bottom:28px}
 .rating-pill{display:inline-flex;align-items:center;gap:12px;padding:10px 18px;border-radius:999px;background:rgba(255,255,255,.06);border:1px solid rgba(255,255,255,.12);font-size:14px;font-weight:700;color:#f1f5f9;margin-bottom:24px}
@@ -67,7 +69,7 @@ a{color:inherit;text-decoration:none}
 .card-item p{color:#94a3b8;font-size:15px;line-height:1.68;margin:0}
 .card-link{display:inline-flex;align-items:center;gap:6px;margin-top:20px;color:#38bdf8;font-weight:800;font-size:15px}
 .dir-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:16px}
-.dir-card{display:flex;align-items:center;justify-space:space-between;padding:20px 22px;background:#0d1b2a;border:1px solid rgba(255,255,255,.1);border-radius:16px;color:#f1f5f9;font-weight:800;font-size:15px;transition:.2s}
+.dir-card{display:flex;align-items:center;justify-space:space-between;padding:20px 22px;background:#0d1b2a;border:1px solid rgba(255,255,255,.1);border-radius:16px;color:#f1f5f9;font-weight:850;font-size:15px;transition:.2s}
 .dir-card:hover{transform:translateY(-3px);border-color:#0ea5e9;color:#38bdf8;box-shadow:0 12px 30px rgba(14,165,233,.2)}
 .dir-card:after{content:"→";color:#0ea5e9}
 .checklist-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:14px;margin-top:24px}
@@ -81,7 +83,7 @@ a{color:inherit;text-decoration:none}
 .footer-bottom{border-top:1px solid rgba(255,255,255,.08);margin-top:44px;padding-top:24px;font-size:13px;color:#64748b}
 .sticky-bar{position:fixed;bottom:20px;right:20px;z-index:90}
 @media(max-width:960px){.nav-links{display:none}.hero-grid{grid-template-columns:1fr}.grid-3,.dir-grid{grid-template-columns:repeat(2,1fr)}.footer-grid{grid-template-columns:1fr 1fr}}
-@media(max-width:640px){.hero{padding:60px 0}.hero h1{font-size:38px}.grid-3,.dir-grid,.checklist-grid,.footer-grid{grid-template-columns:1fr}.stats-grid{grid-template-columns:repeat(2,1fr)}.sticky-bar{left:16px;right:16px;bottom:16px}.btn-cta{width:100%}}
+@media(max-width:640px){.hero{padding:60px 0}.hero h1{font-size:36px}.grid-3,.dir-grid,.checklist-grid,.footer-grid{grid-template-columns:1fr}.stats-grid{grid-template-columns:repeat(2,1fr)}.sticky-bar{left:16px;right:16px;bottom:16px}.btn-cta{width:100%}}
 `;
 
 function header(): string {
@@ -154,7 +156,7 @@ export function statePage(state: StateItem) {
     .map(([slug, name]) => `<a class="dir-card" href="https://${slug}-${stateSlug}.${DOMAIN}/"><span>${esc(name)}</span></a>`)
     .join("");
 
-  const body = `<main><section class="hero"><div class="wrap hero-grid"><div><span class="eyebrow-badge">${esc(state.name)} State Network</span><h1>24/7 Mold &amp; Water Restoration in <span>${esc(state.name)}</span></h1><p class="hero-desc">Comprehensive emergency water damage extraction, black mold remediation, and fire damage cleanup serving all cities across ${esc(state.name)}.</p><div class="rating-pill"><span class="stars">★★★★★</span><span>4.9/5 ⭐ Rating across ${esc(state.name)}</span></div>${trustChecklistHtml()}<div style="margin-top:32px;"><a class="btn-cta" href="${PHONE_HREF}">Call ${PHONE_DISPLAY}</a></div></div><div>${leadFormHtml(state.name)}</div></div></section><section class="section section-dark"><div class="wrap"><div class="sec-head"><span class="sec-tag">Cities Served</span><h2>Select Your City in ${esc(state.name)}</h2></div><div class="dir-grid">${cityDirectoryHtml}</div></div></section></main>`;
+  const body = `<main><section class="hero"><div class="wrap hero-grid"><div><div class="crumb-trail"><a href="https://${DOMAIN}/areas-we-serve/">Areas We Serve</a> / ${esc(state.name)}</div><span class="eyebrow-badge">${esc(state.name)} State Network</span><h1>24/7 Mold &amp; Water Restoration in <span>${esc(state.name)}</span></h1><p class="hero-desc">Comprehensive emergency water damage extraction, black mold remediation, and fire damage cleanup serving all cities across ${esc(state.name)}.</p><div class="rating-pill"><span class="stars">★★★★★</span><span>4.9/5 ⭐ Rating across ${esc(state.name)}</span></div>${trustChecklistHtml()}<div style="margin-top:32px;"><a class="btn-cta" href="${PHONE_HREF}">Call ${PHONE_DISPLAY}</a></div></div><div>${leadFormHtml(state.name)}</div></div></section><section class="section section-dark"><div class="wrap"><div class="sec-head"><span class="sec-tag">Cities Served</span><h2>Select Your City in ${esc(state.name)}</h2></div><div class="dir-grid">${cityDirectoryHtml}</div></div></section><section class="section"><div class="wrap"><div class="sec-head"><span class="sec-tag">State Services</span><h2>70 Restoration Services in ${esc(state.name)}</h2></div><div class="grid-3">${serviceCards(`${stateSlug}.${DOMAIN}`)}</div></div></section></main>`;
   return shell(`Mold &amp; Water Restoration in ${state.name} | ${BRAND}`, `24/7 emergency mold inspection, water damage extraction, and fire restoration across ${state.name}.`, canonical, body);
 }
 
@@ -175,14 +177,14 @@ export function cityPage(state: StateItem, city: [string, string], host: string)
     }
   };
 
-  const body = `<main><section class="hero"><div class="wrap hero-grid"><div><span class="eyebrow-badge">Emergency Restoration Dispatch</span><h1>24/7 Mold &amp; Water Restoration in <span>${esc(cityName)}, ${esc(state.name)}</span></h1><p class="hero-desc">Our certified restoration technicians operate 24/7 in ${esc(cityName)}. Explore our complete 70-service directory for ${esc(cityName)}, review thermal moisture leak assessments, and request immediate inspection.</p><div class="rating-pill"><span class="stars">★★★★★</span><span>4.9/5 Rating · 184+ Local Reviews in ${esc(cityName)}</span></div>${trustChecklistHtml()}<div style="display:flex;gap:14px;margin-top:32px;"><a class="btn-cta" href="${PHONE_HREF}">Call ${PHONE_DISPLAY}</a><a class="btn-cta btn-secondary" href="#services">Browse All 70 Services</a></div></div><div>${leadFormHtml(cityName)}</div></div></section><section class="section" id="services"><div class="wrap"><div class="sec-head"><span class="sec-tag">City Services</span><h2>Restoration Topics in ${esc(cityName)}</h2></div><div class="grid-3">${serviceCards(host)}</div></div></section></main>`;
+  const body = `<main><section class="hero"><div class="wrap hero-grid"><div><div class="crumb-trail"><a href="https://${DOMAIN}/areas-we-serve/">Areas We Serve</a> / <a href="https://${state.slug}.${DOMAIN}/">${esc(state.name)}</a> / ${esc(cityName)}</div><span class="eyebrow-badge">Emergency Restoration Dispatch</span><h1>24/7 Mold &amp; Water Restoration in <span>${esc(cityName)}, ${esc(state.name)}</span></h1><p class="hero-desc">Our certified restoration technicians operate 24/7 in ${esc(cityName)}. Explore our complete 70-service directory for ${esc(cityName)}, review thermal moisture leak assessments, and request immediate inspection.</p><div class="rating-pill"><span class="stars">★★★★★</span><span>4.9/5 Rating · 184+ Local Reviews in ${esc(cityName)}</span></div>${trustChecklistHtml()}<div style="display:flex;gap:14px;margin-top:32px;"><a class="btn-cta" href="${PHONE_HREF}">Call ${PHONE_DISPLAY}</a><a class="btn-cta btn-secondary" href="#services">Browse All 70 Services</a></div></div><div>${leadFormHtml(cityName)}</div></div></section><section class="section section-dark" id="services"><div class="wrap"><div class="sec-head"><span class="sec-tag">City Services</span><h2>Restoration Topics in ${esc(cityName)}</h2></div><div class="grid-3">${serviceCards(host)}</div></div></section></main>`;
   return shell(`Water &amp; Mold Restoration in ${cityName}, ${state.name} | ${BRAND}`, `Browse 70 mold removal, water damage extraction, and fire restoration topics for ${cityName}, ${state.name}.`, canonical, body, schema);
 }
 
 export function localServicePage(state: StateItem, city: [string, string], service: (typeof services)[number], host: string) {
   const [, cityName] = city;
   const canonical = `https://${host}/${service.slug}/`;
-  const body = `<main><section class="hero"><div class="wrap hero-grid"><div><span class="eyebrow-badge">${esc(service.category)} Restoration</span><h1>${esc(service.name)} in <span>${esc(cityName)}, ${esc(state.name)}</span></h1><p class="hero-desc">${esc(service.description)}</p><div class="rating-pill"><span class="stars">★★★★★</span><span>4.9/5 ⭐ Rating for ${esc(service.name)} in ${esc(cityName)}</span></div>${trustChecklistHtml()}<div style="margin-top:32px;"><a class="btn-cta" href="${PHONE_HREF}">Call ${PHONE_DISPLAY}</a></div></div><div>${leadFormHtml(`${service.name} ${cityName}`)}</div></div></section></main>`;
+  const body = `<main><section class="hero"><div class="wrap hero-grid"><div><div class="crumb-trail"><a href="https://${state.slug}.${DOMAIN}/">${esc(state.name)}</a> / <a href="https://${host}/">${esc(cityName)}</a> / ${esc(service.name)}</div><span class="eyebrow-badge">${esc(service.category)} Restoration</span><h1>${esc(service.name)} in <span>${esc(cityName)}, ${esc(state.name)}</span></h1><p class="hero-desc">${esc(service.description)}</p><div class="rating-pill"><span class="stars">★★★★★</span><span>4.9/5 ⭐ Rating for ${esc(service.name)} in ${esc(cityName)}</span></div>${trustChecklistHtml()}<div style="margin-top:32px;"><a class="btn-cta" href="${PHONE_HREF}">Call ${PHONE_DISPLAY}</a></div></div><div>${leadFormHtml(`${service.name} ${cityName}`)}</div></div></section></main>`;
   return shell(`${service.name} in ${cityName}, ${state.name}`, `${service.description} Review local restoration info for ${cityName}, ${state.name}.`, canonical, body);
 }
 
@@ -194,7 +196,7 @@ export function linkSheetPage() {
 
 export function servicesHubPage() {
   const canonical = `https://${DOMAIN}/services/`;
-  const body = `<main><section class="hero"><div class="wrap"><span class="eyebrow-badge">Services Directory</span><h1>All 70 Water, Fire &amp; Mold Services</h1><p class="hero-desc">Browse our complete service catalog across all 50 states.</p></div></section><section class="section"><div class="wrap"><div class="grid-3">${serviceCards(DOMAIN)}</div></div></section></main>`;
+  const body = `<main><section class="hero"><div class="wrap"><span class="eyebrow-badge">Services Directory</span><h1>All 70 Water, Fire &amp; Mold Services</h1><p class="hero-desc">Browse our complete service catalog across all 50 states.</p></div></section><section class="section section-dark"><div class="wrap"><div class="grid-3">${serviceCards(DOMAIN)}</div></div></section></main>`;
   return shell(`Restoration Services Directory | ${BRAND}`, "Browse 70 water, fire & mold restoration services.", canonical, body);
 }
 
