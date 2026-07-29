@@ -1,0 +1,96 @@
+import json
+import os
+import shutil
+
+BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
+DATA_DIR = os.path.join(BASE_DIR, "data")
+os.makedirs(DATA_DIR, exist_ok=True)
+
+# 70 High-Intent Water, Fire & Mold Restoration Services Catalog
+SERVICES_70 = [
+    # Mold Remediation Services (1-25)
+    {"slug": "emergency-mold-remediation", "name": "Emergency Mold Remediation", "category": "Mold", "description": "24/7 rapid response for hazardous mold outbreaks, toxic black mold containment, and structural decontamination."},
+    {"slug": "black-mold-removal", "name": "Black Mold Removal", "category": "Mold", "description": "Safe, certified toxic Stachybotrys chartarum black mold removal, containment barriers, and anti-microbial treatment."},
+    {"slug": "mold-inspection-testing", "name": "Mold Inspection & Air Testing", "category": "Mold", "description": "Certified arborist-grade mold inspections, indoor air quality sampling, and infrared thermal moisture imaging."},
+    {"slug": "basement-mold-remediation", "name": "Basement Mold Remediation", "category": "Mold", "description": "Basement wall mold removal, foundation moisture sealing, and sub-floor decontamination."},
+    {"slug": "attic-mold-removal", "name": "Attic Mold Removal", "category": "Mold", "description": "Attic sheathing mold cleanup, roof leak remediation, and thermal ventilation improvement."},
+    {"slug": "crawl-space-mold-treatment", "name": "Crawl Space Mold Treatment", "category": "Mold", "description": "Crawl space vapor barrier encapsulation, soil mold treatment, and structural joist spraying."},
+    {"slug": "commercial-mold-mitigation", "name": "Commercial Mold Mitigation", "category": "Mold", "description": "OSHA-compliant mold remediation for office parks, retail spaces, schools, and multi-family residential complexes."},
+    {"slug": "hvac-duct-mold-cleaning", "name": "HVAC Duct Mold Cleaning", "category": "Mold", "description": "Air duct mold spore fogging, HVAC coil sanitation, and ductwork decontamination."},
+    {"slug": "drywall-mold-removal", "name": "Drywall & Sheetrock Mold Removal", "category": "Mold", "description": "Affected drywall cutout, stud sanitation, and clean replacement wall prep."},
+    {"slug": "toxic-mold-decontamination", "name": "Toxic Mold Decontamination", "category": "Mold", "description": "HEPA air scrubbing, spore containment chambers, and hospital-grade disinfectant application."},
+    {"slug": "bathroom-mold-removal", "name": "Bathroom & Shower Mold Removal", "category": "Mold", "description": "Tile grout mold remediation, sub-floor water damage repair, and moisture exhaust optimization."},
+    {"slug": "hepa-air-scrubbing", "name": "HEPA Air Scrubbing & Sanitation", "category": "Mold", "description": "High-CFM negative air machine deployment and microscopic mold spore filtration."},
+    {"slug": "structural-mold-encapsulation", "name": "Structural Mold Encapsulation", "category": "Mold", "description": "Antimicrobial sealant application to prevent recurring mold growth on wood framing."},
+    {"slug": "hidden-wall-mold-inspection", "name": "Hidden Wall Mold Inspection", "category": "Mold", "description": "Non-destructive wall cavity inspection and acoustic moisture detection."},
+    {"slug": "carpet-floor-mold-removal", "name": "Carpet & Subfloor Mold Removal", "category": "Mold", "description": "Waterlogged carpet pad disposal, hardwood floor drying, and subfloor sanitation."},
+    {"slug": "post-remediation-verification", "name": "Post-Remediation Air Verification", "category": "Mold", "description": "Clearance air sampling and lab analysis verifying zero remaining airborne mold spores."},
+    {"slug": "infrared-moisture-inspection", "name": "Infrared Thermal Moisture Inspection", "category": "Mold", "description": "FLIR thermal camera leak detection identifying hidden water pockets inside walls."},
+    {"slug": "mold-odor-removal-fogging", "name": "Mold Odor Removal & Thermal Fogging", "category": "Mold", "description": "Hydroxyl generator and ozone odor neutralization for musty mold smells."},
+    {"slug": "kitchen-cabinet-mold-removal", "name": "Kitchen Cabinet Mold Removal", "category": "Mold", "description": "Sink leak mold cleanup, under-cabinet sanitization, and sub-counter mold remediation."},
+    {"slug": "window-sill-mold-treatment", "name": "Window Sill & Frame Mold Cleanup", "category": "Mold", "description": "Condensation mold cleanup, wood sash sanitation, and sealant replacement."},
+    {"slug": "garage-mold-decontamination", "name": "Garage & Workshop Mold Cleanup", "category": "Mold", "description": "Concrete floor mold scrubbing, drywall mold removal, and humidity control."},
+    {"slug": "asbestos-mold-safety-audit", "name": "Environmental Mold & Safety Audit", "category": "Mold", "description": "Comprehensive indoor air quality hazard audit and microbial growth mapping."},
+    {"slug": "eco-friendly-mold-treatment", "name": "Eco-Friendly Botanical Mold Treatment", "category": "Mold", "description": "Non-toxic plant-based enzyme mold remediation for chemical-sensitive occupants."},
+    {"slug": "industrial-mold-remediation", "name": "Industrial Facility Mold Remediation", "category": "Mold", "description": "Heavy manufacturing plant mold decontamination and warehouse structural cleaning."},
+    {"slug": "humidity-moisture-control-setup", "name": "Humidity & Moisture Control Setup", "category": "Mold", "description": "Whole-home commercial dehumidifier installation and vapor barrier sealing."},
+
+    # Water Damage Restoration Services (26-50)
+    {"slug": "emergency-water-damage-restoration", "name": "Emergency Water Damage Restoration", "category": "Water", "description": "24/7 fast-dispatch water extraction, structural drying, and flood damage mitigation."},
+    {"slug": "flooded-basement-water-extraction", "name": "Flooded Basement Water Extraction", "category": "Water", "description": "Heavy-duty submersible water pumping, carpet extraction, and basement dehumidification."},
+    {"slug": "burst-pipe-water-cleanup", "name": "Burst Pipe Water Damage Cleanup", "category": "Water", "description": "Immediate water shutoff, plumbing leak repair, and waterlogged drywall restoration."},
+    {"slug": "sewage-backup-cleanup", "name": "Sewage Backup Cleanup & Sanitation", "category": "Water", "description": "Biohazard Category 3 black water extraction, bio-sanitation, and odor neutralization."},
+    {"slug": "commercial-water-damage-restoration", "name": "Commercial Water Damage Restoration", "category": "Water", "description": "Large-loss commercial water extraction, structural drying, and business interruption minimization."},
+    {"slug": "structural-drying-dehumidification", "name": "Structural Drying & Dehumidification", "category": "Water", "description": "Industrial LGR dehumidifier and high-velocity air mover deployment."},
+    {"slug": "roof-leak-water-damage-repair", "name": "Roof Leak Water Damage Repair", "category": "Water", "description": "Storm damage roof tarping, ceiling drywall repair, and attic drying."},
+    {"slug": "slab-leak-thermal-drying", "name": "Slab Leak Thermal Drying", "category": "Water", "description": "Foundation slab leak detection, concrete drying, and under-slab water extraction."},
+    {"slug": "category-3-black-water-cleanup", "name": "Category 3 Black Water Cleanup", "category": "Water", "description": "Contaminated floodwater removal, antimicrobial sanitization, and porous material disposal."},
+    {"slug": "hardwood-floor-water-restoration", "name": "Hardwood Floor Water Restoration", "category": "Water", "description": "Specialized specialty floor mat drying system preventing hardwood cupping and warping."},
+    {"slug": "sump-pump-overflow-pumping", "name": "Sump Pump Overflow Pumping", "category": "Water", "description": "Failed sump pump water extraction, battery backup installation, and basement sanitation."},
+    {"slug": "appliance-leak-cleanup", "name": "Appliance & Washing Machine Leak Cleanup", "category": "Water", "description": "Dishwasher, refrigerator line, and washing machine flood drying."},
+    {"slug": "emergency-flood-extraction", "name": "Emergency Flood Water Extraction", "category": "Water", "description": "Rapid truck-mounted water extraction for severe storm and flash flood damage."},
+    {"slug": "wall-cavity-moisture-drying", "name": "Wall Cavity Moisture Drying", "category": "Water", "description": "Injectidry wall cavity drying systems without removing decorative drywall."},
+    {"slug": "thermal-imaging-moisture-inspection", "name": "Thermal Moisture Mapping", "category": "Water", "description": "Precision moisture meters and thermal imaging mapping water migration paths."},
+    {"slug": "ceiling-water-damage-repair", "name": "Ceiling Water Damage & Sagging Repair", "category": "Water", "description": "Sagging plaster ceiling removal, joist drying, and drywall replacement."},
+    {"slug": "toilet-overflow-water-cleanup", "name": "Toilet Overflow & Water Cleanup", "category": "Water", "description": "Sanitary water extraction, subfloor disinfection, and bathroom drying."},
+    {"slug": "water-heater-break-cleanup", "name": "Hot Water Tank Burst Cleanup", "category": "Water", "description": "50-gallon water heater flood extraction, utility closet drying, and tank replacement."},
+    {"slug": "storm-surge-water-removal", "name": "Storm Surge & Rainwater Removal", "category": "Water", "description": "Hurricane and tropical storm rainwater pumping and structural drying."},
+    {"slug": "frozen-pipe-burst-repair", "name": "Frozen Pipe Thawing & Burst Repair", "category": "Water", "description": "Winter freeze pipe rupture repair, wall drying, and insulation replacement."},
+    {"slug": "fire-hose-water-damage-cleanup", "name": "Fire Hose Water Extraction & Drying", "category": "Water", "description": "Post-fire suppression water removal, structural drying, and soot water cleanup."},
+    {"slug": "crawlspace-water-extraction", "name": "Crawlspace Water Pumping & Drying", "category": "Water", "description": "Sub-floor standing water pumping, sump installation, and ground vapor barriers."},
+    {"slug": "carpet-water-extraction-drying", "name": "Carpet Water Extraction & Padding Drying", "category": "Water", "description": "Deep-steam water extraction, carpet padding replacement, and fiber sanitization."},
+    {"slug": "dehumidifier-equipment-rental", "name": "Commercial Dehumidifier & Blower Rental", "category": "Water", "description": "Industrial LGR dehumidifiers and axial air mover equipment setup."},
+    {"slug": "sanitizing-disinfection-services", "name": "Water Damage Sanitation & Disinfection", "category": "Water", "description": "EPA-registered botanical disinfectant spraying for floodwater contaminants."},
+
+    # Fire & Smoke Damage Restoration Services (51-70)
+    {"slug": "fire-damage-restoration-cleanup", "name": "Fire Damage Restoration & Cleanup", "category": "Fire", "description": "Complete fire damage restoration, structural cleaning, and fire loss recovery."},
+    {"slug": "smoke-soot-damage-removal", "name": "Smoke & Soot Damage Removal", "category": "Fire", "description": "Wall soot sponge scrubbing, HVAC smoke residue removal, and duct sealing."},
+    {"slug": "structural-fire-repair-board-up", "name": "Structural Fire Repair & Board-Up", "category": "Fire", "description": "Emergency roof tarping, window board-up, and structural framing reinforcement."},
+    {"slug": "thermal-fogging-odor-elimination", "name": "Thermal Fogging Smoke Odor Removal", "category": "Fire", "description": "Solvent-based thermal fogging neutralizing deep smoke odors in porous materials."},
+    {"slug": "commercial-fire-damage-restoration", "name": "Commercial Fire Damage Restoration", "category": "Fire", "description": "Industrial fire loss restoration, commercial kitchen hood fire cleanup, and inventory recovery."},
+    {"slug": "emergency-tarp-over-service", "name": "Emergency Tarp-Over & Roof Protection", "category": "Fire", "description": "24/7 heavy-duty weatherproof tarps preventing secondary rain damage after fires."},
+    {"slug": "fire-damage-inspection-assessment", "name": "Fire Damage Inspection & Assessment", "category": "Fire", "description": "Comprehensive structural safety audit, insurance scope assessment, and repair estimate."},
+    {"slug": "contents-pack-out-cleaning", "name": "Contents Pack-Out & Restoration", "category": "Fire", "description": "Personal property inventory, off-site ultrasonic cleaning, and climate-controlled storage."},
+    {"slug": "kitchen-grease-fire-cleanup", "name": "Kitchen Grease Fire Repair & Cleanup", "category": "Fire", "description": "Stove grease fire soot removal, cabinet degreasing, and microwave restoration."},
+    {"slug": "electrical-fire-damage-restoration", "name": "Electrical Fire Damage Restoration", "category": "Fire", "description": "Short-circuit electrical fire cleanup, wiring safety replacement, and char removal."},
+    {"slug": "smoke-odor-hydroxyl-treatment", "name": "Hydroxl Smoke Odor Neutralization", "category": "Fire", "description": "Safe green-technology hydroxyl generator deployment for inhabited smoke restoration."},
+    {"slug": "puff-back-furnace-soot-cleanup", "name": "Furnace Puff-Back Soot Cleanup", "category": "Fire", "description": "Oil burner puff-back soot washing, ductwork degreasing, and wall repainting prep."},
+    {"slug": "soot-removal-film-application", "name": "Chemical Sponge Soot Removal", "category": "Fire", "description": "Dry chemical sponge soot removal preventing permanent paint staining."},
+    {"slug": "carpet-upholstery-smoke-cleaning", "name": "Upholstery & Fabric Smoke Deodorization", "category": "Fire", "description": "Furniture smoke odor extraction, curtain dry cleaning, and fabric protection."},
+    {"slug": "fire-suppression-chemical-cleanup", "name": "Fire Extinguishing Powder Cleanup", "category": "Fire", "description": "Monoammonium phosphate fire extinguisher dry chemical vacuuming and cleanup."},
+    {"slug": "structural-char-resurfacing", "name": "Structural Wood Char Soda Blasting", "category": "Fire", "description": "Eco-friendly baking soda blasting removing char layer from heavy timber studs."},
+    {"slug": "hvac-smoke-decontamination", "name": "HVAC Smoke Duct Decontamination", "category": "Fire", "description": "Ductwork soot vacuuming, sealant coating, and filter replacement."},
+    {"slug": "commercial-kitchen-hood-fire-repair", "name": "Commercial Kitchen Hood Fire Repair", "category": "Fire", "description": "Restaurant exhaust hood fire cleanup, Ansul chemical washing, and re-certification."},
+    {"slug": "insurance-fire-claim-scoping", "name": "Insurance Fire Loss Claim Scoping", "category": "Fire", "description": "Xactimate insurance claim scoping, line-item itemization, and adjuster coordination."},
+    {"slug": "post-fire-debris-removal", "name": "Post-Fire Demolition & Debris Dumpster", "category": "Fire", "description": "Charred structural demolition, debris haul-off, and site prep for rebuilding."}
+]
+
+with open(os.path.join(DATA_DIR, "services.json"), "w", encoding="utf-8") as f:
+    json.dump(SERVICES_70, f, indent=2)
+print(f"[OK] Generated {len(SERVICES_70)} Services in {os.path.join(DATA_DIR, 'services.json')}")
+
+with open(os.path.join(DATA_DIR, "articles.json"), "w", encoding="utf-8") as f:
+    json.dump([
+        {"slug": "black-mold-spore-safety-guide", "title": "Black Mold Spore Safety & Microbial Decontamination Guide", "excerpt": "Essential safety guidelines for toxic black mold containment and HEPA air filtration."}
+    ], f, indent=2)
+print(f"[OK] Generated Articles in {os.path.join(DATA_DIR, 'articles.json')}")
