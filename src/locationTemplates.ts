@@ -35,8 +35,8 @@ a{color:inherit;text-decoration:none}
 .logo-icon{width:44px;height:44px;border-radius:14px;display:grid;place-items:center;background:linear-gradient(135deg,#0ea5e9,#06b6d4);color:#fff;font-size:22px;box-shadow:0 8px 20px rgba(14,165,233,.3)}
 .brand-sub{display:block;font-size:11px;letter-spacing:.02em;color:#64748b;font-family:'Inter',sans-serif;font-weight:500;margin-top:-2px}
 
-.nav-links{display:flex;align-items:center;gap:20px;font-size:15px;font-weight:600;color:#334155}
-.nav-links a{padding:8px 12px;border-radius:10px;transition:.2s}
+.nav-links{display:flex;align-items:center;gap:14px;font-size:14px;font-weight:600;color:#334155}
+.nav-links a{padding:6px 10px;border-radius:10px;transition:.2s;white-space:nowrap}
 .nav-links a:hover{color:#0ea5e9;background:#f8fafc}
 .nav-pill{background:#e0f2fe;color:#0284c7!important;font-weight:700}
 .nav-pill:hover{background:#bae6fd!important}
