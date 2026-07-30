@@ -28,7 +28,7 @@ export function sitemapIndex(states: StateItem[], method = "GET") {
   const stateUrls = states
     .map((state) => {
       const cityCount = state.cities.length;
-      const totalUrls = cityCount * (services.length + 1) + 1;
+      const totalUrls = cityCount * (services.length + 1);
       const totalChunks = Math.max(1, Math.ceil(totalUrls / CHUNK_SIZE));
       const stateSlug = state.slug || state.code.toLowerCase();
 
@@ -55,7 +55,9 @@ export function coreSitemap(states: StateItem[], method = "GET") {
   urls.push(`https://${DOMAIN}/`);
   urls.push(`https://${DOMAIN}/services/`);
   urls.push(`https://${DOMAIN}/areas-we-serve/`);
-  urls.push(`https://${DOMAIN}/link-sheet/`);
+  urls.push(`https://${DOMAIN}/articles/`);
+  urls.push(`https://${DOMAIN}/about-us/`);
+  urls.push(`https://${DOMAIN}/contact-us/`);
 
   for (const s of services) {
     urls.push(`https://${DOMAIN}/services/${s.slug}/`);
@@ -78,20 +80,34 @@ ${urlEntries}
   return xmlResponse(xml, method);
 }
 
+// ULTRA-FAST COMPUTED SITEMAP GENERATOR (PREVENTS CPU TIMEOUTS ON CLOUDFLARE WORKERS)
 export function stateSitemap(state: StateItem, chunkIndex: number, method = "GET") {
   const stateSlug = state.slug || state.code.toLowerCase();
-  const urls: string[] = [];
-
-  for (const [cSlug] of state.cities) {
-    const host = `${cSlug}-${stateSlug}.${DOMAIN}`;
-    urls.push(`https://${host}/`);
-    for (const s of services) {
-      urls.push(`https://${host}/${s.slug}/`);
-    }
-  }
+  const urlsPerCity = services.length + 1; // 1 city home + 70 services
+  const totalUrls = state.cities.length * urlsPerCity;
 
   const startIndex = (chunkIndex - 1) * CHUNK_SIZE;
-  const slicedUrls = urls.slice(startIndex, startIndex + CHUNK_SIZE);
+  if (startIndex >= totalUrls) return null;
+
+  const endIndex = Math.min(totalUrls, startIndex + CHUNK_SIZE);
+  const slicedUrls: string[] = [];
+
+  for (let i = startIndex; i < endIndex; i++) {
+    const cityIdx = Math.floor(i / urlsPerCity);
+    const serviceIdx = i % urlsPerCity;
+
+    const city = state.cities[cityIdx];
+    if (!city) break;
+    const [cSlug] = city;
+    const host = `${cSlug}-${stateSlug}.${DOMAIN}`;
+
+    if (serviceIdx === 0) {
+      slicedUrls.push(`https://${host}/`);
+    } else {
+      const s = services[serviceIdx - 1];
+      if (s) slicedUrls.push(`https://${host}/${s.slug}/`);
+    }
+  }
 
   if (slicedUrls.length === 0) return null;
 
