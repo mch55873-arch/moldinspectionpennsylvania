@@ -567,11 +567,11 @@ export function areasWeServePage(states: StateItem[]) {
 export function statePage(state: StateItem) {
   const stateSlug = state.slug || state.code.toLowerCase();
   const canonical = `https://${stateSlug}.${DOMAIN}/`;
-  const cities = (state.cities || []).slice(0, 60);
+  const cities = state.cities || [];
   const cityDirectoryHtml = cities.map(([cSlug, cName]) => `<a class="dir-card-white" href="https://${cSlug}-${stateSlug}.${DOMAIN}/"><span>📍 ${esc(cName)}</span></a>`).join("");
   const stateServicesCards = services.map(s => `<div class="service-hub-card"><div><div class="service-hub-icon">💧</div><h3>${esc(s.name)} in ${esc(state.name)}</h3><p>${esc(s.description)}</p></div><a href="https://${DOMAIN}/services/${s.slug}/">Review service →</a></div>`).join("");
-  const body = `<main><section class="page-hero"><div class="wrap"><h1>Water &amp; Mold Restoration Services across <span>${esc(state.name)}</span></h1></div></section><section class="sec-gray" style="padding:70px 0;"><div class="wrap"><div class="dir-grid">${cityDirectoryHtml}</div></div></section><section class="sec-white" style="padding:70px 0;"><div class="wrap"><div class="grid-3">${stateServicesCards}</div></div></section></main>`;
-  return shell(`Water &amp; Mold Restoration Services across ${state.name} | ${BRAND}`, `24/7 emergency mold inspection across ${state.name}.`, canonical, body);
+  const body = `<main><section class="page-hero"><div class="wrap"><h1>Water &amp; Mold Restoration Services across <span>${esc(state.name)} (${cities.length} Cities)</span></h1><p style="color:#cbd5e1;font-size:16px;margin-top:12px;">Complete 24/7 local restoration directory covering all ${cities.length} cities and municipalities across ${esc(state.name)}.</p></div></section><section class="sec-gray" style="padding:70px 0;"><div class="wrap"><div style="text-align:center;margin-bottom:32px;"><span class="tag-badge">ALL ${cities.length} CITIES DIRECTORY</span><h2 class="sec-title" style="color:#0d1b2a;">Select Your City in ${esc(state.name)}</h2></div><div class="dir-grid">${cityDirectoryHtml}</div></div></section><section class="sec-white" style="padding:70px 0;"><div class="wrap"><div class="grid-3">${stateServicesCards}</div></div></section></main>`;
+  return shell(`Water &amp; Mold Restoration Services across ${state.name} (${cities.length} Cities) | ${BRAND}`, `24/7 emergency mold inspection across all ${cities.length} cities in ${state.name}.`, canonical, body);
 }
 
 /* 8. CITY PAGE */
