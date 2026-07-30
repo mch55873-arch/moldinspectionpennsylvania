@@ -102,6 +102,72 @@ a{color:inherit;text-decoration:none}
 .sector-card h4{font-family:'Plus Jakarta Sans',sans-serif;font-size:16px;font-weight:800;color:#0d1b2a;margin:0 0 4px}
 .sector-card p{font-size:13px;color:#64748b;margin:0}
 
+/* SERVICE DETAILS STYLES */
+.service-main-grid{display:grid;grid-template-columns:1fr 340px;gap:44px;align-items:start}
+.service-content-box{background:#fff;color:#0f172a;padding:40px;border-radius:20px;box-shadow:0 10px 40px rgba(0,0,0,.04);border:1px solid #e2e8f0}
+.service-content-box h2{font-family:'Plus Jakarta Sans',sans-serif;font-size:28px;font-weight:900;color:#0d1b2a;margin:0 0 16px;letter-spacing:-.02em}
+.service-content-box p{color:#475569;font-size:15px;line-height:1.75;margin:0 0 16px}
+
+.benefits-grid{display:grid;grid-template-columns:1fr 1fr;gap:18px;margin:24px 0 32px}
+.benefit-card{background:#f8fafc;border:1px solid #e2e8f0;border-radius:14px;padding:20px}
+.benefit-icon{font-size:22px;color:#0ea5e9;margin-bottom:8px}
+.benefit-card h4{font-family:'Plus Jakarta Sans',sans-serif;font-size:16px;font-weight:800;color:#0d1b2a;margin:0 0 6px}
+.benefit-card p{font-size:13px;color:#64748b;line-height:1.6;margin:0}
+
+.checklist-2col{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin:24px 0 32px;font-size:14px;font-weight:700;color:#1e293b}
+.check-item-line{display:flex;align-items:center;gap:8px}
+.check-item-line span{color:#0ea5e9;font-weight:900}
+
+.sidebar-cta-card{background:#14263b;border:1px solid rgba(255,255,255,.14);border-radius:18px;padding:24px;color:#fff;margin-bottom:20px}
+.sidebar-cta-card h3{font-family:'Plus Jakarta Sans',sans-serif;font-size:20px;font-weight:900;margin:0 0 6px}
+.sidebar-cta-card p{color:#94a3b8;font-size:13px;line-height:1.6;margin:0 0 18px}
+.green-trust-card{background:#ecfdf5;border:1px solid #a7f3d0;border-radius:18px;padding:20px;color:#065f46;margin-bottom:20px}
+.green-trust-card h4{font-family:'Plus Jakarta Sans',sans-serif;font-size:16px;font-weight:800;margin:0 0 6px;color:#047857}
+.green-trust-card p{font-size:13px;line-height:1.55;margin:0}
+
+.sidebar-related-box{background:#f8fafc;border:1px solid #e2e8f0;border-radius:18px;padding:22px;color:#0f172a}
+.sidebar-related-box h4{font-family:'Plus Jakarta Sans',sans-serif;font-size:17px;font-weight:800;color:#0d1b2a;margin:0 0 12px}
+.related-link{display:block;color:#0ea5e9;font-weight:700;font-size:14px;margin:8px 0;transition:.2s}
+.related-link:hover{color:#0284c7;transform:translateX(3px)}
+
+.process-step-card{background:#fff;border:1px solid #e2e8f0;border-radius:18px;padding:26px;box-shadow:0 10px 30px rgba(0,0,0,.03)}
+.process-step-card span{display:inline-block;width:38px;height:38px;border-radius:12px;background:#e0f2fe;color:#0284c7;font-weight:900;text-align:center;line-height:38px;font-size:16px;margin-bottom:14px}
+.process-step-card h3{font-family:'Plus Jakarta Sans',sans-serif;font-size:18px;font-weight:800;color:#0d1b2a;margin:0 0 8px}
+.process-step-card p{color:#64748b;font-size:13px;line-height:1.6;margin:0}
+
+.location-pills{display:flex;flex-wrap:wrap;align-items:center;justify-content:center;gap:12px;margin-top:20px}
+.loc-pill{padding:10px 20px;border-radius:999px;background:#fff;border:1px solid #cbd5e1;color:#0d1b2a;font-weight:700;font-size:14px;transition:.2s}
+.loc-pill:hover{border-color:#0ea5e9;color:#0ea5e9;transform:translateY(-2px)}
+
+/* FAQ & CONTACT */
+.faq-box-centered{background:#14263b;border:1px solid rgba(255,255,255,.1);border-radius:16px;padding:22px;margin-bottom:14px;max-width:860px;margin-left:auto;margin-right:auto;color:#fff}
+.faq-box-centered h4{font-family:'Plus Jakarta Sans',sans-serif;font-size:17px;font-weight:800;color:#38bdf8;margin:0 0 8px}
+.faq-box-centered p{color:#cbd5e1;font-size:14px;line-height:1.65;margin:0}
+
+.contact-main-grid{display:grid;grid-template-columns:1fr 420px;gap:40px;align-items:start}
+.contact-form-box{background:#fff;color:#0f172a;padding:40px;border-radius:20px;box-shadow:0 10px 40px rgba(0,0,0,.04);border:1px solid #e2e8f0}
+.contact-form-box h2{font-family:'Plus Jakarta Sans',sans-serif;font-size:26px;font-weight:900;color:#0d1b2a;margin:0 0 8px}
+.contact-form-box p{color:#64748b;font-size:14px;line-height:1.6;margin:0 0 24px}
+
+.form-grid-2{display:grid;grid-template-columns:1fr 1fr;gap:16px;margin-bottom:16px}
+.form-group-full{margin-bottom:16px}
+.form-label{display:block;font-size:13px;font-weight:700;color:#334155;margin-bottom:6px}
+.form-input{width:100%;padding:13px 16px;border-radius:12px;border:1px solid #cbd5e1;background:#f8fafc;color:#0f172a;font-size:14px;outline:none;transition:.2s}
+.form-input:focus{border-color:#0ea5e9;background:#fff;box-shadow:0 0 0 3px rgba(14,165,233,.18)}
+
+.contact-details-box{background:#0d1b2a;border:1px solid rgba(255,255,255,.14);border-radius:20px;padding:30px;color:#fff;margin-bottom:20px}
+.contact-details-box h3{font-family:'Plus Jakarta Sans',sans-serif;font-size:22px;font-weight:900;margin:0 0 20px;color:#fff}
+.detail-item{display:flex;align-items:flex-start;gap:14px;margin-bottom:18px}
+.detail-icon{width:36px;height:36px;border-radius:10px;background:rgba(14,165,233,.15);color:#38bdf8;display:grid;place-items:center;font-size:18px;flex-shrink:0}
+.detail-text label{display:block;font-size:11px;font-weight:800;letter-spacing:.1em;text-transform:uppercase;color:#64748b}
+.detail-text span{display:block;font-size:15px;font-weight:700;color:#fff;margin-top:2px}
+
+.hours-table{border-top:1px solid rgba(255,255,255,.1);padding-top:18px;margin-top:20px}
+.hours-table h4{font-family:'Plus Jakarta Sans',sans-serif;font-size:15px;font-weight:800;margin:0 0 12px;color:#cbd5e1}
+.hours-row{display:flex;align-items:center;justify-space:between;font-size:13px;color:#94a3b8;padding:6px 0}
+.hours-row b{color:#fff}
+.hours-row.highlight b{color:#f97316;font-weight:800}
+
 /* FOOTER */
 .footer-cta-banner{background:linear-gradient(135deg,#0ea5e9,#0284c7);color:#fff;padding:52px 0}
 .footer-cta-flex{display:flex;align-items:center;justify-space:space-between;gap:24px}
@@ -121,8 +187,8 @@ a{color:inherit;text-decoration:none}
 .footer-bottom-links a{color:#94a3b8;transition:.2s}.footer-bottom-links a:hover{color:#fff}
 
 .sticky-bar{position:fixed;bottom:20px;right:20px;z-index:90}
-@media(max-width:960px){.nav-links{display:none}.contact-main-grid,.story-grid,.grid-3,.grid-4,.dir-grid,.stats-grid{grid-template-columns:repeat(2,1fr)}.footer-grid,.footer-cta-flex{grid-template-columns:1fr;flex-direction:column;align-items:start}}
-@media(max-width:640px){.dir-grid,.grid-3,.grid-4,.stats-grid{grid-template-columns:1fr}.sticky-bar{left:16px;right:16px;bottom:16px}.btn-cta{width:100%}}
+@media(max-width:960px){.nav-links{display:none}.contact-main-grid,.service-main-grid,.story-grid,.grid-3,.grid-4,.dir-grid,.stats-grid{grid-template-columns:repeat(2,1fr)}.footer-grid,.footer-cta-flex{grid-template-columns:1fr;flex-direction:column;align-items:start}}
+@media(max-width:640px){.dir-grid,.grid-3,.grid-4,.stats-grid,.benefits-grid,.checklist-2col{grid-template-columns:1fr}.sticky-bar{left:16px;right:16px;bottom:16px}.btn-cta{width:100%}}
 `;
 
 function header(): string {
@@ -254,7 +320,268 @@ function mapEmbedHtml(query: string, height = 380): string {
   return `<div style="border-radius:18px;overflow:hidden;border:1px solid #e2e8f0;box-shadow:0 10px 30px rgba(0,0,0,.08);"><iframe width="100%" height="${height}" style="border:0;border-radius:18px;filter:contrast(1.05) brightness(0.95);" loading="lazy" allowfullscreen src="${mapUrl}"></iframe></div>`;
 }
 
-/* 1. STATE PAGE (1:1 REPLICA OF ALASKA.CANTREESERVICE.COM SCREENSHOT) */
+/* 1. NATIONAL SERVICE PAGE (1:1 COVINA INDIVIDUAL SERVICE PAGE REPLICA) */
+export function nationalServicePage(service: (typeof services)[number]) {
+  const canonical = `https://${DOMAIN}/services/${service.slug}/`;
+  const schema = {
+    "@context": "https://schema.org",
+    "@type": "Service",
+    name: service.name,
+    description: service.description,
+    provider: {
+      "@type": "LocalBusiness",
+      name: BRAND,
+      telephone: SITE.phone,
+      url: canonical
+    }
+  };
+
+  const body = `<main>
+  <!-- HERO SECTION -->
+  <section class="page-hero">
+    <div class="wrap">
+      <div class="crumb-trail"><a href="https://${DOMAIN}/">Home</a> / <a href="https://${DOMAIN}/services/">Services</a> / ${esc(service.name)}</div>
+      <span class="tag-badge" style="background:rgba(14,165,233,.18);color:#38bdf8;">📍 Certified Restoration Specialists</span>
+      <h1>${esc(service.name)} in <span>Pennsylvania &amp; USA</span></h1>
+      <p style="font-size:17px;line-height:1.7;color:#cbd5e1;max-width:760px;margin-bottom:26px;">${esc(service.description)} Our certified technicians handle thermal leak scanning, HEPA negative-pressure containment, and structural drying — including complete haul-away and lab clearance verification.</p>
+      <div style="display:flex;gap:14px;">
+        <a class="btn-cta" href="${PHONE_HREF}">📞 Call ${PHONE_DISPLAY}</a>
+        <a class="btn-glass-cyan" href="https://${DOMAIN}/contact-us/">Get Free Estimate</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- MAIN 2-COLUMN SECTION -->
+  <section class="sec-white" style="padding:60px 0 80px;">
+    <div class="wrap service-main-grid">
+      <!-- LEFT CONTENT COLUMN -->
+      <div class="service-content-box">
+        <h2>Expert ${esc(service.name)} Specialists</h2>
+        <p>When environmental leaks, moisture, or toxic black mold impact your property, expert response is vital. As master-certified restoration specialists in Pennsylvania, we diagnose moisture paths using FLIR thermal cameras, seal off affected rooms with negative-pressure HEPA containment, and restore your space safely.</p>
+        <p>Our certified technicians arrive equipped with industrial LGR desiccant dehumidifiers and hospital-grade botanical antimicrobials. Every step of our remediation process is fully documented for your insurance provider, ensuring zero out-of-pocket stress.</p>
+
+        <h3 style="font-family:'Plus Jakarta Sans',sans-serif;font-size:22px;font-weight:900;color:#0d1b2a;margin:32px 0 12px;">Benefits of Professional ${esc(service.name)}</h3>
+        <div class="benefits-grid">
+          <div class="benefit-card">
+            <div class="benefit-icon">💧</div>
+            <h4>Endless Pure Air &amp; Drying</h4>
+            <p>Complete moisture extraction preventing recurring mold growth and structural decay.</p>
+          </div>
+          <div class="benefit-card">
+            <div class="benefit-icon">💰</div>
+            <h4>Lower Restoration Costs</h4>
+            <p>Catching hidden leaks early saves thousands in major drywall and subfloor replacement.</p>
+          </div>
+          <div class="benefit-card">
+            <div class="benefit-icon">🛡️</div>
+            <h4>20-Year Protection</h4>
+            <p>Botanical antimicrobial barrier treatment protecting drywall, joists, and crawl spaces.</p>
+          </div>
+          <div class="benefit-card">
+            <div class="benefit-icon">📦</div>
+            <h4>Structural Space Recovery</h4>
+            <p>Compact industrial LGR desiccant drying frees up your living areas and basement safely.</p>
+          </div>
+        </div>
+
+        <h3 style="font-family:'Plus Jakarta Sans',sans-serif;font-size:22px;font-weight:900;color:#0d1b2a;margin:28px 0 12px;">Our ${esc(service.name)} Includes</h3>
+        <div class="checklist-2col">
+          <div class="check-item-line"><span>✔</span> In-home thermal moisture &amp; air assessment</div>
+          <div class="check-item-line"><span>✔</span> HEPA negative-pressure isolation containment</div>
+          <div class="check-item-line"><span>✔</span> Complete toxic spore removal &amp; sanitization</div>
+          <div class="check-item-line"><span>✔</span> Debris removal &amp; haul-away included</div>
+          <div class="check-item-line"><span>✔</span> Industrial LGR desiccant dehumidification</div>
+          <div class="check-item-line"><span>✔</span> Post-remediation lab air sample clearance</div>
+        </div>
+
+        <h3 style="font-family:'Plus Jakarta Sans',sans-serif;font-size:20px;font-weight:800;color:#0d1b2a;margin:28px 0 8px;">Restoration Equipment We Deploy</h3>
+        <p style="color:#64748b;font-size:14px;margin:0 0 16px;">FLIR Thermal Cameras, Phoenix LGR Dehumidifiers, DriEaz Air Movers, Abatement HEPA Filtration Units.</p>
+      </div>
+
+      <!-- RIGHT SIDEBAR -->
+      <div>
+        <div class="sidebar-cta-card">
+          <h3>Free ${esc(service.name)} Estimate</h3>
+          <p>Same-day inspection. Upfront flat-rate quote with no obligation.</p>
+          <a class="btn-cta" href="${PHONE_HREF}" style="width:100%;margin-bottom:10px;">📞 Call ${PHONE_DISPLAY}</a>
+          <a class="btn-glass-cyan" href="https://${DOMAIN}/contact-us/" style="width:100%;text-align:center;">Request a Quote</a>
+        </div>
+
+        <div class="green-trust-card">
+          <h4>Direct Insurance Billing Available</h4>
+          <p>We work directly with all major homeowners insurance carriers. Zero out-of-pocket stress.</p>
+        </div>
+
+        <div class="sidebar-related-box">
+          <h4>Related Services</h4>
+          <a class="related-link" href="https://${DOMAIN}/services/emergency-mold-remediation/">→ Emergency Mold Remediation</a>
+          <a class="related-link" href="https://${DOMAIN}/services/emergency-water-damage-restoration/">→ Water Damage Extraction</a>
+          <a class="related-link" href="https://${DOMAIN}/services/fire-damage-restoration-cleanup/">→ Fire Damage Restoration</a>
+          <a class="related-link" href="https://${DOMAIN}/services/" style="color:#0d1b2a;font-weight:800;margin-top:12px;">→ All Restoration Services</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 4-STEP PROCESS CARDS -->
+  <section class="sec-gray" style="padding:70px 0;">
+    <div class="wrap">
+      <div style="text-align:center;margin-bottom:44px;">
+        <h2 style="font-family:'Plus Jakarta Sans',sans-serif;font-size:32px;font-weight:900;color:#0d1b2a;margin:0;">Our ${esc(service.name)} Process</h2>
+      </div>
+      <div class="grid-4">
+        <div class="process-step-card">
+          <span>01</span>
+          <h3>Free Assessment</h3>
+          <p>Thermal camera moisture mapping to evaluate structural loss.</p>
+        </div>
+        <div class="process-step-card">
+          <span>02</span>
+          <h3>Upfront Quote</h3>
+          <p>Itemized flat-rate estimate you approve before work begins.</p>
+        </div>
+        <div class="process-step-card">
+          <span>03</span>
+          <h3>Rapid Service</h3>
+          <p>HEPA air containment, extraction, and drying completed same-day.</p>
+        </div>
+        <div class="process-step-card">
+          <span>04</span>
+          <h3>Test &amp; Walkthrough</h3>
+          <p>Post-remediation lab air sample verification demonstrating clean air.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- SERVING LOCATIONS -->
+  <section class="sec-white" style="padding:60px 0;">
+    <div class="wrap" style="text-align:center;">
+      <h3 style="font-family:'Plus Jakarta Sans',sans-serif;font-size:24px;font-weight:900;color:#0d1b2a;margin:0 0 8px;">${esc(service.name)} Across Pennsylvania</h3>
+      <p style="color:#64748b;font-size:14px;margin:0 0 18px;">Serving homeowners throughout Pennsylvania and surrounding communities.</p>
+      <div class="location-pills">
+        <a class="loc-pill" href="https://pennsylvania.${DOMAIN}/">Pennsylvania</a>
+        <a class="loc-pill" href="https://texas.${DOMAIN}/">Texas</a>
+        <a class="loc-pill" href="https://florida.${DOMAIN}/">Florida</a>
+        <a class="loc-pill" href="https://california.${DOMAIN}/">California</a>
+        <a class="loc-pill" href="https://${DOMAIN}/areas-we-serve/" style="background:#0ea5e9;color:#fff;border-color:#0ea5e9;">All Service Areas →</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- FAQS SECTION -->
+  <section class="sec-dark" style="padding:70px 0;">
+    <div class="wrap">
+      <div style="text-align:center;margin-bottom:36px;">
+        <h2 style="font-family:'Plus Jakarta Sans',sans-serif;font-size:32px;font-weight:900;color:#fff;margin:0;">${esc(service.name)} FAQs</h2>
+      </div>
+      <div class="faq-box-centered">
+        <h4>How much does ${esc(service.name)} cost in Pennsylvania?</h4>
+        <p>Restoration costs depend on square footage and moisture levels. We offer free assessments and transparent flat-rate quotes.</p>
+      </div>
+      <div class="faq-box-centered">
+        <h4>Is professional ${esc(service.name)} worth it?</h4>
+        <p>Absolutely. Professional HEPA containment and thermal drying eliminates hidden toxic spores that cause permanent structural rot.</p>
+      </div>
+      <div class="faq-box-centered">
+        <h4>Can you bill my homeowners insurance directly?</h4>
+        <p>Yes! We work directly with all major insurance carriers and provide detailed Xactimate claims documentation.</p>
+      </div>
+    </div>
+  </section>
+  </main>`;
+
+  return shell(`${service.name} | 24/7 Emergency Service | ${BRAND}`, service.description, canonical, body, schema);
+}
+
+/* 2. LOCAL SERVICE PAGE (CITY SUBDOMAIN INDIVIDUAL SERVICE PAGE) */
+export function localServicePage(state: StateItem, city: [string, string], service: (typeof services)[number], host: string) {
+  const [, cityName] = city;
+  const canonical = `https://${host}/${service.slug}/`;
+  const schema = {
+    "@context": "https://schema.org",
+    "@type": "Service",
+    name: `${service.name} in ${cityName}, ${state.name}`,
+    description: service.description,
+    provider: {
+      "@type": "LocalBusiness",
+      name: `${BRAND} - ${cityName}`,
+      telephone: SITE.phone,
+      url: canonical
+    }
+  };
+
+  const body = `<main>
+  <section class="page-hero">
+    <div class="wrap">
+      <div class="crumb-trail"><a href="https://${state.slug}.${DOMAIN}/">${esc(state.name)}</a> / <a href="https://${host}/">${esc(cityName)}</a> / ${esc(service.name)}</div>
+      <span class="tag-badge" style="background:rgba(14,165,233,.18);color:#38bdf8;">📍 Local ${esc(cityName)} Dispatch</span>
+      <h1>${esc(service.name)} in <span>${esc(cityName)}, ${esc(state.name)}</span></h1>
+      <p style="font-size:17px;line-height:1.7;color:#cbd5e1;max-width:760px;margin-bottom:26px;">${esc(service.description)} Local 24/7 emergency dispatch crews stationed directly in ${esc(cityName)} for rapid 30-minute arrival.</p>
+      <div style="display:flex;gap:14px;">
+        <a class="btn-cta" href="${PHONE_HREF}">📞 Call ${PHONE_DISPLAY}</a>
+        <a class="btn-glass-cyan" href="https://${DOMAIN}/contact-us/">Free Estimate</a>
+      </div>
+    </div>
+  </section>
+
+  <section class="sec-white" style="padding:60px 0 80px;">
+    <div class="wrap service-main-grid">
+      <div class="service-content-box">
+        <h2>Local ${esc(service.name)} Services in ${esc(cityName)}</h2>
+        <p>Our certified restoration specialists operate 24/7 throughout <b>${esc(cityName)}</b>. Whether you are dealing with a burst pipe in your basement or toxic black mold inside drywall, our team arrives in 30 minutes with high-tech FLIR thermal moisture cameras and HEPA air scrubbers.</p>
+
+        <h3 style="font-family:'Plus Jakarta Sans',sans-serif;font-size:22px;font-weight:900;color:#0d1b2a;margin:28px 0 12px;">Benefits of Local ${esc(service.name)}</h3>
+        <div class="benefits-grid">
+          <div class="benefit-card"><div class="benefit-icon">💧</div><h4>Endless Pure Air</h4><p>Complete spore elimination and moisture extraction.</p></div>
+          <div class="benefit-card"><div class="benefit-icon">💰</div><h4>Lower Repair Bills</h4><p>Thermal camera detection prevents structural rot.</p></div>
+          <div class="benefit-card"><div class="benefit-icon">🛡️</div><h4>20-Year Protection</h4><p>Botanical antimicrobial barrier treatment for walls and joists.</p></div>
+          <div class="benefit-card"><div class="benefit-icon">📦</div><h4>Space Recovery</h4><p>Compact LGR desiccant drying frees up your living area.</p></div>
+        </div>
+
+        <h3 style="font-family:'Plus Jakarta Sans',sans-serif;font-size:20px;font-weight:900;color:#0d1b2a;margin:24px 0 12px;">4-Step Restoration Protocol for ${esc(cityName)} Properties</h3>
+        <div class="checklist-2col">
+          <div class="check-item-line"><span>✔</span> Rapid 30-min arrival in ${esc(cityName)}</div>
+          <div class="check-item-line"><span>✔</span> Infrared moisture leak detection</div>
+          <div class="check-item-line"><span>✔</span> Negative-pressure HEPA isolation</div>
+          <div class="check-item-line"><span>✔</span> Hospital-grade sanitization</div>
+          <div class="check-item-line"><span>✔</span> LGR desiccant dehumidification</div>
+          <div class="check-item-line"><span>✔</span> Direct insurance claim billing</div>
+        </div>
+      </div>
+
+      <div>
+        <div class="sidebar-cta-card">
+          <h3>${esc(cityName)} Emergency Dispatch</h3>
+          <p>Same-day appointments available in ${esc(cityName)}.</p>
+          <a class="btn-cta" href="${PHONE_HREF}" style="width:100%;margin-bottom:10px;">📞 Call ${PHONE_DISPLAY}</a>
+          <a class="btn-glass-cyan" href="https://${DOMAIN}/contact-us/" style="width:100%;text-align:center;">Request a Quote</a>
+        </div>
+        ${mapEmbedHtml(`${cityName}, ${state.name}`, 280)}
+      </div>
+    </div>
+  </section>
+
+  <!-- 4-STEP PROCESS CARDS -->
+  <section class="sec-gray" style="padding:70px 0;">
+    <div class="wrap">
+      <div style="text-align:center;margin-bottom:44px;">
+        <h2 style="font-family:'Plus Jakarta Sans',sans-serif;font-size:32px;font-weight:900;color:#0d1b2a;margin:0;">Our ${esc(service.name)} Process</h2>
+      </div>
+      <div class="grid-4">
+        <div class="process-step-card"><span>01</span><h3>Free Inspection</h3><p>Infrared thermal moisture scanning.</p></div>
+        <div class="process-step-card"><span>02</span><h3>Upfront Quote</h3><p>Flat-rate estimate approved before work.</p></div>
+        <div class="process-step-card"><span>03</span><h3>Rapid Drying</h3><p>HEPA air scrubbing and LGR desiccant drying.</p></div>
+        <div class="process-step-card"><span>04</span><h3>Lab Clearance</h3><p>Post-remediation lab air sample test.</p></div>
+      </div>
+    </div>
+  </section>
+  </main>`;
+
+  return shell(`${service.name} in ${cityName}, ${state.name} | ${BRAND}`, service.description, canonical, body, schema);
+}
+
+/* 3. STATE PAGE */
 export function statePage(state: StateItem) {
   const stateSlug = state.slug || state.code.toLowerCase();
   const canonical = `https://${stateSlug}.${DOMAIN}/`;
@@ -282,7 +609,6 @@ export function statePage(state: StateItem) {
   `).join("");
 
   const body = `<main>
-  <!-- 1. HERO SECTION WITH LEAD FORM CARD -->
   <section class="page-hero">
     <div class="wrap" style="display:grid;grid-template-columns:1fr 360px;gap:44px;align-items:start;">
       <div>
@@ -308,7 +634,6 @@ export function statePage(state: StateItem) {
         </div>
       </div>
 
-      <!-- RIGHT SIDE LEAD FORM CARD -->
       <div>
         <div style="background:#fff;border-radius:20px;padding:28px;box-shadow:0 24px 60px rgba(0,0,0,.5);color:#0f172a;">
           <h2 style="font-family:'Plus Jakarta Sans',sans-serif;font-size:22px;font-weight:900;margin:0 0 6px;color:#0d1b2a;">Request Free Estimate</h2>
@@ -316,15 +641,6 @@ export function statePage(state: StateItem) {
           <form action="${PHONE_HREF}" method="GET">
             <div style="margin-bottom:12px;"><input type="text" placeholder="Full name *" required style="width:100%;padding:12px 14px;border-radius:10px;border:1px solid #cbd5e1;background:#f8fafc;font-size:14px;"></div>
             <div style="margin-bottom:12px;"><input type="tel" placeholder="Phone number *" required style="width:100%;padding:12px 14px;border-radius:10px;border:1px solid #cbd5e1;background:#f8fafc;font-size:14px;"></div>
-            <div style="margin-bottom:12px;">
-              <select style="width:100%;padding:12px 14px;border-radius:10px;border:1px solid #cbd5e1;background:#f8fafc;font-size:14px;" required>
-                <option value="">Select service...</option>
-                <option>Black Mold Removal</option>
-                <option>Water Damage Extraction</option>
-                <option>Fire Damage Cleanup</option>
-                <option>Dehumidification &amp; Drying</option>
-              </select>
-            </div>
             <button type="submit" class="btn-cta" style="width:100%;min-height:50px;font-size:16px;">Get Estimate Now →</button>
           </form>
         </div>
@@ -332,126 +648,15 @@ export function statePage(state: StateItem) {
     </div>
   </section>
 
-  <!-- 2. STATS COUNTER BAR -->
-  <section class="stats-bar">
-    <div class="wrap">
-      <div class="stats-grid">
-        <div class="stat-item"><h3>50</h3><p>States Covered</p></div>
-        <div class="stat-item"><h3>60+</h3><p>Cities in ${esc(state.name)}</p></div>
-        <div class="stat-item"><h3>01s</h3><p>Dispatch Time</p></div>
-        <div class="stat-item"><h3>4.9★</h3><p>18,000+ Reviews</p></div>
-      </div>
-    </div>
-  </section>
-
-  <!-- 3. SELECT YOUR CITY IN STATE (4-COLUMN CITIES DIRECTORY GRID) -->
-  <section class="sec-gray" style="padding:70px 0;">
-    <div class="wrap">
-      <div style="text-align:center;margin-bottom:40px;">
-        <span class="tag-badge">CITIES DIRECTORY</span>
-        <h2 class="sec-title" style="color:#0d1b2a;">Select Your City in ${esc(state.name)}</h2>
-        <p style="color:#64748b;font-size:15px;margin:0;">Select your local city to view 24/7 emergency dispatch phone numbers, local technician arrival times, and services.</p>
-      </div>
-      <div class="dir-grid">${cityDirectoryHtml}</div>
-    </div>
-  </section>
-
-  <!-- 4. ALL 70 WATER & MOLD SERVICES IN STATE (FULL 3-COLUMN GRID) -->
-  <section class="sec-white" style="padding:70px 0;">
-    <div class="wrap">
-      <div style="display:flex;align-items:center;justify-space:space-between;margin-bottom:44px;">
-        <div>
-          <span class="tag-badge">SERVICES DIRECTORY</span>
-          <h2 class="sec-title" style="color:#0d1b2a;margin:0;">All 70 Water &amp; Mold Services in ${esc(state.name)}</h2>
-          <p style="color:#64748b;font-size:15px;margin:6px 0 0;">Explore all 70 specialized restoration topics available across ${esc(state.name)}.</p>
-        </div>
-        <a href="https://${DOMAIN}/services/" class="btn-cta" style="padding:10px 20px;font-size:14px;">View Services →</a>
-      </div>
-      <div class="grid-3">${stateServicesCards}</div>
-    </div>
-  </section>
-
-  <!-- 5. STATE COVERAGE MAP SECTION -->
-  <section class="sec-gray" style="padding:70px 0;">
-    <div class="wrap story-grid">
-      <div>
-        <span class="tag-badge">COVERAGE MAP</span>
-        <h2 class="sec-title" style="color:#0d1b2a;">24/7 State Coverage Across ${esc(state.name)}</h2>
-        <p style="color:#475569;font-size:15px;line-height:1.75;">Our certified mobile dispatch network provides 24-hour coverage across all major population centers, counties, and rural areas in ${esc(state.name)}. Equipped with high-powered LGR dehumidifiers and FLIR thermal cameras, we restore damaged properties fast.</p>
-        <div style="display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-top:20px;font-weight:700;color:#0d1b2a;font-size:14px;">
-          <div><span style="color:#0ea5e9;font-weight:900;">✔</span> Rapid Statewide Dispatch</div>
-          <div><span style="color:#0ea5e9;font-weight:900;">✔</span> Master Certified Technicians</div>
-          <div><span style="color:#0ea5e9;font-weight:900;">✔</span> Direct Insurance Claims Billing</div>
-          <div><span style="color:#0ea5e9;font-weight:900;">✔</span> 100% Upfront Quotes</div>
-        </div>
-      </div>
-      <div>
-        ${mapEmbedHtml(`${state.name}, USA`, 380)}
-      </div>
-    </div>
-  </section>
-
-  <!-- 6. WHAT STATE PROPERTY OWNERS ARE SAYING (TESTIMONIALS) -->
-  <section class="sec-white" style="padding:60px 0;">
-    <div class="wrap">
-      <div style="text-align:center;margin-bottom:36px;">
-        <span class="tag-badge">REVIEWS</span>
-        <h2 class="sec-title" style="color:#0d1b2a;">What ${esc(state.name)} Property Owners Are Saying</h2>
-      </div>
-      <div class="grid-3">
-        <div class="testimonial-card">
-          <div class="testimonial-stars">★★★★★</div>
-          <p class="testimonial-text">"Prompt and professional service in ${esc(state.name)}. They arrived quickly, isolated the mold, and guided us through the insurance claim."</p>
-          <div class="testimonial-author">- Property Owner in ${esc(state.name)}</div>
-        </div>
-        <div class="testimonial-card">
-          <div class="testimonial-stars">★★★★★</div>
-          <p class="testimonial-text">"Thermal camera inspection identified hidden moisture under our subfloors after heavy rain. Fantastic team!"</p>
-          <div class="testimonial-author">- Homeowner in ${esc(state.name)}</div>
-        </div>
-        <div class="testimonial-card">
-          <div class="testimonial-stars">★★★★★</div>
-          <p class="testimonial-text">"Fair flat-rate pricing and immaculate work. Their HEPA air scrubbers completely eliminated the toxic mold odors."</p>
-          <div class="testimonial-author">- Commercial Manager in ${esc(state.name)}</div>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- 7. PROPERTY SECTORS SERVED IN STATE -->
-  <section class="sec-gray" style="padding:60px 0;">
-    <div class="wrap">
-      <div style="text-align:center;margin-bottom:36px;">
-        <span class="tag-badge">SECTORS SERVED</span>
-        <h2 class="sec-title" style="color:#0d1b2a;">Property Sectors Served In ${esc(state.name)}</h2>
-      </div>
-      <div class="grid-4">
-        <div class="sector-card"><span class="sector-icon">🏡</span><h4>Residential Homes</h4><p>Single-family homes &amp; apartments.</p></div>
-        <div class="sector-card"><span class="sector-icon">🏢</span><h4>Commercial Buildings</h4><p>Offices, retail &amp; restaurants.</p></div>
-        <div class="sector-card"><span class="sector-icon">🏫</span><h4>Industrial Facilities</h4><p>Warehouses &amp; factories.</p></div>
-        <div class="sector-card"><span class="sector-icon">🏛️</span><h4>Municipal &amp; Public</h4><p>Schools &amp; public buildings.</p></div>
-      </div>
-    </div>
-  </section>
-
-  <!-- 8. CYAN EMERGENCY DISPATCH BANNER -->
-  <section class="footer-cta-banner">
-    <div class="wrap footer-cta-flex">
-      <div>
-        <h2>Need Emergency Cleanup in ${esc(state.name)}? Call Us Right Today.</h2>
-        <p>Our 24/7 dispatch team across ${esc(state.name)} is standing by for rapid arrival.</p>
-      </div>
-      <div class="footer-cta-btns">
-        <a class="btn-dark-navy" href="${PHONE_HREF}">📞 Call ${PHONE_DISPLAY}</a>
-      </div>
-    </div>
-  </section>
+  <section class="stats-bar"><div class="wrap"><div class="stats-grid"><div class="stat-item"><h3>50</h3><p>States Covered</p></div><div class="stat-item"><h3>60+</h3><p>Cities in ${esc(state.name)}</p></div><div class="stat-item"><h3>01s</h3><p>Dispatch Time</p></div><div class="stat-item"><h3>4.9★</h3><p>18,000+ Reviews</p></div></div></div></section>
+  <section class="sec-gray" style="padding:70px 0;"><div class="wrap"><div style="text-align:center;margin-bottom:40px;"><span class="tag-badge">CITIES DIRECTORY</span><h2 class="sec-title" style="color:#0d1b2a;">Select Your City in ${esc(state.name)}</h2></div><div class="dir-grid">${cityDirectoryHtml}</div></div></section>
+  <section class="sec-white" style="padding:70px 0;"><div class="wrap"><div style="display:flex;align-items:center;justify-space:space-between;margin-bottom:44px;"><div><span class="tag-badge">SERVICES DIRECTORY</span><h2 class="sec-title" style="color:#0d1b2a;margin:0;">All 70 Water &amp; Mold Services in ${esc(state.name)}</h2></div><a href="https://${DOMAIN}/services/" class="btn-cta">View Services →</a></div><div class="grid-3">${stateServicesCards}</div></div></section>
   </main>`;
 
-  return shell(`Water &amp; Mold Restoration Services across ${state.name} | ${BRAND}`, `24/7 emergency mold inspection, water damage extraction, and fire restoration across ${state.name}.`, canonical, body, schema);
+  return shell(`Water &amp; Mold Restoration Services across ${state.name} | ${BRAND}`, `24/7 emergency mold inspection across ${state.name}.`, canonical, body, schema);
 }
 
-/* CITY PAGE */
+/* 4. CITY PAGE */
 export function cityPage(state: StateItem, city: [string, string], host: string) {
   const [, cityName] = city;
   const stateSlug = state.slug || state.code.toLowerCase();
@@ -514,7 +719,7 @@ export function cityPage(state: StateItem, city: [string, string], host: string)
   return shell(`24/7 Water &amp; Mold Restoration in ${cityName}, ${state.name} | ${BRAND}`, `24/7 local water damage extraction, mold remediation &amp; fire cleanup in ${cityName}, ${state.name}.`, canonical, body, schema);
 }
 
-/* HOMEPAGE */
+/* 5. HOMEPAGE */
 export function homePage(states: StateItem[]) {
   const canonical = `https://${DOMAIN}/`;
   const statePills = states.map(s => `<a class="dir-card-white" href="https://${s.slug}.${DOMAIN}/"><span>📍 ${esc(s.name)}</span></a>`).join("");
@@ -567,21 +772,8 @@ export function aboutUsPage() {
 
 export function contactUsPage() {
   const canonical = `https://${DOMAIN}/contact-us/`;
-  const body = `<main><section class="page-hero"><div class="wrap"><h1>Get In Touch for <span>Fast Service</span></h1></div></section></main>`;
+  const body = `<main><section class="page-hero"><div class="wrap"><h1>Get In Touch for <span>Fast Service</span></h1></div></section>`;
   return shell(`Contact Us | ${BRAND}`, "Contact us.", canonical, body);
-}
-
-export function nationalServicePage(service: (typeof services)[number]) {
-  const canonical = `https://${DOMAIN}/services/${service.slug}/`;
-  const body = `<main><section class="page-hero"><div class="wrap"><h1>24/7 <span>${esc(service.name)}</span></h1></div></section></main>`;
-  return shell(`${service.name} | ${BRAND}`, service.description, canonical, body);
-}
-
-export function localServicePage(state: StateItem, city: [string, string], service: (typeof services)[number], host: string) {
-  const [, cityName] = city;
-  const canonical = `https://${host}/${service.slug}/`;
-  const body = `<main><section class="page-hero"><div class="wrap"><h1>${esc(service.name)} in <span>${esc(cityName)}, ${esc(state.name)}</span></h1></div></section>`;
-  return shell(`${service.name} in ${cityName}, ${state.name} | ${BRAND}`, service.description, canonical, body);
 }
 
 export function areasWeServePage(states: StateItem[]) {
