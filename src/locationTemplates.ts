@@ -665,7 +665,93 @@ export function homePage(states: StateItem[]) {
   const canonical = `https://${DOMAIN}/`;
   const statePills = states.map(s => `<a class="dir-card-white" href="https://${s.slug}.${DOMAIN}/"><span>📍 ${esc(s.name)}</span></a>`).join("");
   const topServicesCards = services.slice(0, 6).map(s => `<div class="service-hub-card"><div><div class="service-hub-icon">💧</div><h3>${esc(s.name)}</h3><p>${esc(s.description)}</p></div><a href="https://${DOMAIN}/services/${s.slug}/">Read More →</a></div>`).join("");
-  const body = `<main><section class="page-hero"><div class="wrap"><h1>Emergency Water &amp; Mold Restoration <span>Pennsylvania</span></h1></div></section><section class="sec-gray"><div class="wrap"><div class="grid-3">${topServicesCards}</div></div></section><section class="sec-white"><div class="wrap"><div class="dir-grid">${statePills}</div></div></section></main>`;
+
+  const blogCardsHtml = (articles as any[]).slice(0, 3).map((art) => `
+    <div class="blog-card">
+      <img src="${art.image}" alt="${esc(art.title)}" class="blog-card-img">
+      <div class="blog-card-body">
+        <div>
+          <div class="blog-date">${art.date} · By ${esc(art.author)}</div>
+          <h3>${esc(art.title)}</h3>
+          <p>${esc(art.excerpt)}</p>
+        </div>
+        <a href="https://${DOMAIN}/articles/${art.slug}/">Read Master Guide →</a>
+      </div>
+    </div>
+  `).join("");
+
+  const body = `<main>
+  <section class="page-hero">
+    <div class="wrap" style="display:grid;grid-template-columns:1fr 380px;gap:44px;align-items:start;">
+      <div>
+        <span class="tag-badge" style="background:rgba(14,165,233,.18);color:#38bdf8;">24/7 NATIONWIDE EMERGENCY DISPATCH</span>
+        <h1 style="font-family:'Plus Jakarta Sans',sans-serif;font-size:clamp(38px,5vw,56px);font-weight:900;color:#fff;line-height:1.1;margin:16px 0 14px;">
+          Emergency Water &amp; Mold Restoration <span style="color:#38bdf8;">Pennsylvania &amp; USA</span>
+        </h1>
+        <p style="font-size:16px;line-height:1.7;color:#cbd5e1;margin-bottom:24px;">Certified environmental specialists providing 24/7 emergency water extraction, toxic black mold remediation, and fire restoration across all 50 US states.</p>
+        <div style="display:flex;gap:14px;"><a class="btn-cta" href="${PHONE_HREF}">📞 Call ${PHONE_DISPLAY}</a><a class="btn-glass-cyan" href="https://${DOMAIN}/contact-us/">Request Free Quote</a></div>
+      </div>
+      <div>
+        <div class="white-form-card">
+          <h3>Request Free Quote</h3>
+          <p>Get best estimate for 24/7 certified restoration</p>
+          <form action="${PHONE_HREF}" method="GET">
+            <div style="margin-bottom:12px;"><input type="text" placeholder="Your Full Name *" required style="width:100%;padding:12px 14px;border-radius:10px;border:1px solid #cbd5e1;background:#f8fafc;font-size:14px;"></div>
+            <div style="margin-bottom:12px;"><input type="tel" placeholder="Phone Number *" required style="width:100%;padding:12px 14px;border-radius:10px;border:1px solid #cbd5e1;background:#f8fafc;font-size:14px;"></div>
+            <button type="submit" class="btn-cta" style="width:100%;min-height:50px;">Get Estimate Now →</button>
+          </form>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- STATS COUNTER BAR -->
+  <section class="stats-bar">
+    <div class="wrap stats-grid">
+      <div class="stat-item"><h3>50 States</h3><p>Nationwide Coverage</p></div>
+      <div class="stat-item"><h3>30,900+</h3><p>Cities Served</p></div>
+      <div class="stat-item"><h3>30 Mins</h3><p>Emergency Dispatch</p></div>
+      <div class="stat-item"><h3>4.9 ★</h3><p>18,000+ Verified Reviews</p></div>
+    </div>
+  </section>
+
+  <section class="sec-gray" style="padding:70px 0;">
+    <div class="wrap">
+      <div style="text-align:center;margin-bottom:44px;">
+        <span class="tag-badge">OUR SERVICES</span>
+        <h2 class="sec-title" style="color:#0d1b2a;">Certified Water, Fire &amp; Mold Services</h2>
+      </div>
+      <div class="grid-3">${topServicesCards}</div>
+      <div style="text-align:center;margin-top:36px;"><a href="https://${DOMAIN}/services/" class="btn-cta">View All 70 Services →</a></div>
+    </div>
+  </section>
+
+  <!-- FROM OUR BLOG / ARTICLES SECTION -->
+  <section class="sec-white" style="padding:70px 0;">
+    <div class="wrap">
+      <div style="text-align:center;margin-bottom:44px;">
+        <span class="tag-badge">FROM OUR BLOG</span>
+        <h2 class="sec-title" style="color:#0d1b2a;">Water Damage Restoration Tips &amp; Resources</h2>
+        <p style="color:#64748b;font-size:15px;max-width:680px;margin:10px auto 0;">Expert water damage restoration advice, technical guides, and insights from ${BRAND} specialists.</p>
+      </div>
+      <div class="grid-3">${blogCardsHtml}</div>
+      <div style="text-align:center;margin-top:40px;">
+        <a href="https://${DOMAIN}/articles/" class="btn-dark-navy" style="font-size:16px;padding:16px 32px;">Explore All 30 Technical Master Articles →</a>
+      </div>
+    </div>
+  </section>
+
+  <section class="sec-gray" style="padding:70px 0;">
+    <div class="wrap">
+      <div style="text-align:center;margin-bottom:44px;">
+        <span class="tag-badge">SERVICE AREAS</span>
+        <h2 class="sec-title" style="color:#0d1b2a;">Explore All 50 US States</h2>
+      </div>
+      <div class="dir-grid">${statePills}</div>
+    </div>
+  </section>
+  </main>`;
+
   return shell(`${BRAND} | 24/7 Water, Fire & Mold Restoration`, `Pennsylvania &amp; USA nationwide 24/7 emergency water damage restoration across all 50 US states.`, canonical, body);
 }
 
