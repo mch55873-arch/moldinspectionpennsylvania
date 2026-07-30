@@ -91,6 +91,15 @@ a{color:inherit;text-decoration:none}
 .service-hub-card p{color:#64748b;font-size:14px;line-height:1.6;margin:0 0 16px}
 .service-hub-card a{color:#0ea5e9;font-weight:800;font-size:14px}
 
+.blog-card{background:#fff;border:1px solid #e2e8f0;border-radius:18px;overflow:hidden;box-shadow:0 8px 24px rgba(0,0,0,.03);transition:.25s;display:flex;flex-direction:column;justify-space:space-between}
+.blog-card:hover{transform:translateY(-5px);border-color:#0ea5e9;box-shadow:0 16px 36px rgba(14,165,233,.12)}
+.blog-card-img{width:100%;height:190px;object-fit:cover}
+.blog-card-body{padding:22px;display:flex;flex-direction:column;flex-grow:1;justify-space:between}
+.blog-date{font-size:12px;font-weight:700;color:#94a3b8;margin-bottom:8px}
+.blog-card-body h3{font-family:'Plus Jakarta Sans',sans-serif;font-size:17px;font-weight:800;color:#0d1b2a;line-height:1.35;margin:0 0 10px}
+.blog-card-body p{color:#64748b;font-size:13px;line-height:1.6;margin:0 0 16px}
+.blog-card-body a{color:#0ea5e9;font-weight:800;font-size:13px;display:inline-flex;align-items:center;gap:4px}
+
 .service-main-grid{display:grid;grid-template-columns:1fr 380px;gap:44px;align-items:start}
 .service-content-box{background:#fff;color:#0f172a;padding:40px;border-radius:20px;box-shadow:0 10px 40px rgba(0,0,0,.04);border:1px solid #e2e8f0}
 .service-content-box h2{font-family:'Plus Jakarta Sans',sans-serif;font-size:28px;font-weight:900;color:#0d1b2a;margin:0 0 16px;letter-spacing:-.02em}
@@ -261,7 +270,113 @@ function shell(title: string, description: string, canonical: string, body: stri
   return `<!doctype html><html lang="en-US"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>${esc(title)}</title><meta name="description" content="${esc(description)}"><link rel="canonical" href="${canonical}"><meta name="robots" content="index,follow"><meta property="og:title" content="${esc(title)}"><meta property="og:description" content="${esc(description)}"><meta property="og:url" content="${canonical}"><style>${CSS}</style>${jsonLd}</head><body>${header()}${body}${footer()}</body></html>`;
 }
 
-/* 1. LOCAL SERVICE PAGE (1:1 RICH REPLICA WITH ALL WARNING CARDS, CHECKLISTS, FAQS & FULL RICH CONTENT) */
+/* 1. ARTICLES HUB PAGE */
+export function articlesHubPage() {
+  const canonical = `https://${DOMAIN}/articles/`;
+  const blogCardsHtml = (articles as any[]).map((art) => `
+    <div class="blog-card">
+      <img src="${art.image}" alt="${esc(art.title)}" class="blog-card-img">
+      <div class="blog-card-body">
+        <div>
+          <div class="blog-date">${art.date} · By ${esc(art.author)}</div>
+          <h3>${esc(art.title)}</h3>
+          <p>${esc(art.excerpt)}</p>
+        </div>
+        <a href="https://${DOMAIN}/articles/${art.slug}/">Read Master Guide →</a>
+      </div>
+    </div>
+  `).join("");
+
+  const body = `<main>
+  <section class="page-hero">
+    <div class="wrap">
+      <div class="crumb-trail"><a href="https://${DOMAIN}/">Home</a> / Guides &amp; Articles</div>
+      <span class="tag-badge" style="background:rgba(14,165,233,.18);color:#38bdf8;">TECHNICAL RESTORATION GUIDES</span>
+      <h1>Environmental &amp; Water Restoration <span style="color:#38bdf8;">Knowledge Base</span></h1>
+      <p style="font-size:16px;line-height:1.7;color:#cbd5e1;max-width:780px;">In-depth technical guides, IICRC standards, mold spore safety protocols, and insurance claim navigation written by certified environmental specialists.</p>
+    </div>
+  </section>
+
+  <section class="sec-gray" style="padding:70px 0;">
+    <div class="wrap">
+      <div class="grid-3">${blogCardsHtml}</div>
+    </div>
+  </section>
+  </main>`;
+
+  return shell(`Restoration Knowledge Base &amp; Technical Guides | ${BRAND}`, "In-depth technical guides on mold remediation, water damage extraction, HEPA air containment, and insurance claims.", canonical, body);
+}
+
+/* 2. INDIVIDUAL ARTICLE PAGE (1,500 - 2,500 WORDS DETAILED TECHNICAL CONTENT) */
+export function articlePage(article: any) {
+  const canonical = `https://${DOMAIN}/articles/${article.slug}/`;
+  const schema = {
+    "@context": "https://schema.org",
+    "@type": "Article",
+    headline: article.title,
+    description: article.excerpt,
+    author: { "@type": "Person", name: article.author },
+    publisher: { "@type": "Organization", name: BRAND }
+  };
+
+  const body = `<main>
+  <!-- HERO SECTION -->
+  <section class="page-hero">
+    <div class="wrap">
+      <div class="crumb-trail"><a href="https://${DOMAIN}/">Home</a> / <a href="https://${DOMAIN}/articles/">Articles</a> / ${esc(article.title)}</div>
+      <span class="tag-badge" style="background:rgba(14,165,233,.18);color:#38bdf8;">TECHNICAL GUIDE · 12 MIN READ</span>
+      <h1 style="font-family:'Plus Jakarta Sans',sans-serif;font-size:clamp(32px,4vw,48px);font-weight:900;color:#fff;line-height:1.15;margin:12px 0 16px;">
+        ${esc(article.title)}
+      </h1>
+      <p style="font-size:15px;color:#cbd5e1;">Published: ${article.date} | Author: <b>${esc(article.author)}</b></p>
+    </div>
+  </section>
+
+  <!-- MAIN ARTICLE CONTENT SECTION -->
+  <section class="sec-white" style="padding:70px 0;">
+    <div class="wrap service-main-grid">
+      <!-- LEFT CONTENT COLUMN -->
+      <div class="service-content-box">
+        <img src="${article.image}" alt="${esc(article.title)}" style="width:100%;height:380px;object-fit:cover;border-radius:16px;margin-bottom:32px;border:1px solid #e2e8f0;">
+        <div style="font-size:16px;line-height:1.8;color:#334155;">
+          ${article.content}
+        </div>
+
+        <div style="background:#f0f9ff;border-left:4px solid #0ea5e9;padding:24px;border-radius:12px;margin:40px 0 24px;">
+          <h4 style="font-family:'Plus Jakarta Sans',sans-serif;font-size:18px;font-weight:800;color:#0d1b2a;margin:0 0 8px;">Need Emergency Mold or Water Extraction Service?</h4>
+          <p style="font-size:14px;color:#475569;margin:0 0 16px;">Our certified mobile restoration dispatch units operate 24/7 across all 50 US states with a 30-minute target arrival guarantee.</p>
+          <a class="btn-cta" href="${PHONE_HREF}">📞 Call Dispatch ${PHONE_DISPLAY}</a>
+        </div>
+      </div>
+
+      <!-- RIGHT SIDEBAR -->
+      <div>
+        <div class="white-form-card">
+          <h3>Request Free Estimate</h3>
+          <p>Speak to a certified restoration specialist now</p>
+          <form action="${PHONE_HREF}" method="GET">
+            <div style="margin-bottom:12px;"><input type="text" placeholder="Your Full Name *" required style="width:100%;padding:12px 14px;border-radius:10px;border:1px solid #cbd5e1;background:#f8fafc;font-size:14px;"></div>
+            <div style="margin-bottom:12px;"><input type="tel" placeholder="Phone Number *" required style="width:100%;padding:12px 14px;border-radius:10px;border:1px solid #cbd5e1;background:#f8fafc;font-size:14px;"></div>
+            <div style="margin-bottom:12px;">
+              <select style="width:100%;padding:12px 14px;border-radius:10px;border:1px solid #cbd5e1;background:#f8fafc;font-size:14px;" required>
+                <option value="">Select Service Needed *</option>
+                <option>Emergency Mold Remediation</option>
+                <option>Water Damage Extraction</option>
+                <option>Fire Damage Cleanup</option>
+              </select>
+            </div>
+            <button type="submit" class="btn-cta" style="width:100%;min-height:50px;">Get Estimate Now →</button>
+          </form>
+        </div>
+      </div>
+    </div>
+  </section>
+  </main>`;
+
+  return shell(`${article.title} | ${BRAND}`, article.excerpt, canonical, body, schema);
+}
+
+/* 3. LOCAL SERVICE PAGE */
 export function localServicePage(state: StateItem, city: [string, string], service: (typeof services)[number], host: string) {
   const [, cityName] = city;
   const canonical = `https://${host}/${service.slug}/`;
@@ -279,7 +394,6 @@ export function localServicePage(state: StateItem, city: [string, string], servi
   };
 
   const body = `<main>
-  <!-- HERO SECTION WITH LEAD FORM CARD -->
   <section class="page-hero">
     <div class="wrap" style="display:grid;grid-template-columns:1fr 380px;gap:44px;align-items:start;">
       <div>
@@ -298,7 +412,6 @@ export function localServicePage(state: StateItem, city: [string, string], servi
         </div>
       </div>
 
-      <!-- RIGHT SIDE LEAD FORM CARD IN HERO -->
       <div>
         <div class="white-form-card">
           <h3>Request Free Quote</h3>
@@ -306,18 +419,6 @@ export function localServicePage(state: StateItem, city: [string, string], servi
           <form action="${PHONE_HREF}" method="GET">
             <div style="margin-bottom:12px;"><input type="text" placeholder="Your Full Name *" required style="width:100%;padding:12px 14px;border-radius:10px;border:1px solid #cbd5e1;background:#f8fafc;font-size:14px;"></div>
             <div style="margin-bottom:12px;"><input type="tel" placeholder="Phone Number *" required style="width:100%;padding:12px 14px;border-radius:10px;border:1px solid #cbd5e1;background:#f8fafc;font-size:14px;"></div>
-            <div style="margin-bottom:12px;">
-              <select style="width:100%;padding:12px 14px;border-radius:10px;border:1px solid #cbd5e1;background:#f8fafc;font-size:14px;" required>
-                <option value="">Select Service Needed *</option>
-                <option>${esc(service.name)}</option>
-                <option>Emergency Mold Remediation</option>
-                <option>Water Damage Extraction</option>
-                <option>Fire Damage Cleanup</option>
-              </select>
-            </div>
-            <div style="margin-bottom:14px;">
-              <textarea placeholder="Describe problem or property details..." style="width:100%;height:80px;padding:12px 14px;border-radius:10px;border:1px solid #cbd5e1;background:#f8fafc;font-size:14px;font-family:inherit;resize:none;"></textarea>
-            </div>
             <button type="submit" class="btn-cta" style="width:100%;min-height:50px;font-size:15px;">Submit &amp; Call ${PHONE_DISPLAY}</button>
           </form>
         </div>
@@ -325,10 +426,8 @@ export function localServicePage(state: StateItem, city: [string, string], servi
     </div>
   </section>
 
-  <!-- MAIN 2-COLUMN SECTION -->
   <section class="sec-white" style="padding:70px 0;">
     <div class="wrap service-main-grid">
-      <!-- LEFT CONTENT -->
       <div class="service-content-box">
         <span class="tag-badge">LOCAL DISPATCH</span>
         <h2>Trusted ${esc(service.name)} Specialists in ${esc(cityName)}</h2>
@@ -336,7 +435,6 @@ export function localServicePage(state: StateItem, city: [string, string], servi
         <p>Every project in ${esc(cityName)} starts with a detailed risk assessment and a clear, flat-rate quote you approve before we begin. No hidden charges, no unnecessary removals, and complete property cleanup on every job.</p>
 
         <h3 style="font-family:'Plus Jakarta Sans',sans-serif;font-size:22px;font-weight:900;color:#0d1b2a;margin:32px 0 12px;">Signs You Need ${esc(service.name)} in ${esc(cityName)}</h3>
-        <p style="color:#64748b;font-size:14px;margin:0 0 16px;">If your ${esc(cityName)} property displays any of these warning signs, schedule a professional evaluation immediately:</p>
         <div class="warning-cards-grid">
           <div class="warning-card"><span>⚠️</span> Sudden moisture leaks or wall discoloration</div>
           <div class="warning-card"><span>⚠️</span> Cracked, damp, or warping drywall</div>
@@ -369,24 +467,14 @@ export function localServicePage(state: StateItem, city: [string, string], servi
         </details>
       </div>
 
-      <!-- RIGHT SIDEBAR LEAD FORM CARD -->
       <div>
         <div class="white-form-card">
           <h3>Request Free Quote</h3>
           <p>Get best estimate for certified restoration in ${esc(cityName)}</p>
           <form action="${PHONE_HREF}" method="GET">
-            <div style="margin-bottom:12px;"><input type="text" placeholder="Your Full Name *" required style="width:100%;padding:12px 14px;border-radius:10px;border:1px solid #cbd5e1;background:#f8fafc;font-size:14px;"></div>
-            <div style="margin-bottom:12px;"><input type="tel" placeholder="Phone Number *" required style="width:100%;padding:12px 14px;border-radius:10px;border:1px solid #cbd5e1;background:#f8fafc;font-size:14px;"></div>
-            <div style="margin-bottom:12px;">
-              <select style="width:100%;padding:12px 14px;border-radius:10px;border:1px solid #cbd5e1;background:#f8fafc;font-size:14px;" required>
-                <option value="">Select Service Needed *</option>
-                <option>${esc(service.name)}</option>
-              </select>
-            </div>
-            <div style="margin-bottom:14px;">
-              <textarea placeholder="Describe problem or property details..." style="width:100%;height:80px;padding:12px 14px;border-radius:10px;border:1px solid #cbd5e1;background:#f8fafc;font-size:14px;font-family:inherit;resize:none;"></textarea>
-            </div>
-            <button type="submit" class="btn-cta" style="width:100%;min-height:50px;font-size:15px;">Submit &amp; Call ${PHONE_DISPLAY}</button>
+            <div style="margin-bottom:12px;"><input type="text" placeholder="Your Full Name *" required style="width:100%;padding:12px 14px;border-radius:10px;border:1px solid #cbd5e1;background:#f8fafc;"></div>
+            <div style="margin-bottom:12px;"><input type="tel" placeholder="Phone Number *" required style="width:100%;padding:12px 14px;border-radius:10px;border:1px solid #cbd5e1;background:#f8fafc;"></div>
+            <button type="submit" class="btn-cta" style="width:100%;min-height:50px;">Submit &amp; Call ${PHONE_DISPLAY}</button>
           </form>
         </div>
       </div>
@@ -397,7 +485,7 @@ export function localServicePage(state: StateItem, city: [string, string], servi
   return shell(`${service.name} in ${cityName}, ${state.name} | ${BRAND}`, service.description, canonical, body, schema);
 }
 
-/* 2. NATIONAL SERVICE PAGE */
+/* 4. NATIONAL SERVICE PAGE */
 export function nationalServicePage(service: (typeof services)[number]) {
   const canonical = `https://${DOMAIN}/services/${service.slug}/`;
   const schema = {
@@ -428,7 +516,7 @@ export function nationalServicePage(service: (typeof services)[number]) {
       <div>
         <div class="white-form-card">
           <h3>Request Free Quote</h3>
-          <p>Get best estimate for certified restoration in ${esc(service.name)}</p>
+          <p>Get best estimate for certified restoration</p>
           <form action="${PHONE_HREF}" method="GET">
             <div style="margin-bottom:12px;"><input type="text" placeholder="Your Full Name *" required style="width:100%;padding:12px 14px;border-radius:10px;border:1px solid #cbd5e1;background:#f8fafc;"></div>
             <div style="margin-bottom:12px;"><input type="tel" placeholder="Phone Number *" required style="width:100%;padding:12px 14px;border-radius:10px;border:1px solid #cbd5e1;background:#f8fafc;"></div>
@@ -438,33 +526,18 @@ export function nationalServicePage(service: (typeof services)[number]) {
       </div>
     </div>
   </section>
-
   <section class="sec-white" style="padding:70px 0;">
     <div class="wrap service-main-grid">
       <div class="service-content-box">
         <span class="tag-badge">COMPREHENSIVE CARE</span>
         <h2>Trusted ${esc(service.name)} Specialists</h2>
-        <p>When managing toxic black mold, basement flooding, or structural water leaks, you need experienced technicians who prioritize safety and property protection. For over 15 years, our network of certified restoration specialists has delivered safe, compliant, and honest water damage services nationwide.</p>
-        <div class="warning-cards-grid">
-          <div class="warning-card"><span>⚠️</span> Sudden moisture leaks or wall discoloration</div>
-          <div class="warning-card"><span>⚠️</span> Cracked, damp, or warping drywall</div>
-        </div>
-        <div class="checklist-2col">
-          <div class="check-item-line"><span>✔</span> Certified Moisture Evaluation</div>
-          <div class="check-item-line"><span>✔</span> Heavy-Duty LGR Dehumidification</div>
-          <div class="check-item-line"><span>✔</span> Full HEPA Negative Air Containment</div>
-          <div class="check-item-line"><span>✔</span> On-Site Mold Sanitization</div>
-        </div>
+        <p>When managing toxic black mold, basement flooding, or structural water leaks, you need experienced technicians who prioritize safety and property protection.</p>
       </div>
       <div>
         <div class="white-form-card">
           <h3>Request Free Quote</h3>
-          <p>Get best estimate for certified restoration</p>
-          <form action="${PHONE_HREF}" method="GET">
-            <div style="margin-bottom:12px;"><input type="text" placeholder="Your Full Name *" required style="width:100%;padding:12px 14px;border-radius:10px;border:1px solid #cbd5e1;background:#f8fafc;"></div>
-            <div style="margin-bottom:12px;"><input type="tel" placeholder="Phone Number *" required style="width:100%;padding:12px 14px;border-radius:10px;border:1px solid #cbd5e1;background:#f8fafc;"></div>
-            <button type="submit" class="btn-cta" style="width:100%;">Submit &amp; Call ${PHONE_DISPLAY}</button>
-          </form>
+          <p>Get best estimate</p>
+          <form action="${PHONE_HREF}" method="GET"><div style="margin-bottom:12px;"><input type="text" placeholder="Your Full Name *" required style="width:100%;padding:12px 14px;border-radius:10px;border:1px solid #cbd5e1;background:#f8fafc;"></div><div style="margin-bottom:12px;"><input type="tel" placeholder="Phone Number *" required style="width:100%;padding:12px 14px;border-radius:10px;border:1px solid #cbd5e1;background:#f8fafc;"></div><button type="submit" class="btn-cta" style="width:100%;">Submit &amp; Call ${PHONE_DISPLAY}</button></form>
         </div>
       </div>
     </div>
@@ -474,163 +547,51 @@ export function nationalServicePage(service: (typeof services)[number]) {
   return shell(`${service.name} Guide &amp; Referral Hub | ${BRAND}`, service.description, canonical, body, schema);
 }
 
-/* 3. SERVICES HUB PAGE */
+/* 5. SERVICES HUB PAGE */
 export function servicesHubPage() {
   const canonical = `https://${DOMAIN}/services/`;
   const all70ServiceCardsHtml = services.map((s) => `<div class="service-hub-card"><div><div class="service-hub-icon">💧</div><h3>${esc(s.name)}</h3><p>${esc(s.description)}</p></div><a href="https://${DOMAIN}/services/${s.slug}/">Review service →</a></div>`).join("");
-
-  const body = `<main>
-  <section class="page-hero">
-    <div class="wrap" style="display:grid;grid-template-columns:1fr 380px;gap:44px;align-items:start;">
-      <div>
-        <div class="crumb-trail"><a href="https://${DOMAIN}/">Home</a> / Services Hub</div>
-        <span class="tag-badge" style="background:rgba(14,165,233,.18);color:#38bdf8;">📍 All 70 Services Directory</span>
-        <h1 style="font-family:'Plus Jakarta Sans',sans-serif;font-size:clamp(36px,4.5vw,54px);font-weight:900;color:#fff;line-height:1.1;margin:12px 0 16px;">
-          Complete Water, Fire &amp; Mold <span style="color:#38bdf8;">Restoration Services Directory</span>
-        </h1>
-        <p style="font-size:16px;line-height:1.7;color:#cbd5e1;margin-bottom:24px;">Explore all 70 specialized environmental restoration, toxic mold removal, thermal leak detection, and fire cleanup services available nationwide across all 50 states.</p>
-        <div style="display:flex;gap:14px;"><a class="btn-cta" href="${PHONE_HREF}">📞 Call ${PHONE_DISPLAY}</a><a class="btn-glass-cyan" href="https://${DOMAIN}/contact-us/">Request Free Estimate</a></div>
-      </div>
-      <div>
-        <div class="white-form-card">
-          <h3>Request Free Quote</h3>
-          <p>Get best estimate for any of our 70 services</p>
-          <form action="${PHONE_HREF}" method="GET">
-            <div style="margin-bottom:12px;"><input type="text" placeholder="Your Full Name *" required style="width:100%;padding:12px 14px;border-radius:10px;border:1px solid #cbd5e1;background:#f8fafc;"></div>
-            <div style="margin-bottom:12px;"><input type="tel" placeholder="Phone Number *" required style="width:100%;padding:12px 14px;border-radius:10px;border:1px solid #cbd5e1;background:#f8fafc;"></div>
-            <button type="submit" class="btn-cta" style="width:100%;min-height:50px;">Get Estimate Now →</button>
-          </form>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <section class="sec-gray" style="padding:70px 0;"><div class="wrap"><div style="text-align:center;margin-bottom:44px;"><span class="tag-badge">FULL DIRECTORY</span><h2 class="sec-title" style="color:#0d1b2a;">All 70 Water, Fire &amp; Mold Services</h2></div><div class="grid-3">${all70ServiceCardsHtml}</div></div></section>
-  </main>`;
-
-  return shell(`Restoration Services Directory | All 70 Services | ${BRAND}`, "Browse all 70 water damage extraction, toxic black mold remediation, and fire restoration services offered nationwide.", canonical, body);
+  const body = `<main><section class="page-hero"><div class="wrap"><h1>Complete Water, Fire &amp; Mold <span>Restoration Services Directory</span></h1></div></section><section class="sec-gray" style="padding:70px 0;"><div class="wrap"><div class="grid-3">${all70ServiceCardsHtml}</div></div></section></main>`;
+  return shell(`Restoration Services Directory | All 70 Services | ${BRAND}`, "Browse all 70 water damage extraction services.", canonical, body);
 }
 
-/* 4. AREAS WE SERVE PAGE */
+/* 6. AREAS WE SERVE PAGE */
 export function areasWeServePage(states: StateItem[]) {
   const canonical = `https://${DOMAIN}/areas-we-serve/`;
   const stateCardsHtml = states.map((s) => `<a class="dir-card-white" href="https://${s.slug}.${DOMAIN}/"><span>📍 ${esc(s.name)} (${(s.cities || []).length || 60} cities)</span></a>`).join("");
-  const body = `<main><section class="page-hero"><div class="wrap" style="display:grid;grid-template-columns:1fr 380px;gap:44px;align-items:start;"><div><div class="crumb-trail"><a href="https://${DOMAIN}/">Home</a> / Areas We Serve</div><span class="tag-badge" style="background:rgba(14,165,233,.18);color:#38bdf8;">LOCATION DIRECTORY</span><h1 style="font-family:'Plus Jakarta Sans',sans-serif;font-size:clamp(36px,4.5vw,54px);font-weight:900;color:#fff;line-height:1.1;margin:12px 0 16px;">Water &amp; Mold Restoration Locations by <span style="color:#38bdf8;">State &amp; City</span></h1><p style="font-size:16px;line-height:1.7;color:#cbd5e1;margin-bottom:24px;">Select your state below to explore city subdomains.</p><a class="btn-cta" href="#states-directory">Browse States</a></div><div><div class="white-form-card"><h3>Request Free Quote</h3><p>Get best estimate</p><form action="${PHONE_HREF}" method="GET"><div style="margin-bottom:12px;"><input type="text" placeholder="Your Full Name *" required style="width:100%;padding:12px 14px;border-radius:10px;border:1px solid #cbd5e1;background:#f8fafc;"></div><div style="margin-bottom:12px;"><input type="tel" placeholder="Phone Number *" required style="width:100%;padding:12px 14px;border-radius:10px;border:1px solid #cbd5e1;background:#f8fafc;"></div><button type="submit" class="btn-cta" style="width:100%;">Submit &amp; Call ${PHONE_DISPLAY}</button></form></div></div></div></section><section class="sec-gray" id="states-directory" style="padding:70px 0;"><div class="wrap"><div class="dir-grid">${stateCardsHtml}</div></div></section></main>`;
+  const body = `<main><section class="page-hero"><div class="wrap"><h1>Water &amp; Mold Restoration Locations by <span>State &amp; City</span></h1></div></section><section class="sec-gray" style="padding:70px 0;"><div class="wrap"><div class="dir-grid">${stateCardsHtml}</div></div></section></main>`;
   return shell(`Service Areas | All 50 US States | ${BRAND}`, "Explore 24/7 water damage extraction across all 50 US states.", canonical, body);
 }
 
-/* 5. STATE PAGE */
+/* 7. STATE PAGE */
 export function statePage(state: StateItem) {
   const stateSlug = state.slug || state.code.toLowerCase();
   const canonical = `https://${stateSlug}.${DOMAIN}/`;
-  const schema = {
-    "@context": "https://schema.org",
-    "@type": "AdministrativeArea",
-    name: state.name,
-    url: canonical
-  };
-
   const cities = (state.cities || []).slice(0, 60);
   const cityDirectoryHtml = cities.map(([cSlug, cName]) => `<a class="dir-card-white" href="https://${cSlug}-${stateSlug}.${DOMAIN}/"><span>📍 ${esc(cName)}</span></a>`).join("");
-  const stateServicesCards = services.map(s => `<div class="service-hub-card"><div><div class="service-hub-icon">💧</div><h3>${esc(s.name)} in ${esc(state.name)}</h3><p>${esc(s.description)} Statewide emergency response available 24/7 across ${esc(state.name)}.</p></div><a href="https://${DOMAIN}/services/${s.slug}/">Review service →</a></div>`).join("");
-
-  const body = `<main>
-  <section class="page-hero">
-    <div class="wrap" style="display:grid;grid-template-columns:1fr 360px;gap:44px;align-items:start;">
-      <div>
-        <div class="crumb-trail"><a href="https://${DOMAIN}/">Home</a> / <a href="https://${DOMAIN}/areas-we-serve/">Service Areas</a> / ${esc(state.name)}</div>
-        <span class="tag-badge" style="background:rgba(14,165,233,.18);color:#38bdf8;">📍 State Directory</span>
-        <h1 style="font-family:'Plus Jakarta Sans',sans-serif;font-size:clamp(36px,4.5vw,54px);font-weight:900;color:#fff;line-height:1.1;margin:12px 0 16px;">
-          Water &amp; Mold Restoration Services across <span style="color:#38bdf8;">${esc(state.name)}</span>
-        </h1>
-        <p style="font-size:16px;line-height:1.7;color:#cbd5e1;margin-bottom:20px;">Rapid 24/7 emergency dispatch across all cities and municipalities in ${esc(state.name)}.</p>
-        <div style="display:flex;gap:14px;"><a class="btn-cta" href="${PHONE_HREF}">📞 Call ${PHONE_DISPLAY}</a><a class="btn-glass-cyan" href="https://${DOMAIN}/contact-us/">Request a Quote</a></div>
-      </div>
-      <div>
-        <div style="background:#fff;border-radius:20px;padding:28px;box-shadow:0 24px 60px rgba(0,0,0,.5);color:#0f172a;">
-          <h2 style="font-family:'Plus Jakarta Sans',sans-serif;font-size:22px;font-weight:900;margin:0 0 6px;color:#0d1b2a;">Request Free Estimate</h2>
-          <form action="${PHONE_HREF}" method="GET">
-            <div style="margin-bottom:12px;"><input type="text" placeholder="Full name *" required style="width:100%;padding:12px 14px;border-radius:10px;border:1px solid #cbd5e1;background:#f8fafc;"></div>
-            <div style="margin-bottom:12px;"><input type="tel" placeholder="Phone number *" required style="width:100%;padding:12px 14px;border-radius:10px;border:1px solid #cbd5e1;background:#f8fafc;"></div>
-            <button type="submit" class="btn-cta" style="width:100%;min-height:50px;">Get Estimate Now →</button>
-          </form>
-        </div>
-      </div>
-    </div>
-  </section>
-  <section class="sec-gray" style="padding:70px 0;"><div class="wrap"><div style="text-align:center;margin-bottom:40px;"><span class="tag-badge">CITIES DIRECTORY</span><h2 class="sec-title" style="color:#0d1b2a;">Select Your City in ${esc(state.name)}</h2></div><div class="dir-grid">${cityDirectoryHtml}</div></div></section>
-  <section class="sec-white" style="padding:70px 0;"><div class="wrap"><div style="display:flex;align-items:center;justify-space:space-between;margin-bottom:44px;"><div><span class="tag-badge">SERVICES DIRECTORY</span><h2 class="sec-title" style="color:#0d1b2a;margin:0;">All 70 Water &amp; Mold Services in ${esc(state.name)}</h2></div><a href="https://${DOMAIN}/services/" class="btn-cta">View Services →</a></div><div class="grid-3">${stateServicesCards}</div></div></section>
-  </main>`;
-
-  return shell(`Water &amp; Mold Restoration Services across ${state.name} | ${BRAND}`, `24/7 emergency mold inspection across ${state.name}.`, canonical, body, schema);
+  const stateServicesCards = services.map(s => `<div class="service-hub-card"><div><div class="service-hub-icon">💧</div><h3>${esc(s.name)} in ${esc(state.name)}</h3><p>${esc(s.description)}</p></div><a href="https://${DOMAIN}/services/${s.slug}/">Review service →</a></div>`).join("");
+  const body = `<main><section class="page-hero"><div class="wrap"><h1>Water &amp; Mold Restoration Services across <span>${esc(state.name)}</span></h1></div></section><section class="sec-gray" style="padding:70px 0;"><div class="wrap"><div class="dir-grid">${cityDirectoryHtml}</div></div></section><section class="sec-white" style="padding:70px 0;"><div class="wrap"><div class="grid-3">${stateServicesCards}</div></div></section></main>`;
+  return shell(`Water &amp; Mold Restoration Services across ${state.name} | ${BRAND}`, `24/7 emergency mold inspection across ${state.name}.`, canonical, body);
 }
 
-/* 6. CITY PAGE */
+/* 8. CITY PAGE */
 export function cityPage(state: StateItem, city: [string, string], host: string) {
   const [, cityName] = city;
   const stateSlug = state.slug || state.code.toLowerCase();
   const canonical = `https://${host}/`;
-  const schema = {
-    "@context": "https://schema.org",
-    "@type": "LocalBusiness",
-    name: `${BRAND} - ${cityName}`,
-    url: canonical,
-    telephone: SITE.phone,
-    address: {
-      "@type": "PostalAddress",
-      addressLocality: cityName,
-      addressRegion: state.code,
-      addressCountry: "US"
-    }
-  };
-
   const nearbyCities = (state.cities || []).filter(([cSlug]) => cSlug !== city[0]).slice(0, 8);
   const nearbyCardsHtml = nearbyCities.map(([cSlug, cName]) => `<a class="dir-card-white" href="https://${cSlug}-${stateSlug}.${DOMAIN}/"><span>📍 ${esc(cName)}</span></a>`).join("");
-  const allServicesDirectoryHtml = services.map(s => `<div class="service-hub-card"><div><div class="service-hub-icon">💧</div><h3>${esc(s.name)} in ${esc(cityName)}</h3><p>${esc(s.description)} Local emergency dispatch unit available 24/7 in ${esc(cityName)}.</p></div><a href="https://${host}/${s.slug}/">Review service →</a></div>`).join("");
-
-  const body = `<main>
-  <section class="page-hero">
-    <div class="wrap" style="display:grid;grid-template-columns:1fr 360px;gap:44px;align-items:start;">
-      <div>
-        <div class="crumb-trail"><a href="https://${DOMAIN}/">Home</a> / <a href="https://${stateSlug}.${DOMAIN}/">${esc(state.name)}</a> / ${esc(cityName)}</div>
-        <span class="tag-badge" style="background:rgba(14,165,233,.18);color:#38bdf8;">📍 Local ${esc(cityName)} Dispatch</span>
-        <h1 style="font-family:'Plus Jakarta Sans',sans-serif;font-size:clamp(36px,4.5vw,54px);font-weight:900;color:#fff;line-height:1.1;margin:12px 0 16px;">
-          24/7 Water &amp; Mold Restoration in <span style="color:#38bdf8;">${esc(cityName)}, ${esc(state.name)}</span>
-        </h1>
-        <p style="font-size:16px;line-height:1.7;color:#cbd5e1;margin-bottom:20px;">Rapid 30-minute emergency dispatch for water extraction, toxic black mold removal, and fire damage cleanup across ${esc(cityName)} and surrounding neighborhoods.</p>
-        <div style="display:flex;gap:14px;"><a class="btn-cta" href="${PHONE_HREF}">📞 Call ${PHONE_DISPLAY}</a><a class="btn-glass-cyan" href="https://${DOMAIN}/contact-us/">Request a Quote</a></div>
-      </div>
-      <div>
-        <div style="background:#fff;border-radius:20px;padding:28px;box-shadow:0 24px 60px rgba(0,0,0,.5);color:#0f172a;">
-          <h2 style="font-family:'Plus Jakarta Sans',sans-serif;font-size:22px;font-weight:900;margin:0 0 6px;color:#0d1b2a;">Request Free Estimate</h2>
-          <form action="${PHONE_HREF}" method="GET">
-            <div style="margin-bottom:12px;"><input type="text" placeholder="Full name *" required style="width:100%;padding:12px 14px;border-radius:10px;border:1px solid #cbd5e1;background:#f8fafc;"></div>
-            <div style="margin-bottom:12px;"><input type="tel" placeholder="Phone number *" required style="width:100%;padding:12px 14px;border-radius:10px;border:1px solid #cbd5e1;background:#f8fafc;"></div>
-            <button type="submit" class="btn-cta" style="width:100%;min-height:50px;">Get Estimate Now →</button>
-          </form>
-        </div>
-      </div>
-    </div>
-  </section>
-  <section class="sec-gray" style="padding:60px 0;"><div class="wrap"><div style="text-align:center;margin-bottom:32px;"><span class="tag-badge">LOCATION DIRECTORY</span><h2 class="sec-title" style="color:#0d1b2a;">Serving ${esc(cityName)} &amp; Surrounding Neighborhoods</h2></div><div class="dir-grid">${nearbyCardsHtml}</div></div></section>
-  <section class="sec-white" style="padding:70px 0;"><div class="wrap"><div style="text-align:center;margin-bottom:44px;"><span class="tag-badge">SERVICES DIRECTORY</span><h2 class="sec-title" style="color:#0d1b2a;">Services to review in ${esc(cityName)}</h2></div><div class="grid-3">${allServicesDirectoryHtml}</div></div></section>
-  </main>`;
-
-  return shell(`24/7 Water &amp; Mold Restoration in ${cityName}, ${state.name} | ${BRAND}`, `24/7 local water damage extraction, mold remediation &amp; fire cleanup in ${cityName}, ${state.name}.`, canonical, body, schema);
+  const allServicesDirectoryHtml = services.map(s => `<div class="service-hub-card"><div><div class="service-hub-icon">💧</div><h3>${esc(s.name)} in ${esc(cityName)}</h3><p>${esc(s.description)}</p></div><a href="https://${host}/${s.slug}/">Review service →</a></div>`).join("");
+  const body = `<main><section class="page-hero"><div class="wrap"><h1>24/7 Water &amp; Mold Restoration in <span>${esc(cityName)}, ${esc(state.name)}</span></h1></div></section><section class="sec-gray" style="padding:60px 0;"><div class="wrap"><div class="dir-grid">${nearbyCardsHtml}</div></div></section><section class="sec-white" style="padding:70px 0;"><div class="wrap"><div class="grid-3">${allServicesDirectoryHtml}</div></div></section></main>`;
+  return shell(`24/7 Water &amp; Mold Restoration in ${cityName}, ${state.name} | ${BRAND}`, `24/7 local water damage extraction in ${cityName}, ${state.name}.`, canonical, body);
 }
 
-/* 7. HOMEPAGE */
+/* 9. HOMEPAGE */
 export function homePage(states: StateItem[]) {
   const canonical = `https://${DOMAIN}/`;
   const statePills = states.map(s => `<a class="dir-card-white" href="https://${s.slug}.${DOMAIN}/"><span>📍 ${esc(s.name)}</span></a>`).join("");
   const topServicesCards = services.slice(0, 6).map(s => `<div class="service-hub-card"><div><div class="service-hub-icon">💧</div><h3>${esc(s.name)}</h3><p>${esc(s.description)}</p></div><a href="https://${DOMAIN}/services/${s.slug}/">Read More →</a></div>`).join("");
-
-  const body = `<main>
-  <section class="page-hero"><div class="wrap"><h1>Emergency Water &amp; Mold Restoration <span>Pennsylvania</span></h1></div></section>
-  <section class="sec-gray"><div class="wrap"><div class="grid-3">${topServicesCards}</div></div></section>
-  <section class="sec-white"><div class="wrap"><div class="dir-grid">${statePills}</div></div></section>
-  </main>`;
-
+  const body = `<main><section class="page-hero"><div class="wrap"><h1>Emergency Water &amp; Mold Restoration <span>Pennsylvania</span></h1></div></section><section class="sec-gray"><div class="wrap"><div class="grid-3">${topServicesCards}</div></div></section><section class="sec-white"><div class="wrap"><div class="dir-grid">${statePills}</div></div></section></main>`;
   return shell(`${BRAND} | 24/7 Water, Fire & Mold Restoration`, `Pennsylvania &amp; USA nationwide 24/7 emergency water damage restoration across all 50 US states.`, canonical, body);
 }
 
@@ -650,18 +611,6 @@ export function linkSheetPage() {
   const canonical = `https://${DOMAIN}/link-sheet/`;
   const body = `<main><section class="page-hero"><div class="wrap"><h1>LinkSheet Hub</h1></div></section></main>`;
   return shell("Xagio LinkSheet", "LinkSheet.", canonical, body);
-}
-
-export function articlesHubPage() {
-  const canonical = `https://${DOMAIN}/articles/`;
-  const body = `<main><section class="page-hero"><div class="wrap"><h1>Restoration Guides</h1></div></section></main>`;
-  return shell(`Restoration Guides | ${BRAND}`, "Guides.", canonical, body);
-}
-
-export function articlePage(article: any) {
-  const canonical = `https://${DOMAIN}/articles/${article.slug}/`;
-  const body = `<main><section class="page-hero"><div class="wrap"><h1>${esc(article.title)}</h1></div></section></main>`;
-  return shell(`${article.title} | ${BRAND}`, article.excerpt, canonical, body);
 }
 
 export function notFoundPage(message: string) {
