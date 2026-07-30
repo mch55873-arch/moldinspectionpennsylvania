@@ -188,6 +188,7 @@ function header(): string {
             <a href="https://${DOMAIN}/areas-we-serve/" class="highlight">All 50 States Directory →</a>
           </div>
         </div>
+        <a href="https://${DOMAIN}/articles/">Articles</a>
         <a href="https://${DOMAIN}/about-us/">About</a>
         <a href="https://${DOMAIN}/contact-us/">Contact</a>
       </nav>
