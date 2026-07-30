@@ -65,7 +65,7 @@ function htmlResponse(html: string, method = "GET", status = 200, extra: Record<
     status,
     headers: {
       "content-type": "text/html; charset=utf-8",
-      "cache-control": "public, s-maxage=86400, stale-while-revalidate=604800",
+      "cache-control": "no-cache, no-store, must-revalidate",
       "content-length": String(bytes.byteLength),
       ...extra,
     },
@@ -77,22 +77,14 @@ function redirect(targetUrl: string, status = 301) {
     status,
     headers: {
       Location: targetUrl,
-      "cache-control": "public, s-maxage=86400",
+      "cache-control": "no-cache, no-store, must-revalidate",
     },
   });
 }
 
+// ALWAYS RENDER FRESH CONTENT TO PREVENT STALE CLOUDFLARE EDGE CACHE SERVING OLD STUBS
 async function cached(request: Request, ctx: Ctx, render: () => Response) {
-  if (request.method === "HEAD") return render();
-  const cache = (caches as CacheStorage & { default: Cache }).default;
-  const hit = await cache.match(request);
-  if (hit && hit.status === 200) {
-    const text = await hit.clone().text();
-    if (text.length > 5000) return hit;
-  }
-  const result = render();
-  if (result.status === 200) ctx.waitUntil(cache.put(request, result.clone()));
-  return result;
+  return render();
 }
 
 export default {
