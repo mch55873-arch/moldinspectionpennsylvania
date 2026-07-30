@@ -91,9 +91,27 @@ a{color:inherit;text-decoration:none}
 .service-hub-card p{color:#64748b;font-size:14px;line-height:1.6;margin:0 0 16px}
 .service-hub-card a{color:#0ea5e9;font-weight:800;font-size:14px}
 
+.service-main-grid{display:grid;grid-template-columns:1fr 380px;gap:44px;align-items:start}
+.service-content-box{background:#fff;color:#0f172a;padding:40px;border-radius:20px;box-shadow:0 10px 40px rgba(0,0,0,.04);border:1px solid #e2e8f0}
+.service-content-box h2{font-family:'Plus Jakarta Sans',sans-serif;font-size:28px;font-weight:900;color:#0d1b2a;margin:0 0 16px;letter-spacing:-.02em}
+.service-content-box p{color:#475569;font-size:15px;line-height:1.75;margin:0 0 16px}
+
+.warning-cards-grid{display:grid;grid-template-columns:1fr 1fr;gap:14px;margin:20px 0 32px}
+.warning-card{background:#f8fafc;border:1px solid #e2e8f0;border-radius:12px;padding:16px;display:flex;align-items:center;gap:12px;font-weight:700;font-size:14px;color:#0d1b2a}
+.warning-card span{color:#f97316;font-size:18px}
+
+.checklist-2col{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin:20px 0 32px;font-size:14px;font-weight:700;color:#1e293b}
+.check-item-line{display:flex;align-items:center;gap:8px}
+.check-item-line span{color:#0ea5e9;font-weight:900}
+
 .white-form-card{background:#fff;border-radius:20px;padding:28px;box-shadow:0 20px 50px rgba(0,0,0,.08);border:1px solid #e2e8f0;color:#0f172a}
 .white-form-card h3{font-family:'Plus Jakarta Sans',sans-serif;font-size:22px;font-weight:900;color:#0d1b2a;margin:0 0 4px}
 .white-form-card p{font-size:12px;color:#64748b;margin:0 0 18px}
+
+.faq-item-white{border:1px solid #e2e8f0;border-radius:14px;padding:18px 22px;margin-bottom:12px;background:#fff}
+.faq-item-white summary{font-family:'Plus Jakarta Sans',sans-serif;font-size:16px;font-weight:800;color:#0d1b2a;cursor:pointer;list-style:none;display:flex;align-items:center;justify-space:space-between}
+.faq-item-white summary:after{content:"▼";font-size:12px;color:#0ea5e9}
+.faq-item-white p{color:#64748b;font-size:14px;line-height:1.65;margin:12px 0 0}
 
 /* FOOTER */
 .footer-cta-banner{background:linear-gradient(135deg,#0ea5e9,#0284c7);color:#fff;padding:52px 0}
@@ -114,8 +132,8 @@ a{color:inherit;text-decoration:none}
 .footer-bottom-links a{color:#94a3b8;transition:.2s}.footer-bottom-links a:hover{color:#fff}
 
 .sticky-bar{position:fixed;bottom:20px;right:20px;z-index:90}
-@media(max-width:960px){.nav-links{display:none}.contact-main-grid,.story-grid,.grid-3,.grid-4,.dir-grid,.stats-grid{grid-template-columns:repeat(2,1fr)}.footer-grid,.footer-cta-flex{grid-template-columns:1fr;flex-direction:column;align-items:start}}
-@media(max-width:640px){.dir-grid,.grid-3,.grid-4,.stats-grid{grid-template-columns:1fr}.sticky-bar{left:16px;right:16px;bottom:16px}.btn-cta{width:100%}}
+@media(max-width:960px){.nav-links{display:none}.contact-main-grid,.service-main-grid,.story-grid,.grid-3,.grid-4,.dir-grid,.stats-grid{grid-template-columns:repeat(2,1fr)}.footer-grid,.footer-cta-flex{grid-template-columns:1fr;flex-direction:column;align-items:start}}
+@media(max-width:640px){.dir-grid,.grid-3,.grid-4,.stats-grid,.warning-cards-grid,.checklist-2col{grid-template-columns:1fr}.sticky-bar{left:16px;right:16px;bottom:16px}.btn-cta{width:100%}}
 `;
 
 function header(): string {
@@ -243,57 +261,62 @@ function shell(title: string, description: string, canonical: string, body: stri
   return `<!doctype html><html lang="en-US"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>${esc(title)}</title><meta name="description" content="${esc(description)}"><link rel="canonical" href="${canonical}"><meta name="robots" content="index,follow"><meta property="og:title" content="${esc(title)}"><meta property="og:description" content="${esc(description)}"><meta property="og:url" content="${canonical}"><style>${CSS}</style>${jsonLd}</head><body>${header()}${body}${footer()}</body></html>`;
 }
 
-/* 1. AREAS WE SERVE PAGE (1:1 REPLICA OF CANTREESERVICE AREAS WE SERVE SCREENSHOT) */
-export function areasWeServePage(states: StateItem[]) {
-  const canonical = `https://${DOMAIN}/areas-we-serve/`;
-  
-  // ALL 50 STATES DISPLAYED WITH CITY COUNTS IN 4-COLUMN WHITE CARDS GRID!
-  const stateCardsHtml = states.map((s) => {
-    const cityCount = (s.cities || []).length || 60;
-    return `
-      <a class="dir-card-white" href="https://${s.slug}.${DOMAIN}/">
-        <span>📍 ${esc(s.name)} (${cityCount} cities)</span>
-      </a>
-    `;
-  }).join("");
+/* 1. LOCAL SERVICE PAGE (1:1 RICH REPLICA WITH ALL WARNING CARDS, CHECKLISTS, FAQS & FULL RICH CONTENT) */
+export function localServicePage(state: StateItem, city: [string, string], service: (typeof services)[number], host: string) {
+  const [, cityName] = city;
+  const canonical = `https://${host}/${service.slug}/`;
+  const schema = {
+    "@context": "https://schema.org",
+    "@type": "Service",
+    name: `${service.name} in ${cityName}, ${state.name}`,
+    description: service.description,
+    provider: {
+      "@type": "LocalBusiness",
+      name: `${BRAND} - ${cityName}`,
+      telephone: SITE.phone,
+      url: canonical
+    }
+  };
 
   const body = `<main>
   <!-- HERO SECTION WITH LEAD FORM CARD -->
   <section class="page-hero">
     <div class="wrap" style="display:grid;grid-template-columns:1fr 380px;gap:44px;align-items:start;">
       <div>
-        <div class="crumb-trail"><a href="https://${DOMAIN}/">Home</a> / Areas We Serve</div>
-        <span class="tag-badge" style="background:rgba(14,165,233,.18);color:#38bdf8;">LOCATION DIRECTORY</span>
-        <h1 style="font-family:'Plus Jakarta Sans',sans-serif;font-size:clamp(36px,4.5vw,54px);font-weight:900;color:#fff;line-height:1.1;margin:12px 0 16px;">
-          Water &amp; Mold Restoration Locations by <span style="color:#38bdf8;">State &amp; City</span>
+        <div class="crumb-trail"><a href="https://${state.slug}.${DOMAIN}/">${esc(state.name)}</a> / <a href="https://${host}/">${esc(cityName)}</a> / ${esc(service.name)}</div>
+        <span class="tag-badge" style="background:rgba(14,165,233,.18);color:#38bdf8;">📍 LOCAL ${esc(cityName).toUpperCase()} DISPATCH</span>
+        <h1 style="font-family:'Plus Jakarta Sans',sans-serif;font-size:clamp(36px,4.5vw,52px);font-weight:900;color:#fff;line-height:1.1;margin:12px 0 16px;">
+          ${esc(service.name)} in <span style="color:#38bdf8;">${esc(cityName)}, ${esc(state.name)}</span>
         </h1>
         <p style="font-size:16px;line-height:1.7;color:#cbd5e1;margin-bottom:24px;">
-          Select your state below to explore city subdomains and local independent certified emergency restoration providers across all 50 US states.
+          Tile grout mold remediation, sub-floor water damage repair, and moisture exhaust optimization. Local 24/7 emergency dispatch crews stationed directly in ${esc(cityName)} for rapid arrival.
         </p>
 
-        <div>
-          <a class="btn-cta" href="#states-directory" style="min-height:50px;">Browse States</a>
+        <div style="display:flex;gap:14px;">
+          <a class="btn-cta" href="${PHONE_HREF}">Submit &amp; Call ${PHONE_DISPLAY}</a>
+          <a class="btn-glass-cyan" href="https://${DOMAIN}/contact-us/">Request Free Quote</a>
         </div>
       </div>
 
-      <!-- RIGHT SIDE LEAD FORM CARD -->
+      <!-- RIGHT SIDE LEAD FORM CARD IN HERO -->
       <div>
         <div class="white-form-card">
           <h3>Request Free Quote</h3>
-          <p>Get best estimate for certified restoration in United States</p>
+          <p>Get best estimate in ${esc(cityName)}</p>
           <form action="${PHONE_HREF}" method="GET">
             <div style="margin-bottom:12px;"><input type="text" placeholder="Your Full Name *" required style="width:100%;padding:12px 14px;border-radius:10px;border:1px solid #cbd5e1;background:#f8fafc;font-size:14px;"></div>
             <div style="margin-bottom:12px;"><input type="tel" placeholder="Phone Number *" required style="width:100%;padding:12px 14px;border-radius:10px;border:1px solid #cbd5e1;background:#f8fafc;font-size:14px;"></div>
             <div style="margin-bottom:12px;">
               <select style="width:100%;padding:12px 14px;border-radius:10px;border:1px solid #cbd5e1;background:#f8fafc;font-size:14px;" required>
                 <option value="">Select Service Needed *</option>
+                <option>${esc(service.name)}</option>
                 <option>Emergency Mold Remediation</option>
                 <option>Water Damage Extraction</option>
                 <option>Fire Damage Cleanup</option>
               </select>
             </div>
             <div style="margin-bottom:14px;">
-              <textarea placeholder="Describe problem or property details..." style="width:100%;height:70px;padding:12px 14px;border-radius:10px;border:1px solid #cbd5e1;background:#f8fafc;font-size:14px;font-family:inherit;resize:none;"></textarea>
+              <textarea placeholder="Describe problem or property details..." style="width:100%;height:80px;padding:12px 14px;border-radius:10px;border:1px solid #cbd5e1;background:#f8fafc;font-size:14px;font-family:inherit;resize:none;"></textarea>
             </div>
             <button type="submit" class="btn-cta" style="width:100%;min-height:50px;font-size:15px;">Submit &amp; Call ${PHONE_DISPLAY}</button>
           </form>
@@ -302,60 +325,79 @@ export function areasWeServePage(states: StateItem[]) {
     </div>
   </section>
 
-  <!-- 50 US STATES 4-COLUMN DIRECTORY GRID -->
-  <section class="sec-gray" id="states-directory" style="padding:70px 0;">
-    <div class="wrap">
-      <div style="text-align:center;margin-bottom:40px;">
-        <span class="tag-badge">50 US STATES DIRECTORY</span>
-        <h2 class="sec-title" style="color:#0d1b2a;">All 50 US States Service Directory</h2>
-        <p style="color:#64748b;font-size:15px;margin:0;">Select any US state below to view its full city &amp; town subdomain directory.</p>
+  <!-- MAIN 2-COLUMN SECTION -->
+  <section class="sec-white" style="padding:70px 0;">
+    <div class="wrap service-main-grid">
+      <!-- LEFT CONTENT -->
+      <div class="service-content-box">
+        <span class="tag-badge">LOCAL DISPATCH</span>
+        <h2>Trusted ${esc(service.name)} Specialists in ${esc(cityName)}</h2>
+        <p>When managing toxic black mold, bathroom tiles moisture, basement flooding, or structural water leaks in <b>${esc(cityName)}</b>, you need experienced local technicians who prioritize safety and property protection. For over 15 years, our network of certified restoration specialists has delivered safe, compliant, and honest water damage services across ${esc(cityName)}, ${esc(state.name)}.</p>
+        <p>Every project in ${esc(cityName)} starts with a detailed risk assessment and a clear, flat-rate quote you approve before we begin. No hidden charges, no unnecessary removals, and complete property cleanup on every job.</p>
+
+        <h3 style="font-family:'Plus Jakarta Sans',sans-serif;font-size:22px;font-weight:900;color:#0d1b2a;margin:32px 0 12px;">Signs You Need ${esc(service.name)} in ${esc(cityName)}</h3>
+        <p style="color:#64748b;font-size:14px;margin:0 0 16px;">If your ${esc(cityName)} property displays any of these warning signs, schedule a professional evaluation immediately:</p>
+        <div class="warning-cards-grid">
+          <div class="warning-card"><span>⚠️</span> Sudden moisture leaks or wall discoloration</div>
+          <div class="warning-card"><span>⚠️</span> Cracked, damp, or warping drywall</div>
+          <div class="warning-card"><span>⚠️</span> Overhanging dampness near power lines</div>
+          <div class="warning-card"><span>⚠️</span> Deadwood &amp; fungal mushroom conks</div>
+        </div>
+
+        <h3 style="font-family:'Plus Jakarta Sans',sans-serif;font-size:22px;font-weight:900;color:#0d1b2a;margin:32px 0 12px;">Capabilities &amp; Services We Handle in ${esc(cityName)}</h3>
+        <div class="checklist-2col">
+          <div class="check-item-line"><span>✔</span> Certified Moisture &amp; Air Evaluation</div>
+          <div class="check-item-line"><span>✔</span> Heavy-Duty LGR Dehumidification</div>
+          <div class="check-item-line"><span>✔</span> Full HEPA Negative Air Containment</div>
+          <div class="check-item-line"><span>✔</span> On-Site Mold Sanitization &amp; Antimicrobial</div>
+          <div class="check-item-line"><span>✔</span> Vapor Barrier &amp; Subfloor Drying</div>
+          <div class="check-item-line"><span>✔</span> Emergency Storm Damage Response</div>
+        </div>
+
+        <h3 style="font-family:'Plus Jakarta Sans',sans-serif;font-size:24px;font-weight:900;color:#0d1b2a;margin:40px 0 16px;">Frequently Asked Questions</h3>
+        <details class="faq-item-white" open>
+          <summary>What is included in ${esc(service.name)} in ${esc(cityName)}?</summary>
+          <p>Proactive safety restoration to reduce risk near play structures, driveways, and living spaces in ${esc(cityName)}. Our certified specialists handle site evaluation, heavy extraction, HEPA containment, and full debris haul-away.</p>
+        </details>
+        <details class="faq-item-white">
+          <summary>How much does ${esc(service.name)} cost in ${esc(cityName)}?</summary>
+          <p>Costs depend on square footage and moisture levels. We provide 100% upfront flat-rate quotes before any work begins.</p>
+        </details>
+        <details class="faq-item-white">
+          <summary>Is emergency service available 24/7 in ${esc(cityName)}?</summary>
+          <p>Yes! We operate round-the-clock emergency response units across ${esc(cityName)} and ${esc(state.name)}.</p>
+        </details>
       </div>
-      <div class="dir-grid">${stateCardsHtml}</div>
-    </div>
-  </section>
-  </main>`;
 
-  return shell(`Service Areas | All 50 US States | ${BRAND}`, "Explore 24/7 water damage extraction, toxic black mold remediation, and fire damage restoration across all 50 US states.", canonical, body);
-}
-
-/* 2. SERVICES HUB PAGE */
-export function servicesHubPage() {
-  const canonical = `https://${DOMAIN}/services/`;
-  const all70ServiceCardsHtml = services.map((s) => `<div class="service-hub-card"><div><div class="service-hub-icon">💧</div><h3>${esc(s.name)}</h3><p>${esc(s.description)}</p></div><a href="https://${DOMAIN}/services/${s.slug}/">Review service →</a></div>`).join("");
-
-  const body = `<main>
-  <section class="page-hero">
-    <div class="wrap" style="display:grid;grid-template-columns:1fr 380px;gap:44px;align-items:start;">
-      <div>
-        <div class="crumb-trail"><a href="https://${DOMAIN}/">Home</a> / Services Hub</div>
-        <span class="tag-badge" style="background:rgba(14,165,233,.18);color:#38bdf8;">📍 All 70 Services Directory</span>
-        <h1 style="font-family:'Plus Jakarta Sans',sans-serif;font-size:clamp(36px,4.5vw,54px);font-weight:900;color:#fff;line-height:1.1;margin:12px 0 16px;">
-          Complete Water, Fire &amp; Mold <span style="color:#38bdf8;">Restoration Services Directory</span>
-        </h1>
-        <p style="font-size:16px;line-height:1.7;color:#cbd5e1;margin-bottom:24px;">Explore all 70 specialized environmental restoration, toxic mold removal, thermal leak detection, and fire cleanup services available nationwide across all 50 states.</p>
-        <div style="display:flex;gap:14px;"><a class="btn-cta" href="${PHONE_HREF}">📞 Call ${PHONE_DISPLAY}</a><a class="btn-glass-cyan" href="https://${DOMAIN}/contact-us/">Request Free Estimate</a></div>
-      </div>
+      <!-- RIGHT SIDEBAR LEAD FORM CARD -->
       <div>
         <div class="white-form-card">
           <h3>Request Free Quote</h3>
-          <p>Get best estimate for any of our 70 services</p>
+          <p>Get best estimate for certified restoration in ${esc(cityName)}</p>
           <form action="${PHONE_HREF}" method="GET">
-            <div style="margin-bottom:12px;"><input type="text" placeholder="Your Full Name *" required style="width:100%;padding:12px 14px;border-radius:10px;border:1px solid #cbd5e1;background:#f8fafc;"></div>
-            <div style="margin-bottom:12px;"><input type="tel" placeholder="Phone Number *" required style="width:100%;padding:12px 14px;border-radius:10px;border:1px solid #cbd5e1;background:#f8fafc;"></div>
-            <button type="submit" class="btn-cta" style="width:100%;min-height:50px;">Get Estimate Now →</button>
+            <div style="margin-bottom:12px;"><input type="text" placeholder="Your Full Name *" required style="width:100%;padding:12px 14px;border-radius:10px;border:1px solid #cbd5e1;background:#f8fafc;font-size:14px;"></div>
+            <div style="margin-bottom:12px;"><input type="tel" placeholder="Phone Number *" required style="width:100%;padding:12px 14px;border-radius:10px;border:1px solid #cbd5e1;background:#f8fafc;font-size:14px;"></div>
+            <div style="margin-bottom:12px;">
+              <select style="width:100%;padding:12px 14px;border-radius:10px;border:1px solid #cbd5e1;background:#f8fafc;font-size:14px;" required>
+                <option value="">Select Service Needed *</option>
+                <option>${esc(service.name)}</option>
+              </select>
+            </div>
+            <div style="margin-bottom:14px;">
+              <textarea placeholder="Describe problem or property details..." style="width:100%;height:80px;padding:12px 14px;border-radius:10px;border:1px solid #cbd5e1;background:#f8fafc;font-size:14px;font-family:inherit;resize:none;"></textarea>
+            </div>
+            <button type="submit" class="btn-cta" style="width:100%;min-height:50px;font-size:15px;">Submit &amp; Call ${PHONE_DISPLAY}</button>
           </form>
         </div>
       </div>
     </div>
   </section>
-
-  <section class="sec-gray" style="padding:70px 0;"><div class="wrap"><div style="text-align:center;margin-bottom:44px;"><span class="tag-badge">FULL DIRECTORY</span><h2 class="sec-title" style="color:#0d1b2a;">All 70 Water, Fire &amp; Mold Services</h2></div><div class="grid-3">${all70ServiceCardsHtml}</div></div></section>
   </main>`;
 
-  return shell(`Restoration Services Directory | All 70 Services | ${BRAND}`, "Browse all 70 water damage extraction, toxic black mold remediation, and fire restoration services offered nationwide.", canonical, body);
+  return shell(`${service.name} in ${cityName}, ${state.name} | ${BRAND}`, service.description, canonical, body, schema);
 }
 
-/* 3. NATIONAL SERVICE PAGE */
+/* 2. NATIONAL SERVICE PAGE */
 export function nationalServicePage(service: (typeof services)[number]) {
   const canonical = `https://${DOMAIN}/services/${service.slug}/`;
   const schema = {
@@ -407,6 +449,12 @@ export function nationalServicePage(service: (typeof services)[number]) {
           <div class="warning-card"><span>⚠️</span> Sudden moisture leaks or wall discoloration</div>
           <div class="warning-card"><span>⚠️</span> Cracked, damp, or warping drywall</div>
         </div>
+        <div class="checklist-2col">
+          <div class="check-item-line"><span>✔</span> Certified Moisture Evaluation</div>
+          <div class="check-item-line"><span>✔</span> Heavy-Duty LGR Dehumidification</div>
+          <div class="check-item-line"><span>✔</span> Full HEPA Negative Air Containment</div>
+          <div class="check-item-line"><span>✔</span> On-Site Mold Sanitization</div>
+        </div>
       </div>
       <div>
         <div class="white-form-card">
@@ -426,72 +474,49 @@ export function nationalServicePage(service: (typeof services)[number]) {
   return shell(`${service.name} Guide &amp; Referral Hub | ${BRAND}`, service.description, canonical, body, schema);
 }
 
-/* 4. LOCAL SERVICE PAGE */
-export function localServicePage(state: StateItem, city: [string, string], service: (typeof services)[number], host: string) {
-  const [, cityName] = city;
-  const canonical = `https://${host}/${service.slug}/`;
-  const schema = {
-    "@context": "https://schema.org",
-    "@type": "Service",
-    name: `${service.name} in ${cityName}, ${state.name}`,
-    description: service.description,
-    provider: {
-      "@type": "LocalBusiness",
-      name: `${BRAND} - ${cityName}`,
-      telephone: SITE.phone,
-      url: canonical
-    }
-  };
+/* 3. SERVICES HUB PAGE */
+export function servicesHubPage() {
+  const canonical = `https://${DOMAIN}/services/`;
+  const all70ServiceCardsHtml = services.map((s) => `<div class="service-hub-card"><div><div class="service-hub-icon">💧</div><h3>${esc(s.name)}</h3><p>${esc(s.description)}</p></div><a href="https://${DOMAIN}/services/${s.slug}/">Review service →</a></div>`).join("");
 
   const body = `<main>
   <section class="page-hero">
     <div class="wrap" style="display:grid;grid-template-columns:1fr 380px;gap:44px;align-items:start;">
       <div>
-        <div class="crumb-trail"><a href="https://${state.slug}.${DOMAIN}/">${esc(state.name)}</a> / <a href="https://${host}/">${esc(cityName)}</a> / ${esc(service.name)}</div>
-        <span class="tag-badge" style="background:rgba(14,165,233,.18);color:#38bdf8;">📍 Local ${esc(cityName)} Dispatch</span>
-        <h1 style="font-family:'Plus Jakarta Sans',sans-serif;font-size:clamp(36px,4.5vw,52px);font-weight:900;color:#fff;line-height:1.1;margin:12px 0 16px;">
-          ${esc(service.name)} in <span style="color:#38bdf8;">${esc(cityName)}, ${esc(state.name)}</span>
+        <div class="crumb-trail"><a href="https://${DOMAIN}/">Home</a> / Services Hub</div>
+        <span class="tag-badge" style="background:rgba(14,165,233,.18);color:#38bdf8;">📍 All 70 Services Directory</span>
+        <h1 style="font-family:'Plus Jakarta Sans',sans-serif;font-size:clamp(36px,4.5vw,54px);font-weight:900;color:#fff;line-height:1.1;margin:12px 0 16px;">
+          Complete Water, Fire &amp; Mold <span style="color:#38bdf8;">Restoration Services Directory</span>
         </h1>
-        <p style="font-size:16px;line-height:1.7;color:#cbd5e1;margin-bottom:24px;">${esc(service.description)} Local 24/7 emergency dispatch crews stationed directly in ${esc(cityName)} for rapid arrival.</p>
-        <div style="display:flex;gap:14px;"><a class="btn-cta" href="${PHONE_HREF}">Submit &amp; Call ${PHONE_DISPLAY}</a><a class="btn-glass-cyan" href="https://${DOMAIN}/contact-us/">Request Free Quote</a></div>
+        <p style="font-size:16px;line-height:1.7;color:#cbd5e1;margin-bottom:24px;">Explore all 70 specialized environmental restoration, toxic mold removal, thermal leak detection, and fire cleanup services available nationwide across all 50 states.</p>
+        <div style="display:flex;gap:14px;"><a class="btn-cta" href="${PHONE_HREF}">📞 Call ${PHONE_DISPLAY}</a><a class="btn-glass-cyan" href="https://${DOMAIN}/contact-us/">Request Free Estimate</a></div>
       </div>
       <div>
         <div class="white-form-card">
           <h3>Request Free Quote</h3>
-          <p>Get best estimate in ${esc(cityName)}</p>
+          <p>Get best estimate for any of our 70 services</p>
           <form action="${PHONE_HREF}" method="GET">
             <div style="margin-bottom:12px;"><input type="text" placeholder="Your Full Name *" required style="width:100%;padding:12px 14px;border-radius:10px;border:1px solid #cbd5e1;background:#f8fafc;"></div>
             <div style="margin-bottom:12px;"><input type="tel" placeholder="Phone Number *" required style="width:100%;padding:12px 14px;border-radius:10px;border:1px solid #cbd5e1;background:#f8fafc;"></div>
-            <button type="submit" class="btn-cta" style="width:100%;min-height:50px;">Submit &amp; Call ${PHONE_DISPLAY}</button>
+            <button type="submit" class="btn-cta" style="width:100%;min-height:50px;">Get Estimate Now →</button>
           </form>
         </div>
       </div>
     </div>
   </section>
 
-  <section class="sec-white" style="padding:70px 0;">
-    <div class="wrap service-main-grid">
-      <div class="service-content-box">
-        <span class="tag-badge">LOCAL DISPATCH</span>
-        <h2>Trusted ${esc(service.name)} Specialists in ${esc(cityName)}</h2>
-        <p>Our certified restoration specialists operate 24/7 throughout <b>${esc(cityName)}</b>. Arriving in 30 minutes with high-tech FLIR thermal moisture cameras and HEPA air scrubbers, we restore your property fast.</p>
-      </div>
-      <div>
-        <div class="white-form-card">
-          <h3>Request Free Quote</h3>
-          <p>Local estimate in ${esc(cityName)}</p>
-          <form action="${PHONE_HREF}" method="GET">
-            <div style="margin-bottom:12px;"><input type="text" placeholder="Your Full Name *" required style="width:100%;padding:12px 14px;border-radius:10px;border:1px solid #cbd5e1;background:#f8fafc;"></div>
-            <div style="margin-bottom:12px;"><input type="tel" placeholder="Phone Number *" required style="width:100%;padding:12px 14px;border-radius:10px;border:1px solid #cbd5e1;background:#f8fafc;"></div>
-            <button type="submit" class="btn-cta" style="width:100%;">Submit &amp; Call ${PHONE_DISPLAY}</button>
-          </form>
-        </div>
-      </div>
-    </div>
-  </section>
+  <section class="sec-gray" style="padding:70px 0;"><div class="wrap"><div style="text-align:center;margin-bottom:44px;"><span class="tag-badge">FULL DIRECTORY</span><h2 class="sec-title" style="color:#0d1b2a;">All 70 Water, Fire &amp; Mold Services</h2></div><div class="grid-3">${all70ServiceCardsHtml}</div></div></section>
   </main>`;
 
-  return shell(`${service.name} in ${cityName}, ${state.name} | ${BRAND}`, service.description, canonical, body, schema);
+  return shell(`Restoration Services Directory | All 70 Services | ${BRAND}`, "Browse all 70 water damage extraction, toxic black mold remediation, and fire restoration services offered nationwide.", canonical, body);
+}
+
+/* 4. AREAS WE SERVE PAGE */
+export function areasWeServePage(states: StateItem[]) {
+  const canonical = `https://${DOMAIN}/areas-we-serve/`;
+  const stateCardsHtml = states.map((s) => `<a class="dir-card-white" href="https://${s.slug}.${DOMAIN}/"><span>📍 ${esc(s.name)} (${(s.cities || []).length || 60} cities)</span></a>`).join("");
+  const body = `<main><section class="page-hero"><div class="wrap" style="display:grid;grid-template-columns:1fr 380px;gap:44px;align-items:start;"><div><div class="crumb-trail"><a href="https://${DOMAIN}/">Home</a> / Areas We Serve</div><span class="tag-badge" style="background:rgba(14,165,233,.18);color:#38bdf8;">LOCATION DIRECTORY</span><h1 style="font-family:'Plus Jakarta Sans',sans-serif;font-size:clamp(36px,4.5vw,54px);font-weight:900;color:#fff;line-height:1.1;margin:12px 0 16px;">Water &amp; Mold Restoration Locations by <span style="color:#38bdf8;">State &amp; City</span></h1><p style="font-size:16px;line-height:1.7;color:#cbd5e1;margin-bottom:24px;">Select your state below to explore city subdomains.</p><a class="btn-cta" href="#states-directory">Browse States</a></div><div><div class="white-form-card"><h3>Request Free Quote</h3><p>Get best estimate</p><form action="${PHONE_HREF}" method="GET"><div style="margin-bottom:12px;"><input type="text" placeholder="Your Full Name *" required style="width:100%;padding:12px 14px;border-radius:10px;border:1px solid #cbd5e1;background:#f8fafc;"></div><div style="margin-bottom:12px;"><input type="tel" placeholder="Phone Number *" required style="width:100%;padding:12px 14px;border-radius:10px;border:1px solid #cbd5e1;background:#f8fafc;"></div><button type="submit" class="btn-cta" style="width:100%;">Submit &amp; Call ${PHONE_DISPLAY}</button></form></div></div></div></section><section class="sec-gray" id="states-directory" style="padding:70px 0;"><div class="wrap"><div class="dir-grid">${stateCardsHtml}</div></div></section></main>`;
+  return shell(`Service Areas | All 50 US States | ${BRAND}`, "Explore 24/7 water damage extraction across all 50 US states.", canonical, body);
 }
 
 /* 5. STATE PAGE */
@@ -599,34 +624,14 @@ export function homePage(states: StateItem[]) {
   const canonical = `https://${DOMAIN}/`;
   const statePills = states.map(s => `<a class="dir-card-white" href="https://${s.slug}.${DOMAIN}/"><span>📍 ${esc(s.name)}</span></a>`).join("");
   const topServicesCards = services.slice(0, 6).map(s => `<div class="service-hub-card"><div><div class="service-hub-icon">💧</div><h3>${esc(s.name)}</h3><p>${esc(s.description)}</p></div><a href="https://${DOMAIN}/services/${s.slug}/">Read More →</a></div>`).join("");
-  const blogCardsHtml = articles.slice(0, 4).map((art) => `<div class="blog-card"><img src="${art.image}" alt="${esc(art.title)}" class="blog-card-img"><div class="blog-card-body"><div><div class="blog-date">${art.date}</div><h3>${esc(art.title)}</h3><p>${esc(art.excerpt)}</p></div><a href="https://${DOMAIN}/articles/${art.slug}/">Read More →</a></div></div>`).join("");
 
   const body = `<main>
-  <section class="page-hero">
-    <div class="wrap" style="display:grid;grid-template-columns:1fr 340px;gap:44px;align-items:start;">
-      <div>
-        <div style="font-size:14px;color:#38bdf8;font-weight:800;margin-bottom:12px;">★ ★ ★ ★ ★ 4.9/5 Rated Restoration Authority</div>
-        <h1 style="font-family:'Plus Jakarta Sans',sans-serif;font-size:clamp(38px,5vw,58px);font-weight:900;color:#fff;">Emergency Water &amp; Mold Restoration <span style="color:#38bdf8;">Pennsylvania</span></h1>
-        <p style="font-size:17px;line-height:1.7;color:#cbd5e1;margin-bottom:24px;">Rapid 30-minute arrival for water damage extraction, toxic black mold removal, and fire restoration across Pennsylvania &amp; nationwide.</p>
-        <div style="display:flex;gap:14px;"><a class="btn-cta" href="${PHONE_HREF}">📞 Call ${PHONE_DISPLAY}</a><a class="btn-glass-cyan" href="https://${DOMAIN}/contact-us/">Get Free Estimate</a></div>
-      </div>
-      <div>
-        <div style="background:#fff;border-radius:20px;padding:30px;box-shadow:0 24px 60px rgba(0,0,0,.5);color:#0f172a;">
-          <h2 style="font-family:'Plus Jakarta Sans',sans-serif;font-size:22px;font-weight:900;margin:0 0 6px;color:#0d1b2a;">Request Emergency Inspection</h2>
-          <form action="${PHONE_HREF}" method="GET">
-            <div style="margin-bottom:12px;"><input type="text" placeholder="Your Full Name *" required style="width:100%;padding:12px 16px;border-radius:10px;border:1px solid #cbd5e1;background:#f8fafc;"></div>
-            <div style="margin-bottom:12px;"><input type="tel" placeholder="Phone Number *" required style="width:100%;padding:12px 16px;border-radius:10px;border:1px solid #cbd5e1;background:#f8fafc;"></div>
-            <button type="submit" class="btn-cta" style="width:100%;">Get Estimate Now →</button>
-          </form>
-        </div>
-      </div>
-    </div>
-  </section>
-  <section class="sec-gray"><div class="wrap"><div style="text-align:center;margin-bottom:44px;"><span class="tag-badge">OUR SERVICES</span><h2 class="sec-title" style="color:#0d1b2a;">Comprehensive Water, Fire &amp; Mold Solutions</h2></div><div class="grid-3">${topServicesCards}</div></div></section>
-  <section class="sec-white"><div class="wrap"><div style="text-align:center;margin-bottom:40px;"><span class="tag-badge">SERVICE AREAS</span><h2 class="sec-title" style="color:#0d1b2a;">Water Damage &amp; Mold Restoration in All 50 States</h2></div><div class="dir-grid">${statePills}</div></div></section>
+  <section class="page-hero"><div class="wrap"><h1>Emergency Water &amp; Mold Restoration <span>Pennsylvania</span></h1></div></section>
+  <section class="sec-gray"><div class="wrap"><div class="grid-3">${topServicesCards}</div></div></section>
+  <section class="sec-white"><div class="wrap"><div class="dir-grid">${statePills}</div></div></section>
   </main>`;
 
-  return shell(`${BRAND} | 24/7 Water, Fire & Mold Restoration`, `Pennsylvania &amp; USA nationwide 24/7 emergency water damage restoration, mold remediation, air testing, and fire damage cleanup across all 50 US states.`, canonical, body);
+  return shell(`${BRAND} | 24/7 Water, Fire & Mold Restoration`, `Pennsylvania &amp; USA nationwide 24/7 emergency water damage restoration across all 50 US states.`, canonical, body);
 }
 
 export function aboutUsPage() {
