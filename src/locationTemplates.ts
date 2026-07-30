@@ -485,7 +485,7 @@ export function localServicePage(state: StateItem, city: [string, string], servi
   return shell(`${service.name} in ${cityName}, ${state.name} | ${BRAND}`, service.description, canonical, body, schema);
 }
 
-/* 4. NATIONAL SERVICE PAGE */
+/* 4. NATIONAL SERVICE PAGE (1:1 RICH REPLICA WITH ALL WARNING CARDS, CHECKLISTS, FAQS & FULL RICH CONTENT) */
 export function nationalServicePage(service: (typeof services)[number]) {
   const canonical = `https://${DOMAIN}/services/${service.slug}/`;
   const schema = {
@@ -502,6 +502,7 @@ export function nationalServicePage(service: (typeof services)[number]) {
   };
 
   const body = `<main>
+  <!-- HERO SECTION WITH LEAD FORM CARD -->
   <section class="page-hero">
     <div class="wrap" style="display:grid;grid-template-columns:1fr 380px;gap:44px;align-items:start;">
       <div>
@@ -510,34 +511,106 @@ export function nationalServicePage(service: (typeof services)[number]) {
         <h1 style="font-family:'Plus Jakarta Sans',sans-serif;font-size:clamp(36px,4.5vw,52px);font-weight:900;color:#fff;line-height:1.1;margin:12px 0 16px;">
           ${esc(service.name)} <span style="color:#38bdf8;">Guide &amp; Referral Hub</span>
         </h1>
-        <p style="font-size:16px;line-height:1.7;color:#cbd5e1;margin-bottom:24px;">Proactive safety restoration to reduce risk near structures, basements, and living spaces. Fast, licensed, and certified technician response across all 50 states.</p>
-        <div style="display:flex;gap:14px;"><a class="btn-cta" href="${PHONE_HREF}">Submit &amp; Call ${PHONE_DISPLAY}</a><a class="btn-glass-cyan" href="https://${DOMAIN}/contact-us/">Request Free Quote</a></div>
+        <p style="font-size:16px;line-height:1.7;color:#cbd5e1;margin-bottom:24px;">
+          Proactive safety restoration to reduce risk near structures, basements, and living spaces. Fast, licensed, and certified technician response across all 50 states.
+        </p>
+
+        <div style="display:flex;gap:14px;">
+          <a class="btn-cta" href="${PHONE_HREF}">Submit &amp; Call ${PHONE_DISPLAY}</a>
+          <a class="btn-glass-cyan" href="https://${DOMAIN}/contact-us/">Request Free Quote</a>
+        </div>
       </div>
+
+      <!-- RIGHT SIDE LEAD FORM CARD IN HERO -->
       <div>
         <div class="white-form-card">
           <h3>Request Free Quote</h3>
           <p>Get best estimate for certified restoration</p>
           <form action="${PHONE_HREF}" method="GET">
-            <div style="margin-bottom:12px;"><input type="text" placeholder="Your Full Name *" required style="width:100%;padding:12px 14px;border-radius:10px;border:1px solid #cbd5e1;background:#f8fafc;"></div>
-            <div style="margin-bottom:12px;"><input type="tel" placeholder="Phone Number *" required style="width:100%;padding:12px 14px;border-radius:10px;border:1px solid #cbd5e1;background:#f8fafc;"></div>
-            <button type="submit" class="btn-cta" style="width:100%;min-height:50px;">Submit &amp; Call ${PHONE_DISPLAY}</button>
+            <div style="margin-bottom:12px;"><input type="text" placeholder="Your Full Name *" required style="width:100%;padding:12px 14px;border-radius:10px;border:1px solid #cbd5e1;background:#f8fafc;font-size:14px;"></div>
+            <div style="margin-bottom:12px;"><input type="tel" placeholder="Phone Number *" required style="width:100%;padding:12px 14px;border-radius:10px;border:1px solid #cbd5e1;background:#f8fafc;font-size:14px;"></div>
+            <div style="margin-bottom:12px;">
+              <select style="width:100%;padding:12px 14px;border-radius:10px;border:1px solid #cbd5e1;background:#f8fafc;font-size:14px;" required>
+                <option value="">Select Service Needed *</option>
+                <option>${esc(service.name)}</option>
+                <option>Emergency Mold Remediation</option>
+                <option>Water Damage Extraction</option>
+                <option>Fire Damage Cleanup</option>
+              </select>
+            </div>
+            <div style="margin-bottom:14px;">
+              <textarea placeholder="Describe problem or property details..." style="width:100%;height:80px;padding:12px 14px;border-radius:10px;border:1px solid #cbd5e1;background:#f8fafc;font-size:14px;font-family:inherit;resize:none;"></textarea>
+            </div>
+            <button type="submit" class="btn-cta" style="width:100%;min-height:50px;font-size:15px;">Submit &amp; Call ${PHONE_DISPLAY}</button>
           </form>
         </div>
       </div>
     </div>
   </section>
+
+  <!-- MAIN 2-COLUMN SECTION -->
   <section class="sec-white" style="padding:70px 0;">
     <div class="wrap service-main-grid">
+      <!-- LEFT CONTENT -->
       <div class="service-content-box">
         <span class="tag-badge">COMPREHENSIVE CARE</span>
         <h2>Trusted ${esc(service.name)} Specialists</h2>
-        <p>When managing toxic black mold, basement flooding, or structural water leaks, you need experienced technicians who prioritize safety and property protection.</p>
+        <p>When managing toxic black mold, basement flooding, or structural water leaks, you need experienced technicians who prioritize safety and property protection. For over 15 years, our network of certified restoration specialists has delivered safe, compliant, and honest water damage services nationwide.</p>
+        <p>Every project starts with a detailed risk assessment and a clear, flat-rate quote you approve before we begin. No hidden charges, no unnecessary removals, and complete property cleanup on every job.</p>
+
+        <h3 style="font-family:'Plus Jakarta Sans',sans-serif;font-size:22px;font-weight:900;color:#0d1b2a;margin:32px 0 12px;">Signs You Need ${esc(service.name)}</h3>
+        <p style="color:#64748b;font-size:14px;margin:0 0 16px;">If your property displays any of these warning signs, schedule a professional evaluation immediately:</p>
+        <div class="warning-cards-grid">
+          <div class="warning-card"><span>⚠️</span> Sudden moisture leaks or wall discoloration</div>
+          <div class="warning-card"><span>⚠️</span> Cracked, damp, or warping drywall</div>
+          <div class="warning-card"><span>⚠️</span> Overhanging dampness near power lines</div>
+          <div class="warning-card"><span>⚠️</span> Deadwood &amp; fungal mushroom conks</div>
+        </div>
+
+        <h3 style="font-family:'Plus Jakarta Sans',sans-serif;font-size:22px;font-weight:900;color:#0d1b2a;margin:32px 0 12px;">Capabilities &amp; Services We Handle</h3>
+        <div class="checklist-2col">
+          <div class="check-item-line"><span>✔</span> Certified Moisture &amp; Air Evaluation</div>
+          <div class="check-item-line"><span>✔</span> Heavy-Duty LGR Dehumidification</div>
+          <div class="check-item-line"><span>✔</span> Full HEPA Negative Air Containment</div>
+          <div class="check-item-line"><span>✔</span> On-Site Mold Sanitization &amp; Antimicrobial</div>
+          <div class="check-item-line"><span>✔</span> Vapor Barrier &amp; Subfloor Drying</div>
+          <div class="check-item-line"><span>✔</span> Emergency Storm Damage Response</div>
+        </div>
+
+        <h3 style="font-family:'Plus Jakarta Sans',sans-serif;font-size:24px;font-weight:900;color:#0d1b2a;margin:40px 0 16px;">Frequently Asked Questions</h3>
+        <details class="faq-item-white" open>
+          <summary>What is included in ${esc(service.name)}?</summary>
+          <p>Proactive safety restoration to reduce risk near play structures, driveways, and living spaces. Our certified specialists handle site evaluation, heavy extraction, HEPA containment, and full debris haul-away.</p>
+        </details>
+        <details class="faq-item-white">
+          <summary>How much does ${esc(service.name)} cost?</summary>
+          <p>Costs depend on square footage and moisture levels. We provide 100% upfront flat-rate quotes before any work begins.</p>
+        </details>
+        <details class="faq-item-white">
+          <summary>Is emergency service available 24/7?</summary>
+          <p>Yes! We operate round-the-clock emergency response units across all 50 US states.</p>
+        </details>
       </div>
+
+      <!-- RIGHT SIDEBAR LEAD FORM CARD -->
       <div>
         <div class="white-form-card">
           <h3>Request Free Quote</h3>
-          <p>Get best estimate</p>
-          <form action="${PHONE_HREF}" method="GET"><div style="margin-bottom:12px;"><input type="text" placeholder="Your Full Name *" required style="width:100%;padding:12px 14px;border-radius:10px;border:1px solid #cbd5e1;background:#f8fafc;"></div><div style="margin-bottom:12px;"><input type="tel" placeholder="Phone Number *" required style="width:100%;padding:12px 14px;border-radius:10px;border:1px solid #cbd5e1;background:#f8fafc;"></div><button type="submit" class="btn-cta" style="width:100%;">Submit &amp; Call ${PHONE_DISPLAY}</button></form>
+          <p>Get best estimate for certified restoration</p>
+          <form action="${PHONE_HREF}" method="GET">
+            <div style="margin-bottom:12px;"><input type="text" placeholder="Your Full Name *" required style="width:100%;padding:12px 14px;border-radius:10px;border:1px solid #cbd5e1;background:#f8fafc;font-size:14px;"></div>
+            <div style="margin-bottom:12px;"><input type="tel" placeholder="Phone Number *" required style="width:100%;padding:12px 14px;border-radius:10px;border:1px solid #cbd5e1;background:#f8fafc;font-size:14px;"></div>
+            <div style="margin-bottom:12px;">
+              <select style="width:100%;padding:12px 14px;border-radius:10px;border:1px solid #cbd5e1;background:#f8fafc;font-size:14px;" required>
+                <option value="">Select Service Needed *</option>
+                <option>${esc(service.name)}</option>
+              </select>
+            </div>
+            <div style="margin-bottom:14px;">
+              <textarea placeholder="Describe problem or property details..." style="width:100%;height:80px;padding:12px 14px;border-radius:10px;border:1px solid #cbd5e1;background:#f8fafc;font-size:14px;font-family:inherit;resize:none;"></textarea>
+            </div>
+            <button type="submit" class="btn-cta" style="width:100%;min-height:50px;font-size:15px;">Submit &amp; Call ${PHONE_DISPLAY}</button>
+          </form>
         </div>
       </div>
     </div>
