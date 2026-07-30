@@ -16,10 +16,12 @@ function esc(str: string): string {
 
 const CSS = `
 @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Plus+Jakarta+Sans:wght@600;700;800;900&display=swap');
-*{box-sizing:border-box}html{scroll-behavior:smooth}
-body{margin:0;background:#0d1b2a;color:#f8fafc;font-family:'Inter',system-ui,sans-serif;-webkit-font-smoothing:antialiased}
+*{box-sizing:border-box}html{scroll-behavior:smooth;overflow-x:hidden}
+body{margin:0;background:#0d1b2a;color:#f8fafc;font-family:'Inter',system-ui,sans-serif;-webkit-font-smoothing:antialiased;overflow-x:hidden}
+img,svg,video{max-width:100%;height:auto}
+table{display:block;overflow-x:auto;max-width:100%}
 a{color:inherit;text-decoration:none}
-.wrap{width:min(1280px,calc(100% - 36px));margin:auto}
+.wrap{width:min(1280px,calc(100% - 24px));margin:auto}
 
 /* HEADER & TOP BAR */
 .top-bar{background:#0b1320;color:#cbd5e1;font-size:13px;border-bottom:1px solid rgba(255,255,255,.08)}
