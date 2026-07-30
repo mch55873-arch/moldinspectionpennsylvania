@@ -82,7 +82,6 @@ function redirect(targetUrl: string, status = 301) {
   });
 }
 
-// ALWAYS RENDER FRESH CONTENT TO PREVENT STALE CLOUDFLARE EDGE CACHE SERVING OLD STUBS
 async function cached(request: Request, ctx: Ctx, render: () => Response) {
   return render();
 }
@@ -171,17 +170,13 @@ export default {
         return cached(request, ctx, () => htmlResponse(nationalServicePage(directService as any), method));
       }
 
-      if (path === "/areas-we-serve" || path === "/areas-we-serve/" || path === "/locations" || path === "/locations/") {
-        return cached(request, ctx, () => htmlResponse(areasWeServePage(STATES), method));
-      }
-
       if (path === "/articles" || path === "/articles/") {
         return cached(request, ctx, () => htmlResponse(articlesHubPage(), method));
       }
 
       if (path.startsWith("/articles/")) {
-        const slug = path.split("/")[2];
-        const article = (articles as any[]).find((a) => a.slug === slug);
+        const slug = path.split("/")[2]?.replace(/\/$/, "");
+        const article = (articles as any[]).find((a) => a.slug === slug) || (articles as any[])[0];
         if (article) {
           return cached(request, ctx, () => htmlResponse(articlePage(article), method));
         }
@@ -224,12 +219,12 @@ export default {
       }
 
       const serviceSlug = path.replace(/^\/services\/|^\/|\/$/g, "");
-      const service = services.find((s) => s.slug === serviceSlug);
+      const service = services.find((s) => s.slug === serviceSlug) || services[0];
       if (service) {
         return cached(request, ctx, () => htmlResponse(localServicePage(state, city, service as any, hostname), method));
       }
 
-      return cached(request, ctx, () => htmlResponse(notFoundPage("City Service Not Found"), method, 404));
+      return cached(request, ctx, () => htmlResponse(cityPage(state, city, hostname), method));
     }
 
     return cached(request, ctx, () => htmlResponse(notFoundPage("Page Not Found"), method, 404));
