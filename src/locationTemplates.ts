@@ -261,6 +261,10 @@ function footer(): string {
         <a href="https://${DOMAIN}/about-us/">About</a>
         <a href="https://${DOMAIN}/services/">Services</a>
         <a href="https://${DOMAIN}/areas-we-serve/">Areas</a>
+        <a href="https://${DOMAIN}/articles/">Articles</a>
+        <a href="https://${DOMAIN}/privacy-policy/">Privacy Policy</a>
+        <a href="https://${DOMAIN}/terms-of-service/">Terms of Service</a>
+        <a href="https://${DOMAIN}/disclaimer/">Disclaimer</a>
         <a href="https://${DOMAIN}/contact-us/">Contact</a>
       </div>
     </div>
@@ -773,6 +777,81 @@ export function linkSheetPage() {
   const canonical = `https://${DOMAIN}/link-sheet/`;
   const body = `<main><section class="page-hero"><div class="wrap"><h1>LinkSheet Hub</h1></div></section></main>`;
   return shell("Xagio LinkSheet", "LinkSheet.", canonical, body);
+}
+
+export function privacyPolicyPage() {
+  const canonical = `https://${DOMAIN}/privacy-policy/`;
+  const body = `<main>
+  <section class="page-hero">
+    <div class="wrap">
+      <div class="crumb-trail"><a href="https://${DOMAIN}/">Home</a> / Privacy Policy</div>
+      <span class="tag-badge" style="background:rgba(14,165,233,.18);color:#38bdf8;">LEGAL COMPLIANCE</span>
+      <h1 style="font-family:'Plus Jakarta Sans',sans-serif;font-size:clamp(36px,4.5vw,52px);font-weight:900;color:#fff;">Privacy Policy</h1>
+      <p style="color:#cbd5e1;font-size:15px;">Last Updated: July 2026</p>
+    </div>
+  </section>
+  <section class="sec-white" style="padding:70px 0;">
+    <div class="wrap" style="max-width:860px;font-size:16px;line-height:1.8;color:#334155;">
+      <h2>1. Information We Collect</h2>
+      <p>At ${BRAND}, accessible from https://${DOMAIN}, we respect your privacy. We collect personal information you voluntarily provide when submitting online estimate requests or calling our dispatch phone line (e.g., name, phone number, email address, property address, and service details).</p>
+      <h2>2. How We Use Your Information</h2>
+      <p>We use collected data strictly to fulfill emergency restoration requests, connect you with local certified technicians, respond to inquiries, send estimate details, and comply with state and federal legal obligations.</p>
+      <h2>3. Third-Party Referral Network Disclosure</h2>
+      <p>${BRAND} operates as an independent referral network connecting homeowners and commercial property managers with certified local restoration contractors. We do not sell your personal data to unauthorized third-party advertisers.</p>
+      <h2>4. CCPA & GDPR Privacy Rights</h2>
+      <p>Under CCPA and GDPR, users have the right to request access to their stored personal data, request deletion of their personal information, and opt-out of marketing communications. Contact dispatch@${DOMAIN} for data requests.</p>
+    </div>
+  </section>
+  </main>`;
+  return shell(`Privacy Policy | ${BRAND}`, `Privacy Policy for ${BRAND}.`, canonical, body);
+}
+
+export function termsOfServicePage() {
+  const canonical = `https://${DOMAIN}/terms-of-service/`;
+  const body = `<main>
+  <section class="page-hero">
+    <div class="wrap">
+      <div class="crumb-trail"><a href="https://${DOMAIN}/">Home</a> / Terms of Service</div>
+      <span class="tag-badge" style="background:rgba(14,165,233,.18);color:#38bdf8;">TERMS &amp; CONDITIONS</span>
+      <h1 style="font-family:'Plus Jakarta Sans',sans-serif;font-size:clamp(36px,4.5vw,52px);font-weight:900;color:#fff;">Terms of Service</h1>
+      <p style="color:#cbd5e1;font-size:15px;">Last Updated: July 2026</p>
+    </div>
+  </section>
+  <section class="sec-white" style="padding:70px 0;">
+    <div class="wrap" style="max-width:860px;font-size:16px;line-height:1.8;color:#334155;">
+      <h2>1. Agreement to Terms</h2>
+      <p>By accessing or using ${BRAND} (https://${DOMAIN}), you agree to be bound by these Terms of Service. If you do not agree with any part of these terms, you must discontinue use immediately.</p>
+      <h2>2. Emergency Dispatch &amp; Referral Services</h2>
+      <p>${BRAND} is a nationwide emergency restoration referral network. All emergency dispatch requests submitted through this site are routed to licensed, insured, and independent local restoration professionals.</p>
+      <h2>3. Estimate &amp; Pricing Disclaimer</h2>
+      <p>All quotes and estimates provided online or over the phone are preliminary. Final restoration scope, equipment requirements, and pricing are determined after on-site physical inspection by certified technicians.</p>
+    </div>
+  </section>
+  </main>`;
+  return shell(`Terms of Service | ${BRAND}`, `Terms of Service for ${BRAND}.`, canonical, body);
+}
+
+export function disclaimerPage() {
+  const canonical = `https://${DOMAIN}/disclaimer/`;
+  const body = `<main>
+  <section class="page-hero">
+    <div class="wrap">
+      <div class="crumb-trail"><a href="https://${DOMAIN}/">Home</a> / Disclaimer</div>
+      <span class="tag-badge" style="background:rgba(14,165,233,.18);color:#38bdf8;">DISCLOSURE</span>
+      <h1 style="font-family:'Plus Jakarta Sans',sans-serif;font-size:clamp(36px,4.5vw,52px);font-weight:900;color:#fff;">Service Disclaimer</h1>
+      <p style="color:#cbd5e1;font-size:15px;">Last Updated: July 2026</p>
+    </div>
+  </section>
+  <section class="sec-white" style="padding:70px 0;">
+    <div class="wrap" style="max-width:860px;font-size:16px;line-height:1.8;color:#334155;">
+      <h2>1. Independent Referral Service Disclosure</h2>
+      <p>${BRAND} operates as a referral network that connects callers and online users with independent, licensed, and insured environmental restoration contractors across the United States. All contractors operate independently.</p>
+      <h2>2. Professional Environmental Advice Disclaimer</h2>
+      <p>Information provided on this website (including technical articles and restoration guides) is for informational purposes only and does not constitute formal medical or industrial hygiene advice. Consult a Certified Industrial Hygienist (CIH) for custom environmental testing.</p>
+    </div>
+  </section>
+  </main>`;
+  return shell(`Service Disclaimer | ${BRAND}`, `Service Disclaimer for ${BRAND}.`, canonical, body);
 }
 
 export function notFoundPage(message: string) {

@@ -8,13 +8,16 @@ import {
   articlesHubPage,
   cityPage,
   contactUsPage,
+  disclaimerPage,
   homePage,
   linkSheetPage,
   localServicePage,
   nationalServicePage,
   notFoundPage,
+  privacyPolicyPage,
   servicesHubPage,
   statePage,
+  termsOfServicePage,
 } from "./locationTemplates";
 import { coreSitemap, sitemapIndex, stateSitemap, type StateItem } from "./sitemaps";
 import { SITE } from "../lib/site";
@@ -141,6 +144,18 @@ export default {
 
       if (path === "/contact-us" || path === "/contact-us/" || path === "/contact" || path === "/contact/" || path === "/contact.html") {
         return cached(request, ctx, () => htmlResponse(contactUsPage(), method));
+      }
+
+      if (path === "/privacy-policy" || path === "/privacy-policy/") {
+        return cached(request, ctx, () => htmlResponse(privacyPolicyPage(), method));
+      }
+
+      if (path === "/terms-of-service" || path === "/terms-of-service/" || path === "/terms" || path === "/terms/") {
+        return cached(request, ctx, () => htmlResponse(termsOfServicePage(), method));
+      }
+
+      if (path === "/disclaimer" || path === "/disclaimer/") {
+        return cached(request, ctx, () => htmlResponse(disclaimerPage(), method));
       }
 
       if (path === "/services" || path === "/services/" || path === "/services.html") {
