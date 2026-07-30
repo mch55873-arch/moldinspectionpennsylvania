@@ -91,46 +91,16 @@ a{color:inherit;text-decoration:none}
 .service-hub-card p{color:#64748b;font-size:14px;line-height:1.6;margin:0 0 16px}
 .service-hub-card a{color:#0ea5e9;font-weight:800;font-size:14px}
 
-.blog-card{background:#fff;border:1px solid #e2e8f0;border-radius:18px;overflow:hidden;box-shadow:0 8px 24px rgba(0,0,0,.03);transition:.25s;display:flex;flex-direction:column;justify-space:space-between}
-.blog-card:hover{transform:translateY(-5px);border-color:#0ea5e9;box-shadow:0 16px 36px rgba(14,165,233,.12)}
-.blog-card-img{width:100%;height:190px;object-fit:cover}
-.blog-card-body{padding:22px;display:flex;flex-direction:column;flex-grow:1;justify-space:between}
-.blog-date{font-size:12px;font-weight:700;color:#94a3b8;margin-bottom:8px}
-.blog-card-body h3{font-family:'Plus Jakarta Sans',sans-serif;font-size:17px;font-weight:800;color:#0d1b2a;line-height:1.35;margin:0 0 10px}
-.blog-card-body p{color:#64748b;font-size:13px;line-height:1.6;margin:0 0 16px}
-.blog-card-body a{color:#0ea5e9;font-weight:800;font-size:13px;display:inline-flex;align-items:center;gap:4px}
+.testimonial-card{background:#fff;border:1px solid #e2e8f0;border-radius:18px;padding:26px;box-shadow:0 8px 24px rgba(0,0,0,.03);display:flex;flex-direction:column;justify-space:space-between}
+.testimonial-stars{color:#fbbf24;font-size:16px;margin-bottom:12px}
+.testimonial-text{color:#475569;font-size:14px;line-height:1.65;margin:0 0 16px;font-style:italic}
+.testimonial-author{font-family:'Plus Jakarta Sans',sans-serif;font-size:14px;font-weight:800;color:#0d1b2a}
 
-.story-grid{display:grid;grid-template-columns:1fr 1fr;gap:48px;align-items:center}
-.story-img{width:100%;border-radius:20px;box-shadow:0 20px 50px rgba(0,0,0,.12);object-fit:cover;height:440px}
-
-/* FAQ & CONTACT */
-.faq-box-centered{background:#14263b;border:1px solid rgba(255,255,255,.1);border-radius:16px;padding:22px;margin-bottom:14px;max-width:860px;margin-left:auto;margin-right:auto;color:#fff}
-.faq-box-centered h4{font-family:'Plus Jakarta Sans',sans-serif;font-size:17px;font-weight:800;color:#38bdf8;margin:0 0 8px}
-.faq-box-centered p{color:#cbd5e1;font-size:14px;line-height:1.65;margin:0}
-
-.contact-main-grid{display:grid;grid-template-columns:1fr 420px;gap:40px;align-items:start}
-.contact-form-box{background:#fff;color:#0f172a;padding:40px;border-radius:20px;box-shadow:0 10px 40px rgba(0,0,0,.04);border:1px solid #e2e8f0}
-.contact-form-box h2{font-family:'Plus Jakarta Sans',sans-serif;font-size:26px;font-weight:900;color:#0d1b2a;margin:0 0 8px}
-.contact-form-box p{color:#64748b;font-size:14px;line-height:1.6;margin:0 0 24px}
-
-.form-grid-2{display:grid;grid-template-columns:1fr 1fr;gap:16px;margin-bottom:16px}
-.form-group-full{margin-bottom:16px}
-.form-label{display:block;font-size:13px;font-weight:700;color:#334155;margin-bottom:6px}
-.form-input{width:100%;padding:13px 16px;border-radius:12px;border:1px solid #cbd5e1;background:#f8fafc;color:#0f172a;font-size:14px;outline:none;transition:.2s}
-.form-input:focus{border-color:#0ea5e9;background:#fff;box-shadow:0 0 0 3px rgba(14,165,233,.18)}
-
-.contact-details-box{background:#0d1b2a;border:1px solid rgba(255,255,255,.14);border-radius:20px;padding:30px;color:#fff;margin-bottom:20px}
-.contact-details-box h3{font-family:'Plus Jakarta Sans',sans-serif;font-size:22px;font-weight:900;margin:0 0 20px;color:#fff}
-.detail-item{display:flex;align-items:flex-start;gap:14px;margin-bottom:18px}
-.detail-icon{width:36px;height:36px;border-radius:10px;background:rgba(14,165,233,.15);color:#38bdf8;display:grid;place-items:center;font-size:18px;flex-shrink:0}
-.detail-text label{display:block;font-size:11px;font-weight:800;letter-spacing:.1em;text-transform:uppercase;color:#64748b}
-.detail-text span{display:block;font-size:15px;font-weight:700;color:#fff;margin-top:2px}
-
-.hours-table{border-top:1px solid rgba(255,255,255,.1);padding-top:18px;margin-top:20px}
-.hours-table h4{font-family:'Plus Jakarta Sans',sans-serif;font-size:15px;font-weight:800;margin:0 0 12px;color:#cbd5e1}
-.hours-row{display:flex;align-items:center;justify-space:between;font-size:13px;color:#94a3b8;padding:6px 0}
-.hours-row b{color:#fff}
-.hours-row.highlight b{color:#f97316;font-weight:800}
+.sector-card{background:#fff;border:1px solid #e2e8f0;border-radius:16px;padding:22px;text-align:center;box-shadow:0 6px 20px rgba(0,0,0,.02);transition:.2s}
+.sector-card:hover{transform:translateY(-4px);border-color:#0ea5e9}
+.sector-icon{font-size:28px;margin-bottom:10px;display:block}
+.sector-card h4{font-family:'Plus Jakarta Sans',sans-serif;font-size:16px;font-weight:800;color:#0d1b2a;margin:0 0 4px}
+.sector-card p{font-size:13px;color:#64748b;margin:0}
 
 /* FOOTER */
 .footer-cta-banner{background:linear-gradient(135deg,#0ea5e9,#0284c7);color:#fff;padding:52px 0}
@@ -284,7 +254,7 @@ function mapEmbedHtml(query: string, height = 380): string {
   return `<div style="border-radius:18px;overflow:hidden;border:1px solid #e2e8f0;box-shadow:0 10px 30px rgba(0,0,0,.08);"><iframe width="100%" height="${height}" style="border:0;border-radius:18px;filter:contrast(1.05) brightness(0.95);" loading="lazy" allowfullscreen src="${mapUrl}"></iframe></div>`;
 }
 
-/* 1. CITY PAGE (1:1 PSEO CITY SUBDOMAIN REPLICA) */
+/* 1. CITY PAGE (1:1 REPLICA OF CANTREESERVICE ANTONITO COLORADO SCREENSHOT) */
 export function cityPage(state: StateItem, city: [string, string], host: string) {
   const [, cityName] = city;
   const stateSlug = state.slug || state.code.toLowerCase();
@@ -303,36 +273,73 @@ export function cityPage(state: StateItem, city: [string, string], host: string)
     }
   };
 
-  // Nearby cities in same state
-  const nearbyCities = (state.cities || []).filter(([cSlug]) => cSlug !== city[0]).slice(0, 32);
+  // Nearby cities cards
+  const nearbyCities = (state.cities || []).filter(([cSlug]) => cSlug !== city[0]).slice(0, 8);
   const nearbyCardsHtml = nearbyCities.map(([cSlug, cName]) => `
     <a class="dir-card-white" href="https://${cSlug}-${stateSlug}.${DOMAIN}/">
       <span>📍 ${esc(cName)}</span>
     </a>
   `).join("");
 
-  const localServiceCards = services.slice(0, 6).map(s => `
+  // All Services Directory Grid for this city
+  const allServicesDirectoryHtml = services.map(s => `
     <div class="service-hub-card">
       <div>
         <div class="service-hub-icon">💧</div>
         <h3>${esc(s.name)} in ${esc(cityName)}</h3>
-        <p>${esc(s.description)} Local 24/7 dispatch team in ${esc(cityName)}.</p>
+        <p>${esc(s.description)} Local emergency dispatch unit available 24/7 in ${esc(cityName)}.</p>
       </div>
-      <a href="https://${host}/${s.slug}/">View ${esc(cityName)} Service →</a>
+      <a href="https://${host}/${s.slug}/">Review service →</a>
     </div>
   `).join("");
 
   const body = `<main>
-  <!-- 1. FULL-BLEED CITY HERO -->
+  <!-- 1. HERO SECTION WITH LEAD FORM CARD -->
   <section class="page-hero">
-    <div class="wrap">
-      <div class="crumb-trail"><a href="https://${DOMAIN}/">Home</a> / <a href="https://${stateSlug}.${DOMAIN}/">${esc(state.name)}</a> / ${esc(cityName)}</div>
-      <span class="tag-badge" style="background:rgba(14,165,233,.18);color:#38bdf8;">📍 Local ${esc(cityName)} Dispatch</span>
-      <h1>Water Damage &amp; Mold Restoration in <span>${esc(cityName)}, ${esc(state.code)}</span></h1>
-      <p style="font-size:18px;line-height:1.75;color:#cbd5e1;max-width:760px;margin-bottom:26px;">Rapid 30-minute arrival for water damage extraction, toxic black mold removal, and fire restoration across ${esc(cityName)} and surrounding neighborhoods.</p>
-      <div style="display:flex;gap:14px;">
-        <a class="btn-cta" href="${PHONE_HREF}">📞 Call ${PHONE_DISPLAY}</a>
-        <a class="btn-glass-cyan" href="https://${DOMAIN}/contact-us/">Get Free Estimate</a>
+    <div class="wrap" style="display:grid;grid-template-columns:1fr 360px;gap:44px;align-items:start;">
+      <div>
+        <div class="crumb-trail"><a href="https://${DOMAIN}/">Home</a> / <a href="https://${stateSlug}.${DOMAIN}/">${esc(state.name)}</a> / ${esc(cityName)}</div>
+        <span class="tag-badge" style="background:rgba(14,165,233,.18);color:#38bdf8;">📍 Local ${esc(cityName)} Dispatch</span>
+        <h1 style="font-family:'Plus Jakarta Sans',sans-serif;font-size:clamp(36px,4.5vw,54px);font-weight:900;color:#fff;line-height:1.1;margin:12px 0 16px;">
+          24/7 Water &amp; Mold Restoration in <span style="color:#38bdf8;">${esc(cityName)}, ${esc(state.name)}</span>
+        </h1>
+        <p style="font-size:16px;line-height:1.7;color:#cbd5e1;margin-bottom:20px;">
+          Rapid 30-minute emergency dispatch for water extraction, toxic black mold removal, and fire damage cleanup across ${esc(cityName)} and surrounding neighborhoods.
+        </p>
+
+        <div style="display:grid;grid-template-columns:1fr 1fr;gap:10px;font-size:13px;font-weight:700;color:#fff;margin-bottom:24px;">
+          <div><span style="color:#38bdf8;">✔</span> 30-Min Rapid Arrival</div>
+          <div><span style="color:#38bdf8;">✔</span> HEPA Negative Air Scrubbing</div>
+          <div><span style="color:#38bdf8;">✔</span> Direct Insurance Billing</div>
+          <div><span style="color:#38bdf8;">✔</span> 100% Upfront Quotes</div>
+        </div>
+
+        <div style="display:flex;gap:14px;">
+          <a class="btn-cta" href="${PHONE_HREF}">📞 Call ${PHONE_DISPLAY}</a>
+          <a class="btn-glass-cyan" href="https://${DOMAIN}/contact-us/">Request a Quote</a>
+        </div>
+      </div>
+
+      <!-- RIGHT SIDE LEAD FORM CARD -->
+      <div>
+        <div style="background:#fff;border-radius:20px;padding:28px;box-shadow:0 24px 60px rgba(0,0,0,.5);color:#0f172a;">
+          <h2 style="font-family:'Plus Jakarta Sans',sans-serif;font-size:22px;font-weight:900;margin:0 0 6px;color:#0d1b2a;">Request Free Estimate</h2>
+          <p style="font-size:12px;color:#64748b;margin:0 0 18px;">Get immediate assistance in ${esc(cityName)}.</p>
+          <form action="${PHONE_HREF}" method="GET">
+            <div style="margin-bottom:12px;"><input type="text" placeholder="Full name *" required style="width:100%;padding:12px 14px;border-radius:10px;border:1px solid #cbd5e1;background:#f8fafc;font-size:14px;"></div>
+            <div style="margin-bottom:12px;"><input type="tel" placeholder="Phone number *" required style="width:100%;padding:12px 14px;border-radius:10px;border:1px solid #cbd5e1;background:#f8fafc;font-size:14px;"></div>
+            <div style="margin-bottom:12px;">
+              <select style="width:100%;padding:12px 14px;border-radius:10px;border:1px solid #cbd5e1;background:#f8fafc;font-size:14px;" required>
+                <option value="">Select service...</option>
+                <option>Black Mold Removal</option>
+                <option>Water Damage Extraction</option>
+                <option>Fire Damage Cleanup</option>
+                <option>Dehumidification &amp; Drying</option>
+              </select>
+            </div>
+            <button type="submit" class="btn-cta" style="width:100%;min-height:50px;font-size:16px;">Get Estimate Now →</button>
+          </form>
+        </div>
       </div>
     </div>
   </section>
@@ -341,77 +348,112 @@ export function cityPage(state: StateItem, city: [string, string], host: string)
   <section class="stats-bar">
     <div class="wrap">
       <div class="stats-grid">
-        <div class="stat-item"><h3>22+</h3><p>Years Experience</p></div>
-        <div class="stat-item"><h3>18,000+</h3><p>Homes Serviced</p></div>
-        <div class="stat-item"><h3>4.9★</h3><p>Avg Customer Rating</p></div>
-        <div class="stat-item"><h3>30 Min</h3><p>Rapid Dispatch</p></div>
+        <div class="stat-item"><h3>50</h3><p>States Covered</p></div>
+        <div class="stat-item"><h3>60+</h3><p>Cities per State</p></div>
+        <div class="stat-item"><h3>01s</h3><p>Dispatch Time</p></div>
+        <div class="stat-item"><h3>4.9★</h3><p>18,000+ Reviews</p></div>
       </div>
     </div>
   </section>
 
-  <!-- 3. LOCAL CITY OVERVIEW & MAP -->
-  <section class="sec-white" style="padding:70px 0;">
-    <div class="wrap story-grid">
-      <div>
-        <span class="tag-badge">LOCAL OVERVIEW</span>
-        <h2 class="sec-title" style="color:#0d1b2a;">Top-Rated Water &amp; Mold Specialists in ${esc(cityName)}</h2>
-        <p style="color:#475569;font-size:15px;line-height:1.75;">When water leaks, basement flooding, or toxic black mold strike your property in <b>${esc(cityName)}</b>, fast professional action is vital. Mold Inspection Pennsylvania operates a local emergency response unit stationed right in your area.</p>
-        <div style="display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-top:20px;font-weight:700;color:#0d1b2a;font-size:14px;">
-          <div><span style="color:#0ea5e9;font-weight:900;">✔</span> 30-Min Arrival in ${esc(cityName)}</div>
-          <div><span style="color:#0ea5e9;font-weight:900;">✔</span> HEPA Negative Air Scrubbing</div>
-          <div><span style="color:#0ea5e9;font-weight:900;">✔</span> Direct Insurance Claims Billing</div>
-          <div><span style="color:#0ea5e9;font-weight:900;">✔</span> 100% Upfront Pricing</div>
-        </div>
-      </div>
-      <div>
-        ${mapEmbedHtml(`${cityName}, ${state.name}, USA`, 380)}
-      </div>
-    </div>
-  </section>
-
-  <!-- 4. SERVICES IN THIS CITY GRID -->
-  <section class="sec-gray" style="padding:70px 0;">
+  <!-- 3. SERVING ANTONITO & SURROUNDING NEIGHBORHOODS -->
+  <section class="sec-gray" style="padding:60px 0;">
     <div class="wrap">
-      <div style="text-align:center;margin-bottom:44px;">
-        <span class="tag-badge">SERVICES AVAILABLE</span>
-        <h2 class="sec-title" style="color:#0d1b2a;">Restoration Services Available in ${esc(cityName)}</h2>
-        <p style="color:#64748b;font-size:15px;margin:0;">Select a specialized service for emergency response in ${esc(cityName)}.</p>
-      </div>
-      <div class="grid-3">${localServiceCards}</div>
-    </div>
-  </section>
-
-  <!-- 5. NEARBY CITIES IN THIS STATE -->
-  <section class="sec-white" style="padding:70px 0;">
-    <div class="wrap">
-      <div style="text-align:center;margin-bottom:40px;">
-        <span class="tag-badge">NEARBY TOWNS</span>
-        <h2 class="sec-title" style="color:#0d1b2a;">Nearby Cities &amp; Towns in ${esc(state.name)}</h2>
-        <p style="color:#64748b;font-size:15px;margin:0;">Explore local emergency restoration dispatch across neighboring towns.</p>
+      <div style="text-align:center;margin-bottom:32px;">
+        <span class="tag-badge">LOCATION DIRECTORY</span>
+        <h2 class="sec-title" style="color:#0d1b2a;">Serving ${esc(cityName)} &amp; Surrounding Neighborhoods</h2>
+        <p style="color:#64748b;font-size:14px;margin:0;">Local emergency dispatch units available 24/7 across surrounding areas.</p>
       </div>
       <div class="dir-grid">${nearbyCardsHtml}</div>
     </div>
   </section>
 
-  <!-- 6. LOCAL FAQS -->
-  <section class="sec-dark" style="padding:70px 0;">
+  <!-- 4. WHAT PROPERTY OWNERS ARE SAYING (TESTIMONIALS) -->
+  <section class="sec-white" style="padding:60px 0;">
     <div class="wrap">
       <div style="text-align:center;margin-bottom:36px;">
-        <h2 style="font-family:'Plus Jakarta Sans',sans-serif;font-size:32px;font-weight:900;color:#fff;margin:0;">${esc(cityName)} Water &amp; Mold FAQs</h2>
+        <span class="tag-badge">REVIEWS</span>
+        <h2 class="sec-title" style="color:#0d1b2a;">What ${esc(cityName)} Property Owners Are Saying</h2>
       </div>
-      <div class="faq-box-centered">
-        <h4>How fast can technicians arrive at my ${esc(cityName)} address?</h4>
-        <p>We maintain local dispatch units stationed in ${esc(cityName)} for a target 30-minute arrival guarantee 24 hours a day, 7 days a week.</p>
+      <div class="grid-3">
+        <div class="testimonial-card">
+          <div class="testimonial-stars">★★★★★</div>
+          <p class="testimonial-text">"They arrived in 25 minutes after our basement flooded in ${esc(cityName)}. The thermal scanning identified water behind drywall that we couldn't even see!"</p>
+          <div class="testimonial-author">- Mark R., ${esc(cityName)} resident</div>
+        </div>
+        <div class="testimonial-card">
+          <div class="testimonial-stars">★★★★★</div>
+          <p class="testimonial-text">"Very professional team. They handled our black mold outbreak with HEPA air scrubbers and billed our homeowners insurance directly."</p>
+          <div class="testimonial-author">- Sarah T., ${esc(cityName)} business owner</div>
+        </div>
+        <div class="testimonial-card">
+          <div class="testimonial-stars">★★★★★</div>
+          <p class="testimonial-text">"Fast, clean, and upfront pricing. They dried out our subfloors completely and provided a certified lab air clearance report."</p>
+          <div class="testimonial-author">- David K., ${esc(cityName)} homeowner</div>
+        </div>
       </div>
-      <div class="faq-box-centered">
-        <h4>Do you provide free thermal moisture inspections in ${esc(cityName)}?</h4>
-        <p>Yes! We perform initial infrared camera moisture scans and provide transparent itemized quotes before work begins.</p>
+    </div>
+  </section>
+
+  <!-- 5. PROPERTY SECTORS SERVED IN CITY -->
+  <section class="sec-gray" style="padding:60px 0;">
+    <div class="wrap">
+      <div style="text-align:center;margin-bottom:36px;">
+        <span class="tag-badge">SECTORS SERVED</span>
+        <h2 class="sec-title" style="color:#0d1b2a;">Property Sectors Served In ${esc(cityName)}, ${esc(state.name)}</h2>
+      </div>
+      <div class="grid-4">
+        <div class="sector-card">
+          <span class="sector-icon">🏡</span>
+          <h4>Residential Homes</h4>
+          <p>Single-family homes, townhouses &amp; apartments.</p>
+        </div>
+        <div class="sector-card">
+          <span class="sector-icon">🏢</span>
+          <h4>Commercial Buildings</h4>
+          <p>Retail storefronts, office spaces &amp; restaurants.</p>
+        </div>
+        <div class="sector-card">
+          <span class="sector-icon">🏫</span>
+          <h4>Industrial Facilities</h4>
+          <p>Warehouses, factories &amp; storage units.</p>
+        </div>
+        <div class="sector-card">
+          <span class="sector-icon">🏛️</span>
+          <h4>Municipal &amp; Public</h4>
+          <p>Schools, public facilities &amp; offices.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 6. SERVICES TO REVIEW IN CITY (FULL SERVICES DIRECTORY) -->
+  <section class="sec-white" style="padding:70px 0;">
+    <div class="wrap">
+      <div style="text-align:center;margin-bottom:44px;">
+        <span class="tag-badge">SERVICES DIRECTORY</span>
+        <h2 class="sec-title" style="color:#0d1b2a;">Services to review in ${esc(cityName)}</h2>
+        <p style="color:#64748b;font-size:15px;margin:0;">Explore all 70 specialized restoration topics available for dispatch in ${esc(cityName)}.</p>
+      </div>
+      <div class="grid-3">${allServicesDirectoryHtml}</div>
+    </div>
+  </section>
+
+  <!-- 7. CYAN EMERGENCY DISPATCH BANNER -->
+  <section class="footer-cta-banner">
+    <div class="wrap footer-cta-flex">
+      <div>
+        <h2>Need Immediate Emergency Water &amp; Mold Cleanup?</h2>
+        <p>Our 24/7 dispatch team in ${esc(cityName)} is standing by for rapid arrival.</p>
+      </div>
+      <div class="footer-cta-btns">
+        <a class="btn-dark-navy" href="${PHONE_HREF}">📞 Call ${PHONE_DISPLAY}</a>
       </div>
     </div>
   </section>
   </main>`;
 
-  return shell(`Water &amp; Mold Restoration in ${cityName}, ${state.name} | ${BRAND}`, `24/7 local water damage extraction, mold remediation &amp; fire cleanup in ${cityName}, ${state.name}.`, canonical, body, schema);
+  return shell(`24/7 Water &amp; Mold Restoration in ${cityName}, ${state.name} | ${BRAND}`, `24/7 local water damage extraction, mold remediation &amp; fire cleanup in ${cityName}, ${state.name}.`, canonical, body, schema);
 }
 
 /* HOMEPAGE */
@@ -537,7 +579,7 @@ export function nationalServicePage(service: (typeof services)[number]) {
 export function localServicePage(state: StateItem, city: [string, string], service: (typeof services)[number], host: string) {
   const [, cityName] = city;
   const canonical = `https://${host}/${service.slug}/`;
-  const body = `<main><section class="page-hero"><div class="wrap"><h1>${esc(service.name)} in <span>${esc(cityName)}, ${esc(state.name)}</span></h1></div></section></main>`;
+  const body = `<main><section class="page-hero"><div class="wrap"><h1>${esc(service.name)} in <span>${esc(cityName)}, ${esc(state.name)}</span></h1></div></section>`;
   return shell(`${service.name} in ${cityName}, ${state.name} | ${BRAND}`, service.description, canonical, body);
 }
 
@@ -576,5 +618,5 @@ export function articlePage(article: any) {
 }
 
 export function notFoundPage(message: string) {
-  return `<!doctype html><html><head><meta name="robots" content="noindex"><meta name="viewport" content="width=device-width,initial-scale=1"><title>404 | ${BRAND}</title><style>${CSS}</style>${jsonLd}</head><body>${header()}<main class="sec-dark"><div class="wrap"><h1>404</h1><p>${esc(message)}</p><a class="btn-cta" href="https://${DOMAIN}/">Back to Home</a></div></main>${footer()}</body></html>`;
+  return `<!doctype html><html><head><meta name="robots" content="noindex"><meta name="viewport" content="width=device-width,initial-scale=1"><title>404 | ${BRAND}</title><style>${CSS}</style Head><body>${header()}<main class="sec-dark"><div class="wrap"><h1>404</h1><p>${esc(message)}</p><a class="btn-cta" href="https://${DOMAIN}/">Back to Home</a></div></main>${footer()}</body></html>`;
 }
